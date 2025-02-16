@@ -49,10 +49,13 @@ On Windows (if using MinGW):
 ```
 
 The program will prompt for a CSV filename. Enter the correct path to `zip_codes.csv`.
+Once the program loads the CSV file into memory, the user is prompted to choose a field from which to sort the data. An invalid choice will be sorted by default, state.
+The program will prompt for a CSV output filename. Enter an .csv output filename.
+
 
 ## Expected Output
 
-The program generates a CSV file named `state_zip_summary.csv`, which contains:
+The program generates a CSV file name based on user input, which contains:
 
 ```
 State, Easternmost, Westernmost, Northernmost, Southernmost

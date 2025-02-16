@@ -4,6 +4,7 @@
 #include "CSVBuffer.h"
 #include <iostream>
 #include <fstream>
+#include <algorithm>
 
 using namespace std;
 #include <sstream>
@@ -81,9 +82,37 @@ const vector<ZipRecord>& CSVBuffer::getRecords() const {
 
 /// @brief Generates and prints a table of extreme Zip Codes for each state.
 void CSVBuffer::generateStateTable() const {
-    map<string, tuple<ZipRecord, ZipRecord, ZipRecord, ZipRecord>> stateData;
+    vector<ZipRecord> sortedRecords = records;  // Create a copy to sort
+    string sortField;
+    cout << "Choose sorting field (zipCode, placeName, state, latitude, longitude): ";
+    cin >> sortField;
+    
+    if (sortField == "zipCode") {
+        sort(sortedRecords.begin(), sortedRecords.end(), [](const ZipRecord& a, const ZipRecord& b) {
+            return a.zipCode < b.zipCode;
+        });
+    } else if (sortField == "placeName") {
+        sort(sortedRecords.begin(), sortedRecords.end(), [](const ZipRecord& a, const ZipRecord& b) {
+            return a.placeName < b.placeName;
+        });
+    } else if (sortField == "state") {
+        sort(sortedRecords.begin(), sortedRecords.end(), [](const ZipRecord& a, const ZipRecord& b) {
+            return a.state < b.state;
+        });
+    } else if (sortField == "latitude") {
+        sort(sortedRecords.begin(), sortedRecords.end(), [](const ZipRecord& a, const ZipRecord& b) {
+            return a.latitude < b.latitude;
+        });
+    } else if (sortField == "longitude") {
+        sort(sortedRecords.begin(), sortedRecords.end(), [](const ZipRecord& a, const ZipRecord& b) {
+            return a.longitude < b.longitude;
+        });
+    } else {
+        cerr << "Invalid sorting field. Defaulting to state." << endl;
+    }
 
-    for (const auto& record : records) {
+    map<string, tuple<ZipRecord, ZipRecord, ZipRecord, ZipRecord>> stateData;
+    for (const auto& record : sortedRecords) {
         auto& [east, west, north, south] = stateData[record.state];
         if (east.zipCode == 0 || record.longitude < east.longitude) east = record;
         if (west.zipCode == 0 || record.longitude > west.longitude) west = record;
@@ -91,7 +120,11 @@ void CSVBuffer::generateStateTable() const {
         if (south.zipCode == 0 || record.latitude < south.latitude) south = record;
     }
 
-    ofstream outFile("state_zip_summary.csv");
+    string outputFilename;
+    cout << "Enter output filename: ";
+    cin >> outputFilename;
+
+    ofstream outFile(outputFilename);
     if (!outFile.is_open()) {
         cerr << "Error: Could not open output file." << endl;
         return;
@@ -105,5 +138,5 @@ void CSVBuffer::generateStateTable() const {
     }
 
     outFile.close();
-    cout << "Summary written to state_zip_summary.csv" << endl;
+    cout << "Summary written to " << outputFilename << endl;
 }
