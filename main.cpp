@@ -9,7 +9,7 @@ using namespace std;
 
 int main() {
     string zipcode;
-    cout << "Enter a zipcode: ";
+    cout << "Enter a zipcode csv file: ";
     cin >> zipcode;
     try {
         string filename = zipcode;
