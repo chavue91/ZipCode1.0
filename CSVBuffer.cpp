@@ -1,5 +1,6 @@
 /// @file CSVBuffer.cpp
 /// @brief Implementation of CSVBuffer class.
+/// @details This class reads a CSV file, processes Zip Code data, and generates a state-wise summary.
 
 #include "CSVBuffer.h"
 #include <iostream>
@@ -22,6 +23,8 @@ CSVBuffer::CSVBuffer(const string& filename) {
 }
 
 /// @brief Loads records from the CSV file into memory.
+/// @details Reads each row from the CSV file, extracts zip code data,
+///          and stores it in a vector of ZipRecord structures.
 void CSVBuffer::loadRecords() {
     string line;
     getline(file, line); // Skip header row
@@ -75,12 +78,18 @@ void CSVBuffer::loadRecords() {
 
 
 /// @brief Retrieves all records.
-/// @return Vector of ZipRecord structures.
+/// @return A constant reference to a vector of ZipRecord structures.
 const vector<ZipRecord>& CSVBuffer::getRecords() const {
     return records;
 }
 
 /// @brief Generates and prints a table of extreme Zip Codes for each state.
+/// @details The user chooses a sorting field before processing data. The results
+///          are stored in a user-specified output file.
+/// @param sortField The column name by which the records will be sorted.
+///        Acceptable values: "zipCode", "placeName", "state", "latitude", "longitude".
+/// @param outputFilename The name of the file where the processed data will be saved.
+/// @return Outputs the results to a file but does not return a value.
 void CSVBuffer::generateStateTable() const {
     vector<ZipRecord> sortedRecords = records;  // Create a copy to sort
     string sortField;
