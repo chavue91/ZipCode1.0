@@ -6,6 +6,7 @@
 #include <iomanip>
 #include <stdexcept>
 #include <algorithm>
+#include <cstdio>
 
 using namespace std;
 
@@ -77,36 +78,81 @@ void CSVBuffer::loadLengthIndicatedRecords() {
 
 void CSVBuffer::convertCSVToLengthIndicated(const string& inputFile, const string& outputFile) {
     ifstream in(inputFile);
-    ofstream out(outputFile);
+    if (!in.is_open()) {
+        cerr << "Error opening input file." << endl;
+        return;
+    }
 
-    if (!in.is_open() || !out.is_open()) {
-        cerr << "Error opening files." << endl;
+    ofstream tempOut("temp_data.tmp");
+    if (!tempOut.is_open()) {
+        cerr << "Error creating temporary file." << endl;
         return;
     }
 
     string headerLine;
     getline(in, headerLine);
+    headerLine.erase(remove(headerLine.begin(), headerLine.end(), '"'), headerLine.end());
+    headerLine.erase(remove(headerLine.begin(), headerLine.end(), '\n'), headerLine.end());
 
-    vector<Field> fields = {
-        {"zipCode", "int", "fixed", true},
-        {"placeName", "string", "variable"},
-        {"state", "string", "fixed"},
-        {"county", "string", "variable"},
-        {"latitude", "double", "fixed"},
-        {"longitude", "double", "fixed"}
-    };
+    stringstream ss(headerLine);
+    string fieldName;
+    vector<Field> fields;
+    int index = 0;
+    int primaryKeyIndex = 0;
 
-    Header header("LengthIndicated", "1.0", 0, "ASCII", "zipcode.idx", 0, fields, "zipCode");
-    header.writeToFile(out);
+    cout << "Parsed Fields:" << endl;
+    while (getline(ss, fieldName, ',')) {
+        string rawField = fieldName;
+        fieldName.erase(remove_if(fieldName.begin(), fieldName.end(), ::isspace), fieldName.end());
 
+        Field field;
+        field.name = fieldName;
+        field.type = "string";
+        field.format = "text/csv";
+        field.isPrimaryKey = false;
+        fields.push_back(field);
+
+        cout << "  Field " << index << ": '" << rawField << "' -> '" << fieldName << "'" << endl;
+        ++index;
+    }
+
+    if (!fields.empty()) {
+        fields[0].isPrimaryKey = true;
+        primaryKeyIndex = 0;
+    }
+
+    int sizeInBytes = 50;
+    for (const auto& field : fields) {
+        sizeInBytes += field.name.length() + field.type.length() + field.format.length() + 10;
+    }
+
+    int recordCount = 0;
     string line;
     while (getline(in, line)) {
+        line.erase(remove(line.begin(), line.end(), '"'), line.end());
         int length = line.size();
-        out << setw(4) << setfill('0') << length << "," << line << endl;
+        tempOut << setw(4) << setfill('0') << length << "," << line << endl;
+        ++recordCount;
     }
 
     in.close();
+    tempOut.close();
+
+    ofstream out(outputFile);
+    if (!out.is_open()) {
+        cerr << "Error creating output file." << endl;
+        return;
+    }
+
+    Header header("LengthIndicated", "1.0", sizeInBytes, "ASCII", "zipcode.idx",
+                  recordCount, fields, fields[primaryKeyIndex].name);
+    header.writeToFile(out);
+
+    ifstream tempIn("temp_data.tmp");
+    out << tempIn.rdbuf();
+    tempIn.close();
     out.close();
+    remove("temp_data.tmp");
 }
 
 const vector<ZipRecord>& CSVBuffer::getRecords() const {

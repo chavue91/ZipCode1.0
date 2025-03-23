@@ -11,6 +11,7 @@
 #include <string>
 #include <sstream>
 #include <vector>
+#include <algorithm>
 
 using namespace std;
 
@@ -47,7 +48,10 @@ public:
         : fileStructureType(fileStructureType), version(version), sizeInBytes(sizeInBytes),
           sizeFormatType(sizeFormatType), primaryKeyFileName(primaryKeyFileName),
           recordCount(recordCount), fieldsPerRecord(fields.size()),
-          fields(fields), primaryKey(primaryKey) {}
+          fields(fields), primaryKey(primaryKey) {
+              // Sanitize primary key
+              this->primaryKey.erase(remove_if(this->primaryKey.begin(), this->primaryKey.end(), ::isspace), this->primaryKey.end());
+          }
 
     /// @brief Writes the header to a file.
     /// @param out Output file stream to write the structured header.
@@ -95,6 +99,7 @@ public:
         getline(ss, temp, ','); recordCount = stoi(temp);
         getline(ss, temp, ','); fieldsPerRecord = stoi(temp);
         getline(ss, primaryKey, ',');
+        primaryKey.erase(remove_if(primaryKey.begin(), primaryKey.end(), ::isspace), primaryKey.end());
 
         fields.clear();
         for (int i = 0; i < fieldsPerRecord; ++i) {
@@ -103,6 +108,7 @@ public:
             Field f;
             string isPK;
             getline(fss, f.name, ',');
+            f.name.erase(remove_if(f.name.begin(), f.name.end(), ::isspace), f.name.end());
             getline(fss, f.type, ',');
             getline(fss, f.format, ',');
             getline(fss, isPK, ',');
@@ -110,11 +116,24 @@ public:
             fields.push_back(f);
         }
 
-        cout << "Header loaded:\n"
-             << "Structure: " << fileStructureType << "\n"
-             << "Version: " << version << "\n"
-             << "Fields per Record: " << fieldsPerRecord << "\n"
-             << "Primary Key: " << primaryKey << endl;
+        // Print full metadata
+        cout << "Header loaded:\n";
+        cout << "  Structure Type    : " << fileStructureType << "\n";
+        cout << "  Version           : " << version << "\n";
+        cout << "  Size in Bytes     : " << sizeInBytes << "\n";
+        cout << "  Size Format Type  : " << sizeFormatType << "\n";
+        cout << "  Primary Key File  : " << primaryKeyFileName << "\n";
+        cout << "  Record Count      : " << recordCount << "\n";
+        cout << "  Fields per Record : " << fieldsPerRecord << "\n";
+        cout << "  Primary Key       : " << primaryKey << "\n";
+        cout << "  Fields:\n";
+
+        for (const auto& field : fields) {
+            cout << "    - Name: " << field.name
+                 << ", Type: " << field.type
+                 << ", Format: " << field.format
+                 << ", Primary Key: " << (field.isPrimaryKey ? "Yes" : "No") << "\n";
+        }
 
         return true;
     }
