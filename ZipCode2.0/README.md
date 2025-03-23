@@ -1,75 +1,91 @@
-# ZipCode1.0
-# Zip Code Data Processor
+# ZipCode2.0  
+# Zip Code Data Processor with Index Support
 
 ## Description
 
-This program reads a CSV file containing ZIP code information and processes it to generate a state-wise summary of extreme ZIP codes (Easternmost, Westernmost, Northernmost, and Southernmost). The results are stored in an output file named `state_zip_summary.csv`.
+This program processes U.S. ZIP code data from a CSV or length-indicated file and supports both:
+- Generating a state-wise summary of extreme ZIP codes.
+- Searching ZIP codes using a fast in-memory primary key index via command-line flags.
 
 ## Features
 
-- Reads ZIP code data from a CSV file.
-- Extracts relevant information such as state, latitude, and longitude.
-- Determines the Easternmost, Westernmost, Northernmost, and Southernmost ZIP codes for each state.
-- Saves the processed results to a CSV file (`state_zip_summary.csv`).
-- Includes error handling for missing or malformed data.
+- Reads ZIP code data from a standard CSV or length-indicated format.
+- Converts CSV to a length-indicated file with a structured header.
+- Extracts fields such as zip code, city, state, latitude, and longitude.
+- Generates a summary of easternmost, westernmost, northernmost, and southernmost ZIP codes per state.
+- Creates and uses a **primary key index** in RAM for fast ZIP code lookups.
+- Accepts `-z#####` flags (e.g. `-z56301`) from the command line to lookup specific ZIP code records.
+- Includes error handling for malformed input and missing files.
 
 ## Files in the Project
 
-- **`main.cpp`** - The main program that initializes and runs the data processing.
-- **`CSVBuffer.h`** - The header file defining the `CSVBuffer` class.
-- **`CSVBuffer.cpp`** - Implementation of the `CSVBuffer` class.
-- **`zip_codes.csv`** - Sample input CSV file containing ZIP code data.
-- **`state_zip_summary.csv`** - Output file storing the processed data.
-- **`README.md`** - This documentation file.
+- **`main.cpp`** – The main application logic, including command-line parsing and user interaction.
+- **`CSVBuffer.h / CSVBuffer.cpp`** – Handles reading, indexing, converting, and summarizing ZIP code records.
+- **`HeaderBuffer.h`** – Defines the structure and reading/writing of metadata headers for length-indicated files.
+- **`us_postal_codes.csv`** – Sample CSV input file.
+- **`ZipCodes`** – Sample converted length-indicated file (with header + records).
+- **`README.md`** – This documentation.
 
 ## Compilation Instructions
 
-### **Using g++ (Linux/macOS/Windows with MinGW)**
-
-To compile the program, run:
+Use the following command to compile:
 
 ```sh
- g++ -o myProgram main.cpp CSVBuffer.cpp
+g++ -o myProgram main.cpp CSVBuffer.cpp
 ```
 
-This command generates an executable file named `myProgram`.
+This creates an executable named `myProgram`.
 
 ## Running the Program
 
-Once compiled, you can run the program as follows:
+### 1. Interactive Mode
+
+Launch the program without flags:
 
 ```sh
- ./myProgram
+./myProgram
 ```
 
-On Windows (if using MinGW):
+You’ll be prompted to:
+- Convert a CSV file to length-indicated format (Option 1), **or**
+- Process a file and generate a summary table (Option 2)
+
+### 2. ZIP Code Lookup via Command Line
+
+You can directly lookup one or more ZIP codes using `-z#####` flags:
 
 ```sh
- myProgram.exe
+./myProgram ZipCodes -z56301 -z90210 -z99999
 ```
 
-The program will prompt for a CSV filename. Enter the correct path to `zip_codes.csv`.
-Once the program loads the CSV file into memory, the user is prompted to choose a field from which to sort the data. An invalid choice will be sorted by default, state.
-The program will prompt for a CSV output filename. Enter an .csv output filename.
+If a ZIP code is found, the full record will be printed with all field labels.  
+If not, an appropriate message will be shown.
 
+The file (`ZipCodes`) must be the converted length-indicated format.
 
-## Expected Output
+## Output Example (ZIP Lookup)
 
-The program generates a CSV file name based on user input, which contains:
+```
+Zip Code: 56301, Place Name: Saint Cloud, State: MN, County: Stearns, Latitude: 45.555, Longitude: -94.167
+Zip Code 99999 not found in the file.
+```
+
+## Output Example (State Summary)
 
 ```
 State, Easternmost, Westernmost, Northernmost, Southernmost
-NY, 10001, 14905, 10598, 10002
-MA, 01001, 02703, 01350, 02535
+MN, 55001, 56763, 56701, 55044
+TX, 78330, 79851, 79083, 78575
 ...
 ```
 
 ## Error Handling
 
-- If the CSV file is missing or unreadable, an error message will be displayed.
-- If a row contains invalid data, it will be skipped, and a warning will be logged.
+- If input or output files can’t be opened, a descriptive error will be printed.
+- Malformed rows are skipped gracefully.
+- Invalid ZIP code flags will show a warning.
 
-## Author
+## Authors
 
 Cha Vue, Sofia Hoffman, Alexander Miller, Zoljargal Enkhbayar, Yohannes Niguesse, Fatha Abdi
 

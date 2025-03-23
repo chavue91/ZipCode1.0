@@ -6,6 +6,7 @@
 #include <iomanip>
 #include <stdexcept>
 #include <algorithm>
+#include <unordered_map>
 #include <cstdio>
 
 using namespace std;
@@ -22,6 +23,29 @@ CSVBuffer::CSVBuffer(const string& filename) {
         loadLengthIndicatedRecords();
     } else {
         loadRecords();
+    }
+}
+
+unordered_map<int, ZipRecord> CSVBuffer::buildPrimaryKeyIndex() const {
+    unordered_map<int, ZipRecord> index;
+    for (const auto& record : records) {
+        index[record.zipCode] = record;
+    }
+    return index;
+}
+
+void CSVBuffer::searchByZipCodes(const vector<int>& zipCodes) const {
+    auto index = buildPrimaryKeyIndex();
+    for (int zip : zipCodes) {
+        auto it = index.find(zip);
+        if (it != index.end()) {
+            const auto& r = it->second;
+            cout << "Zip Code: " << r.zipCode << ", Place Name: " << r.placeName
+                 << ", State: " << r.state << ", County: " << r.county
+                 << ", Latitude: " << r.latitude << ", Longitude: " << r.longitude << endl;
+        } else {
+            cout << "Zip Code " << zip << " not found in the file." << endl;
+        }
     }
 }
 
@@ -92,7 +116,7 @@ void CSVBuffer::convertCSVToLengthIndicated(const string& inputFile, const strin
     string headerLine;
     getline(in, headerLine);
     headerLine.erase(remove(headerLine.begin(), headerLine.end(), '"'), headerLine.end());
-    headerLine.erase(remove(headerLine.begin(), headerLine.end(), '\n'), headerLine.end());
+headerLine.erase(remove(headerLine.begin(), headerLine.end(), '\n'), headerLine.end());
 
     stringstream ss(headerLine);
     string fieldName;
@@ -153,10 +177,6 @@ void CSVBuffer::convertCSVToLengthIndicated(const string& inputFile, const strin
     tempIn.close();
     out.close();
     remove("temp_data.tmp");
-}
-
-const vector<ZipRecord>& CSVBuffer::getRecords() const {
-    return records;
 }
 
 void CSVBuffer::generateStateTable() const {

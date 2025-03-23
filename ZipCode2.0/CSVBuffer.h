@@ -1,7 +1,6 @@
-/// @file CSVBuffer.h
-/// @brief Defines a buffer class for handling CSV data.
-/// @details This class reads a CSV file, processes zip code data,
-///          and generates a state-wise summary of extreme zip codes.
+/// @file main.cpp
+/// @brief Main application to process Zip Code data from CSV or length-indicated file.
+/// @details Uses CSVBuffer to generate a state-wise table of extreme Zip Codes or convert CSV to length-indicated format.
 
 #ifndef CSVBUFFER_H
 #define CSVBUFFER_H
@@ -12,6 +11,7 @@
 #include <vector>
 #include <map>
 #include <tuple>
+#include <unordered_map>
 
 using namespace std;
 
@@ -54,6 +54,14 @@ public:
     /// @param inputFile The input CSV filename.
     /// @param outputFile The output filename in length-indicated format.
     static void convertCSVToLengthIndicated(const string& inputFile, const string& outputFile);
+
+    /// @brief Builds an in-memory primary key index of zip codes.
+    /// @return An unordered map from zip code to ZipRecord.
+    unordered_map<int, ZipRecord> buildPrimaryKeyIndex() const;
+
+    /// @brief Searches and prints zip code records from a list.
+    /// @param zipCodes Vector of zip codes to look up.
+    void searchByZipCodes(const vector<int>& zipCodes) const;
 };
 
 #endif // CSVBUFFER_H
