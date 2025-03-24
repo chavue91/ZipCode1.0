@@ -1,3 +1,8 @@
+/// @file CSVBuffer.cpp
+/// @brief Implementation of CSVBuffer class functions.
+/// @details This file provides functionality for reading CSV or length-indicated ZIP code data,
+/// building a primary key index, converting CSV to a structured format, and generating summaries.
+
 #include "CSVBuffer.h"
 #include "HeaderBuffer.h"
 #include <iostream>
@@ -11,6 +16,10 @@
 
 using namespace std;
 
+/**
+ * @brief Constructs a CSVBuffer object and loads data from a given file.
+ * @param filename The name of the CSV or length-indicated file.
+ */
 CSVBuffer::CSVBuffer(const string& filename) {
     file.open(filename);
     if (!file.is_open()) {
@@ -26,14 +35,33 @@ CSVBuffer::CSVBuffer(const string& filename) {
     }
 }
 
+/**
+ * @brief Builds an in-memory index mapping ZIP codes to records.
+ * @details This function creates a hash table (unordered_map) that allows
+ *          fast lookup of ZipRecord entries based on their zip code.
+ * @return An unordered map of ZIP codes to corresponding ZipRecord objects.
+ */
 unordered_map<int, ZipRecord> CSVBuffer::buildPrimaryKeyIndex() const {
-    unordered_map<int, ZipRecord> index;
+    unordered_map<int, ZipRecord> index; 
+    // Create an empty hash table to store the mapping from zipCode to ZipRecord.
+
     for (const auto& record : records) {
+        // Iterate through all ZipRecord objects stored in the 'records' vector.
+
         index[record.zipCode] = record;
+        // Insert each record into the map using its zip code as the key.
+        // This ensures we can quickly access the full record later by zip code.
     }
+
     return index;
+    // Return the completed index to the caller.
 }
 
+
+/**
+ * @brief Searches and displays ZIP code records for each code in a given list.
+ * @param zipCodes A vector of ZIP codes to search for.
+ */
 void CSVBuffer::searchByZipCodes(const vector<int>& zipCodes) const {
     auto index = buildPrimaryKeyIndex();
     for (int zip : zipCodes) {
@@ -49,6 +77,9 @@ void CSVBuffer::searchByZipCodes(const vector<int>& zipCodes) const {
     }
 }
 
+/**
+ * @brief Loads ZIP code records from a standard CSV file.
+ */
 void CSVBuffer::loadRecords() {
     string line;
     getline(file, line); // Skip header
@@ -73,6 +104,9 @@ void CSVBuffer::loadRecords() {
     }
 }
 
+/**
+ * @brief Loads ZIP code records from a length-indicated file.
+ */
 void CSVBuffer::loadLengthIndicatedRecords() {
     string line;
     while (getline(file, line)) {
@@ -100,6 +134,11 @@ void CSVBuffer::loadLengthIndicatedRecords() {
     }
 }
 
+/**
+ * @brief Converts a CSV file to a length-indicated format with header metadata.
+ * @param inputFile The name of the input CSV file.
+ * @param outputFile The name of the output file.
+ */
 void CSVBuffer::convertCSVToLengthIndicated(const string& inputFile, const string& outputFile) {
     ifstream in(inputFile);
     if (!in.is_open()) {
@@ -116,7 +155,7 @@ void CSVBuffer::convertCSVToLengthIndicated(const string& inputFile, const strin
     string headerLine;
     getline(in, headerLine);
     headerLine.erase(remove(headerLine.begin(), headerLine.end(), '"'), headerLine.end());
-headerLine.erase(remove(headerLine.begin(), headerLine.end(), '\n'), headerLine.end());
+    headerLine.erase(remove(headerLine.begin(), headerLine.end(), '\n'), headerLine.end());
 
     stringstream ss(headerLine);
     string fieldName;
@@ -179,6 +218,9 @@ headerLine.erase(remove(headerLine.begin(), headerLine.end(), '\n'), headerLine.
     remove("temp_data.tmp");
 }
 
+/**
+ * @brief Generates a summary file of extreme ZIP codes (east, west, north, south) per state.
+ */
 void CSVBuffer::generateStateTable() const {
     vector<ZipRecord> sortedRecords = records;
     string sortField;
