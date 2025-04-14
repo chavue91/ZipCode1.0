@@ -40,8 +40,8 @@ bool HeaderBuffer3::read(istream& in) {
     return true;
 }
 
-bool HeaderBuffer3::write(ofstream& out) const {
-    if (!out.is_open()) return false;
+void HeaderBuffer3::write(ofstream& out) {
+    if (!out.is_open()) return;
 
     out << header.fileStructureType << '\n';
     out << header.version << '\n';
@@ -64,8 +64,6 @@ bool HeaderBuffer3::write(ofstream& out) const {
     out << header.availListHeadRBN << '\n';
     out << header.sequenceListHeadRBN << '\n';
     out << header.stale << '\n';
-
-    return true;
 }
 
 Field HeaderBuffer3::readField(istream& in) {
