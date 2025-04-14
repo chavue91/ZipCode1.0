@@ -85,7 +85,6 @@ int main(int argc, char* argv[]) {
         Block blk;
         if (!BlockBuffer::readBlock(data, blk, rbn, blockSize)) continue;
 
-        auto oldSize = blk.records.size();
         blk.records.erase(remove_if(blk.records.begin(), blk.records.end(), [&](const string& rec) {
             return extractKey(rec) == zip;
         }), blk.records.end());

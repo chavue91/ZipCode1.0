@@ -16,9 +16,9 @@ DELETE = DeleteRecord
 
 all: $(MAIN) $(INSERT) $(DELETE)
 
-$(MAIN): main.cpp CSVBuffer.o DumpUtility.o
-	$(CXX) $(CXXFLAGS) -o $@ main.cpp CSVBuffer.o DumpUtility.o
-
+$(MAIN): main.cpp CSVBuffer.o DumpUtility.o RecordBuffer.o BlockBuffer.o HeaderBuffer3.o
+	$(CXX) $(CXXFLAGS) -o $@ main.cpp CSVBuffer.o DumpUtility.o RecordBuffer.o BlockBuffer.o HeaderBuffer3.o
+	
 InsertRecord: InsertRecord.cpp BlockBuffer.o HeaderBuffer3.o
 	$(CXX) $(CXXFLAGS) -o $@ InsertRecord.cpp BlockBuffer.o HeaderBuffer3.o
 

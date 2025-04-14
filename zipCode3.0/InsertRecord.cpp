@@ -89,7 +89,7 @@ int main(int argc, char* argv[]) {
 
         stringstream sizeSim;
         for (auto& r : blk.records) sizeSim << r << '\n';
-        if (sizeSim.str().size() < blockSize) {
+        if (static_cast<int>(sizeSim.str().size()) < blockSize) {
             blk.recordCount = blk.records.size();
             BlockBuffer::writeBlock(data, blk, targetRBN, blockSize);
         } else {
