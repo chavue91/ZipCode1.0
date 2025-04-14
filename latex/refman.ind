@@ -1,0 +1,154 @@
+\begin{theindex}
+
+  \item {buildPrimaryKeyIndex}
+    \subitem {CSVBuffer}, \hyperpage{9}
+
+  \indexspace
+
+  \item {convertCSVToLengthIndicated}
+    \subitem {CSVBuffer}, \hyperpage{9}
+  \item {county}
+    \subitem {ZipRecord}, \hyperpage{19}
+  \item {CSVBuffer}, \hyperpage{7}
+    \subitem {buildPrimaryKeyIndex}, \hyperpage{9}
+    \subitem {convertCSVToLengthIndicated}, \hyperpage{9}
+    \subitem {CSVBuffer}, \hyperpage{8}
+    \subitem {file}, \hyperpage{13}
+    \subitem {generateStateTable}, \hyperpage{10}
+    \subitem {getRecords}, \hyperpage{10}
+    \subitem {loadLengthIndicatedRecords}, \hyperpage{11}
+    \subitem {loadRecords}, \hyperpage{11}
+    \subitem {records}, \hyperpage{13}
+    \subitem {searchByZipCodes}, \hyperpage{11}
+  \item {CSVBuffer.cpp}, \hyperpage{21}
+  \item {CSVBuffer.h}, \hyperpage{25}
+
+  \indexspace
+
+  \item {Field}, \hyperpage{14}
+    \subitem {format}, \hyperpage{14}
+    \subitem {isPrimaryKey}, \hyperpage{14}
+    \subitem {name}, \hyperpage{14}
+    \subitem {type}, \hyperpage{14}
+  \item {fields}
+    \subitem {Header}, \hyperpage{17}
+  \item {fieldsPerRecord}
+    \subitem {Header}, \hyperpage{17}
+  \item {file}
+    \subitem {CSVBuffer}, \hyperpage{13}
+  \item {fileStructureType}
+    \subitem {Header}, \hyperpage{17}
+  \item {format}
+    \subitem {Field}, \hyperpage{14}
+
+  \indexspace
+
+  \item {generateStateTable}
+    \subitem {CSVBuffer}, \hyperpage{10}
+  \item {getRecords}
+    \subitem {CSVBuffer}, \hyperpage{10}
+
+  \indexspace
+
+  \item {Header}, \hyperpage{15}
+    \subitem {fields}, \hyperpage{17}
+    \subitem {fieldsPerRecord}, \hyperpage{17}
+    \subitem {fileStructureType}, \hyperpage{17}
+    \subitem {Header}, \hyperpage{16}
+    \subitem {primaryKey}, \hyperpage{17}
+    \subitem {primaryKeyFileName}, \hyperpage{17}
+    \subitem {readFromFile}, \hyperpage{16}
+    \subitem {recordCount}, \hyperpage{18}
+    \subitem {sizeFormatType}, \hyperpage{18}
+    \subitem {sizeInBytes}, \hyperpage{18}
+    \subitem {version}, \hyperpage{18}
+    \subitem {writeToFile}, \hyperpage{16}
+  \item {HeaderBuffer.h}, \hyperpage{26}
+
+  \indexspace
+
+  \item {isPrimaryKey}
+    \subitem {Field}, \hyperpage{14}
+
+  \indexspace
+
+  \item {latitude}
+    \subitem {ZipRecord}, \hyperpage{19}
+  \item {loadLengthIndicatedRecords}
+    \subitem {CSVBuffer}, \hyperpage{11}
+  \item {loadRecords}
+    \subitem {CSVBuffer}, \hyperpage{11}
+  \item {longitude}
+    \subitem {ZipRecord}, \hyperpage{19}
+
+  \indexspace
+
+  \item {main}
+    \subitem {main.cpp}, \hyperpage{30}
+  \item {main.cpp}, \hyperpage{29}
+    \subitem {main}, \hyperpage{30}
+
+  \indexspace
+
+  \item {name}
+    \subitem {Field}, \hyperpage{14}
+
+  \indexspace
+
+  \item {placeName}
+    \subitem {ZipRecord}, \hyperpage{19}
+  \item {primaryKey}
+    \subitem {Header}, \hyperpage{17}
+  \item {primaryKeyFileName}
+    \subitem {Header}, \hyperpage{17}
+
+  \indexspace
+
+  \item {readFromFile}
+    \subitem {Header}, \hyperpage{16}
+  \item {README.md}, \hyperpage{32}
+  \item {recordCount}
+    \subitem {Header}, \hyperpage{18}
+  \item {records}
+    \subitem {CSVBuffer}, \hyperpage{13}
+
+  \indexspace
+
+  \item {searchByZipCodes}
+    \subitem {CSVBuffer}, \hyperpage{11}
+  \item {sizeFormatType}
+    \subitem {Header}, \hyperpage{18}
+  \item {sizeInBytes}
+    \subitem {Header}, \hyperpage{18}
+  \item {state}
+    \subitem {ZipRecord}, \hyperpage{20}
+
+  \indexspace
+
+  \item {type}
+    \subitem {Field}, \hyperpage{14}
+
+  \indexspace
+
+  \item {version}
+    \subitem {Header}, \hyperpage{18}
+
+  \indexspace
+
+  \item {writeToFile}
+    \subitem {Header}, \hyperpage{16}
+
+  \indexspace
+
+  \item {zipCode}
+    \subitem {ZipRecord}, \hyperpage{20}
+  \item {ZipCode2.0}, \hyperpage{1}
+  \item {ZipRecord}, \hyperpage{18}
+    \subitem {county}, \hyperpage{19}
+    \subitem {latitude}, \hyperpage{19}
+    \subitem {longitude}, \hyperpage{19}
+    \subitem {placeName}, \hyperpage{19}
+    \subitem {state}, \hyperpage{20}
+    \subitem {zipCode}, \hyperpage{20}
+
+\end{theindex}

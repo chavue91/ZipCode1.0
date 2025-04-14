@@ -1,0 +1,256 @@
+\doxysection{CSVBuffer.\+cpp}
+\hypertarget{_c_s_v_buffer_8cpp_source}{}\label{_c_s_v_buffer_8cpp_source}\mbox{\hyperlink{_c_s_v_buffer_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00006}00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_c_s_v_buffer_8h}{CSVBuffer.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00007}00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_header_buffer_8h}{HeaderBuffer.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00008}00008\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00009}00009\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00010}00010\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00011}00011\ \textcolor{preprocessor}{\#include\ <iomanip>}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00012}00012\ \textcolor{preprocessor}{\#include\ <stdexcept>}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00013}00013\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00014}00014\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00015}00015\ \textcolor{preprocessor}{\#include\ <cstdio>}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00017}00017\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00023}\mbox{\hyperlink{class_c_s_v_buffer_a628af50ae49d59ad63026853ae9484e7}{00023}}\ \mbox{\hyperlink{class_c_s_v_buffer_a628af50ae49d59ad63026853ae9484e7}{CSVBuffer::CSVBuffer}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ filename)\ \{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00024}00024\ \ \ \ \ \mbox{\hyperlink{class_c_s_v_buffer_a8bbd004a11e69f39757198d921077f77}{file}}.open(filename);}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00025}00025\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_c_s_v_buffer_a8bbd004a11e69f39757198d921077f77}{file}}.is\_open())\ \{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00026}00026\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ runtime\_error(\textcolor{stringliteral}{"{}Could\ not\ open\ file"{}});}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00027}00027\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00029}00029\ \ \ \ \ \mbox{\hyperlink{class_header}{Header}}\ header;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00030}00030\ \ \ \ \ \textcolor{keywordflow}{if}\ (header.\mbox{\hyperlink{class_header_a2541c1a0f4ce4fe26f41369ba9479ee8}{readFromFile}}(\mbox{\hyperlink{class_c_s_v_buffer_a8bbd004a11e69f39757198d921077f77}{file}}))\ \{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00031}00031\ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Header\ successfully\ loaded\ from\ file."{}}\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00032}00032\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_c_s_v_buffer_a7e04c3b95f505bb483332b51a1a05bf8}{loadLengthIndicatedRecords}}();}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00033}00033\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00034}00034\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_c_s_v_buffer_af9beea77e44a7c9539c1229c38d7939b}{loadRecords}}();}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00035}00035\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00036}00036\ \}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00044}\mbox{\hyperlink{class_c_s_v_buffer_ab48aba8be89c9f51df8f0ab905c53840}{00044}}\ unordered\_map<int,\ ZipRecord>\ \mbox{\hyperlink{class_c_s_v_buffer_ab48aba8be89c9f51df8f0ab905c53840}{CSVBuffer::buildPrimaryKeyIndex}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00045}00045\ \ \ \ \ unordered\_map<int,\ ZipRecord>\ index;\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00046}00046\ \ \ \ \ \textcolor{comment}{//\ Create\ an\ empty\ hash\ table\ to\ store\ the\ mapping\ from\ zipCode\ to\ ZipRecord.}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00048}00048\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ record\ :\ \mbox{\hyperlink{class_c_s_v_buffer_a8925db1e0e800a63c1029941b1b5700b}{records}})\ \{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00049}00049\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Iterate\ through\ all\ ZipRecord\ objects\ stored\ in\ the\ 'records'\ vector.}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00051}00051\ \ \ \ \ \ \ \ \ index[record.zipCode]\ =\ record;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00052}00052\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Insert\ each\ record\ into\ the\ map\ using\ its\ zip\ code\ as\ the\ key.}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00053}00053\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ This\ ensures\ we\ can\ quickly\ access\ the\ full\ record\ later\ by\ zip\ code.}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00054}00054\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00056}00056\ \ \ \ \ \textcolor{keywordflow}{return}\ index;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00057}00057\ \ \ \ \ \textcolor{comment}{//\ Return\ the\ completed\ index\ to\ the\ caller.}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00058}00058\ \}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00065}\mbox{\hyperlink{class_c_s_v_buffer_abb8f7961a10e8673b72c34fc7e4f5288}{00065}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_s_v_buffer_abb8f7961a10e8673b72c34fc7e4f5288}{CSVBuffer::searchByZipCodes}}(\textcolor{keyword}{const}\ vector<int>\&\ zipCodes)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00066}00066\ \ \ \ \ \textcolor{keyword}{auto}\ index\ =\ \mbox{\hyperlink{class_c_s_v_buffer_ab48aba8be89c9f51df8f0ab905c53840}{buildPrimaryKeyIndex}}();}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00067}00067\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ zip\ :\ zipCodes)\ \{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00068}00068\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ it\ =\ index.find(zip);}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00069}00069\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (it\ !=\ index.end())\ \{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ r\ =\ it-\/>second;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Zip\ Code:\ "{}}\ <<\ r.zipCode\ <<\ \textcolor{stringliteral}{"{},\ Place\ Name:\ "{}}\ <<\ r.placeName}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{},\ State:\ "{}}\ <<\ r.state\ <<\ \textcolor{stringliteral}{"{},\ County:\ "{}}\ <<\ r.county}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{},\ Latitude:\ "{}}\ <<\ r.latitude\ <<\ \textcolor{stringliteral}{"{},\ Longitude:\ "{}}\ <<\ r.longitude\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00074}00074\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Zip\ Code\ "{}}\ <<\ zip\ <<\ \textcolor{stringliteral}{"{}\ not\ found\ in\ the\ file."{}}\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00076}00076\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00077}00077\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00078}00078\ \}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00083}\mbox{\hyperlink{class_c_s_v_buffer_af9beea77e44a7c9539c1229c38d7939b}{00083}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_s_v_buffer_af9beea77e44a7c9539c1229c38d7939b}{CSVBuffer::loadRecords}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00084}00084\ \ \ \ \ \textcolor{keywordtype}{string}\ line;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00085}00085\ \ \ \ \ getline(\mbox{\hyperlink{class_c_s_v_buffer_a8bbd004a11e69f39757198d921077f77}{file}},\ line);\ \textcolor{comment}{//\ Skip\ header}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00086}00086\ \ \ \ \ \textcolor{keywordflow}{while}\ (getline(\mbox{\hyperlink{class_c_s_v_buffer_a8bbd004a11e69f39757198d921077f77}{file}},\ line))\ \{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00087}00087\ \ \ \ \ \ \ \ \ stringstream\ ss(line);}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00088}00088\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_zip_record}{ZipRecord}}\ record;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00089}00089\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ temp;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00090}00090\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00091}00091\ \ \ \ \ \ \ \ \ getline(ss,\ temp,\ \textcolor{charliteral}{','});}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00092}00092\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (temp.empty())\ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00093}00093\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{\ record.\mbox{\hyperlink{struct_zip_record_ab8e8a51e07351155b75981b209364a3b}{zipCode}}\ =\ stoi(temp);\ \}\ \textcolor{keywordflow}{catch}\ (...)\ \{\ \textcolor{keywordflow}{continue};\ \}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00094}00094\ \ \ \ \ \ \ \ \ getline(ss,\ record.\mbox{\hyperlink{struct_zip_record_a710d782181f63e77ddc15fff7658a0a8}{placeName}},\ \textcolor{charliteral}{','});}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00095}00095\ \ \ \ \ \ \ \ \ getline(ss,\ record.\mbox{\hyperlink{struct_zip_record_ac6866d993efce32a117bd5ea273fc7d3}{state}},\ \textcolor{charliteral}{','});}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00096}00096\ \ \ \ \ \ \ \ \ getline(ss,\ record.\mbox{\hyperlink{struct_zip_record_ad827fefbf1e6f5e51d54ffd6fe01622b}{county}},\ \textcolor{charliteral}{','});}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00098}00098\ \ \ \ \ \ \ \ \ getline(ss,\ temp,\ \textcolor{charliteral}{','});}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00099}00099\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{\ record.\mbox{\hyperlink{struct_zip_record_abfa4d83fee6ffc625e1ae4b658165067}{latitude}}\ =\ stod(temp);\ \}\ \textcolor{keywordflow}{catch}\ (...)\ \{\ \textcolor{keywordflow}{continue};\ \}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00100}00100\ \ \ \ \ \ \ \ \ getline(ss,\ temp,\ \textcolor{charliteral}{','});}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00101}00101\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{\ record.\mbox{\hyperlink{struct_zip_record_a8ffaac1dd00b7d6bfa1407c78340812f}{longitude}}\ =\ stod(temp);\ \}\ \textcolor{keywordflow}{catch}\ (...)\ \{\ \textcolor{keywordflow}{continue};\ \}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00102}00102\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00103}00103\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_c_s_v_buffer_a8925db1e0e800a63c1029941b1b5700b}{records}}.push\_back(record);}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00104}00104\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00105}00105\ \}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00106}00106\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00110}\mbox{\hyperlink{class_c_s_v_buffer_a7e04c3b95f505bb483332b51a1a05bf8}{00110}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_s_v_buffer_a7e04c3b95f505bb483332b51a1a05bf8}{CSVBuffer::loadLengthIndicatedRecords}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00111}00111\ \ \ \ \ \textcolor{keywordtype}{string}\ line;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00112}00112\ \ \ \ \ \textcolor{keywordflow}{while}\ (getline(\mbox{\hyperlink{class_c_s_v_buffer_a8bbd004a11e69f39757198d921077f77}{file}},\ line))\ \{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00113}00113\ \ \ \ \ \ \ \ \ stringstream\ ss(line);}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00114}00114\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ lenStr,\ data;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00115}00115\ \ \ \ \ \ \ \ \ getline(ss,\ lenStr,\ \textcolor{charliteral}{','});}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00116}00116\ \ \ \ \ \ \ \ \ getline(ss,\ data);}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00117}00117\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00118}00118\ \ \ \ \ \ \ \ \ stringstream\ dataStream(data);}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00119}00119\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_zip_record}{ZipRecord}}\ record;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00120}00120\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ temp;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00121}00121\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00122}00122\ \ \ \ \ \ \ \ \ getline(dataStream,\ temp,\ \textcolor{charliteral}{','});}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00123}00123\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{\ record.\mbox{\hyperlink{struct_zip_record_ab8e8a51e07351155b75981b209364a3b}{zipCode}}\ =\ stoi(temp);\ \}\ \textcolor{keywordflow}{catch}\ (...)\ \{\ \textcolor{keywordflow}{continue};\ \}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00124}00124\ \ \ \ \ \ \ \ \ getline(dataStream,\ record.\mbox{\hyperlink{struct_zip_record_a710d782181f63e77ddc15fff7658a0a8}{placeName}},\ \textcolor{charliteral}{','});}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00125}00125\ \ \ \ \ \ \ \ \ getline(dataStream,\ record.\mbox{\hyperlink{struct_zip_record_ac6866d993efce32a117bd5ea273fc7d3}{state}},\ \textcolor{charliteral}{','});}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00126}00126\ \ \ \ \ \ \ \ \ getline(dataStream,\ record.\mbox{\hyperlink{struct_zip_record_ad827fefbf1e6f5e51d54ffd6fe01622b}{county}},\ \textcolor{charliteral}{','});}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00127}00127\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00128}00128\ \ \ \ \ \ \ \ \ getline(dataStream,\ temp,\ \textcolor{charliteral}{','});}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00129}00129\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{\ record.\mbox{\hyperlink{struct_zip_record_abfa4d83fee6ffc625e1ae4b658165067}{latitude}}\ =\ stod(temp);\ \}\ \textcolor{keywordflow}{catch}\ (...)\ \{\ \textcolor{keywordflow}{continue};\ \}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00130}00130\ \ \ \ \ \ \ \ \ getline(dataStream,\ temp,\ \textcolor{charliteral}{','});}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00131}00131\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{\ record.\mbox{\hyperlink{struct_zip_record_a8ffaac1dd00b7d6bfa1407c78340812f}{longitude}}\ =\ stod(temp);\ \}\ \textcolor{keywordflow}{catch}\ (...)\ \{\ \textcolor{keywordflow}{continue};\ \}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00132}00132\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00133}00133\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_c_s_v_buffer_a8925db1e0e800a63c1029941b1b5700b}{records}}.push\_back(record);}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00134}00134\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00135}00135\ \}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00136}00136\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00142}\mbox{\hyperlink{class_c_s_v_buffer_a8c6c8cd253e6cd3822a017402b343490}{00142}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_s_v_buffer_a8c6c8cd253e6cd3822a017402b343490}{CSVBuffer::convertCSVToLengthIndicated}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ inputFile,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ outputFile)\ \{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00143}00143\ \ \ \ \ ifstream\ in(inputFile);}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00144}00144\ \ \ \ \ \textcolor{keywordflow}{if}\ (!in.is\_open())\ \{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00145}00145\ \ \ \ \ \ \ \ \ cerr\ <<\ \textcolor{stringliteral}{"{}Error\ opening\ input\ file."{}}\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00146}00146\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00147}00147\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00148}00148\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00149}00149\ \ \ \ \ ofstream\ tempOut(\textcolor{stringliteral}{"{}temp\_data.tmp"{}});}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00150}00150\ \ \ \ \ \textcolor{keywordflow}{if}\ (!tempOut.is\_open())\ \{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00151}00151\ \ \ \ \ \ \ \ \ cerr\ <<\ \textcolor{stringliteral}{"{}Error\ creating\ temporary\ file."{}}\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00152}00152\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00153}00153\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00154}00154\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00155}00155\ \ \ \ \ \textcolor{keywordtype}{string}\ headerLine;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00156}00156\ \ \ \ \ getline(in,\ headerLine);}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00157}00157\ \ \ \ \ headerLine.erase(remove(headerLine.begin(),\ headerLine.end(),\ \textcolor{charliteral}{'"{}'}),\ headerLine.end());}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00158}00158\ \ \ \ \ headerLine.erase(remove(headerLine.begin(),\ headerLine.end(),\ \textcolor{charliteral}{'\(\backslash\)n'}),\ headerLine.end());}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00159}00159\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00160}00160\ \ \ \ \ stringstream\ ss(headerLine);}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00161}00161\ \ \ \ \ \textcolor{keywordtype}{string}\ fieldName;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00162}00162\ \ \ \ \ vector<Field>\ fields;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00163}00163\ \ \ \ \ \textcolor{keywordtype}{int}\ index\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00164}00164\ \ \ \ \ \textcolor{keywordtype}{int}\ primaryKeyIndex\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00165}00165\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00166}00166\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Parsed\ Fields:"{}}\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00167}00167\ \ \ \ \ \textcolor{keywordflow}{while}\ (getline(ss,\ fieldName,\ \textcolor{charliteral}{','}))\ \{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00168}00168\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ rawField\ =\ fieldName;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00169}00169\ \ \ \ \ \ \ \ \ fieldName.erase(remove\_if(fieldName.begin(),\ fieldName.end(),\ ::isspace),\ fieldName.end());}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00170}00170\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00171}00171\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_field}{Field}}\ field;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00172}00172\ \ \ \ \ \ \ \ \ field.\mbox{\hyperlink{struct_field_ab285d25456aca13adb626a89208d3dc2}{name}}\ =\ fieldName;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00173}00173\ \ \ \ \ \ \ \ \ field.\mbox{\hyperlink{struct_field_a64da0458381eb5ef333274b4d5fa416e}{type}}\ =\ \textcolor{stringliteral}{"{}string"{}};}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00174}00174\ \ \ \ \ \ \ \ \ field.\mbox{\hyperlink{struct_field_ad4477b9d4883cef9f3ce3cb1a73edc55}{format}}\ =\ \textcolor{stringliteral}{"{}text/csv"{}};}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00175}00175\ \ \ \ \ \ \ \ \ field.\mbox{\hyperlink{struct_field_af433473f1f52e5f7113fc91c3263701d}{isPrimaryKey}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00176}00176\ \ \ \ \ \ \ \ \ fields.push\_back(field);}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00177}00177\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00178}00178\ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}\ \ Field\ "{}}\ <<\ index\ <<\ \textcolor{stringliteral}{"{}:\ '"{}}\ <<\ rawField\ <<\ \textcolor{stringliteral}{"{}'\ -\/>\ '"{}}\ <<\ fieldName\ <<\ \textcolor{stringliteral}{"{}'"{}}\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00179}00179\ \ \ \ \ \ \ \ \ ++index;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00180}00180\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00181}00181\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00182}00182\ \ \ \ \ \textcolor{keywordflow}{if}\ (!fields.empty())\ \{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00183}00183\ \ \ \ \ \ \ \ \ fields[0].isPrimaryKey\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00184}00184\ \ \ \ \ \ \ \ \ primaryKeyIndex\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00185}00185\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00186}00186\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00187}00187\ \ \ \ \ \textcolor{keywordtype}{int}\ sizeInBytes\ =\ 50;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00188}00188\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ field\ :\ fields)\ \{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00189}00189\ \ \ \ \ \ \ \ \ sizeInBytes\ +=\ field.name.length()\ +\ field.type.length()\ +\ field.format.length()\ +\ 10;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00190}00190\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00191}00191\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00192}00192\ \ \ \ \ \textcolor{keywordtype}{int}\ recordCount\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00193}00193\ \ \ \ \ \textcolor{keywordtype}{string}\ line;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00194}00194\ \ \ \ \ \textcolor{keywordflow}{while}\ (getline(in,\ line))\ \{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00195}00195\ \ \ \ \ \ \ \ \ line.erase(remove(line.begin(),\ line.end(),\ \textcolor{charliteral}{'"{}'}),\ line.end());}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00196}00196\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ length\ =\ line.size();}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00197}00197\ \ \ \ \ \ \ \ \ tempOut\ <<\ setw(4)\ <<\ setfill(\textcolor{charliteral}{'0'})\ <<\ length\ <<\ \textcolor{stringliteral}{"{},"{}}\ <<\ line\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00198}00198\ \ \ \ \ \ \ \ \ ++recordCount;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00199}00199\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00200}00200\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00201}00201\ \ \ \ \ in.close();}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00202}00202\ \ \ \ \ tempOut.close();}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00203}00203\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00204}00204\ \ \ \ \ ofstream\ out(outputFile);}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00205}00205\ \ \ \ \ \textcolor{keywordflow}{if}\ (!out.is\_open())\ \{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00206}00206\ \ \ \ \ \ \ \ \ cerr\ <<\ \textcolor{stringliteral}{"{}Error\ creating\ output\ file."{}}\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00207}00207\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00208}00208\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00209}00209\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00210}00210\ \ \ \ \ \mbox{\hyperlink{class_header}{Header}}\ header(\textcolor{stringliteral}{"{}LengthIndicated"{}},\ \textcolor{stringliteral}{"{}1.0"{}},\ sizeInBytes,\ \textcolor{stringliteral}{"{}ASCII"{}},\ \textcolor{stringliteral}{"{}zipcode.idx"{}},}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00211}00211\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ recordCount,\ fields,\ fields[primaryKeyIndex].name);}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00212}00212\ \ \ \ \ header.\mbox{\hyperlink{class_header_ae4659654e7c5017c17ff589f5ea5bd7c}{writeToFile}}(out);}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00213}00213\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00214}00214\ \ \ \ \ ifstream\ tempIn(\textcolor{stringliteral}{"{}temp\_data.tmp"{}});}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00215}00215\ \ \ \ \ out\ <<\ tempIn.rdbuf();}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00216}00216\ \ \ \ \ tempIn.close();}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00217}00217\ \ \ \ \ out.close();}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00218}00218\ \ \ \ \ remove(\textcolor{stringliteral}{"{}temp\_data.tmp"{}});}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00219}00219\ \}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00220}00220\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00224}\mbox{\hyperlink{class_c_s_v_buffer_a4649b2d70f7a2509283be4620a46f602}{00224}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_s_v_buffer_a4649b2d70f7a2509283be4620a46f602}{CSVBuffer::generateStateTable}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00225}00225\ \ \ \ \ vector<ZipRecord>\ sortedRecords\ =\ \mbox{\hyperlink{class_c_s_v_buffer_a8925db1e0e800a63c1029941b1b5700b}{records}};}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00226}00226\ \ \ \ \ \textcolor{keywordtype}{string}\ sortField;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00227}00227\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Choose\ sorting\ field\ (zipCode,\ placeName,\ state,\ latitude,\ longitude):\ "{}};}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00228}00228\ \ \ \ \ cin\ >>\ sortField;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00229}00229\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00230}00230\ \ \ \ \ \textcolor{keywordflow}{if}\ (sortField\ ==\ \textcolor{stringliteral}{"{}zipCode"{}})\ \{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00231}00231\ \ \ \ \ \ \ \ \ sort(sortedRecords.begin(),\ sortedRecords.end(),\ [](\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_zip_record}{ZipRecord}}\&\ a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_zip_record}{ZipRecord}}\&\ b)\ \{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00232}00232\ \ \ \ \ \ \ \ \ \ \ \ \ return\ a.zipCode\ <\ b.zipCode;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00233}00233\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00234}00234\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (sortField\ ==\ \textcolor{stringliteral}{"{}placeName"{}})\ \{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00235}00235\ \ \ \ \ \ \ \ \ sort(sortedRecords.begin(),\ sortedRecords.end(),\ [](\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_zip_record}{ZipRecord}}\&\ a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_zip_record}{ZipRecord}}\&\ b)\ \{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00236}00236\ \ \ \ \ \ \ \ \ \ \ \ \ return\ a.placeName\ <\ b.placeName;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00237}00237\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00238}00238\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (sortField\ ==\ \textcolor{stringliteral}{"{}state"{}})\ \{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00239}00239\ \ \ \ \ \ \ \ \ sort(sortedRecords.begin(),\ sortedRecords.end(),\ [](\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_zip_record}{ZipRecord}}\&\ a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_zip_record}{ZipRecord}}\&\ b)\ \{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00240}00240\ \ \ \ \ \ \ \ \ \ \ \ \ return\ a.state\ <\ b.state;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00241}00241\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00242}00242\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (sortField\ ==\ \textcolor{stringliteral}{"{}latitude"{}})\ \{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00243}00243\ \ \ \ \ \ \ \ \ sort(sortedRecords.begin(),\ sortedRecords.end(),\ [](\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_zip_record}{ZipRecord}}\&\ a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_zip_record}{ZipRecord}}\&\ b)\ \{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00244}00244\ \ \ \ \ \ \ \ \ \ \ \ \ return\ a.latitude\ <\ b.latitude;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00245}00245\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00246}00246\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (sortField\ ==\ \textcolor{stringliteral}{"{}longitude"{}})\ \{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00247}00247\ \ \ \ \ \ \ \ \ sort(sortedRecords.begin(),\ sortedRecords.end(),\ [](\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_zip_record}{ZipRecord}}\&\ a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_zip_record}{ZipRecord}}\&\ b)\ \{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00248}00248\ \ \ \ \ \ \ \ \ \ \ \ \ return\ a.longitude\ <\ b.longitude;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00249}00249\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00250}00250\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00251}00251\ \ \ \ \ \ \ \ \ cerr\ <<\ \textcolor{stringliteral}{"{}Invalid\ sorting\ field.\ Defaulting\ to\ state."{}}\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00252}00252\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00253}00253\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00254}00254\ \ \ \ \ map<string,\ tuple<ZipRecord,\ ZipRecord,\ ZipRecord,\ ZipRecord>>\ stateData;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00255}00255\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ record\ :\ sortedRecords)\ \{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00256}00256\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\&\ [east,\ west,\ north,\ south]\ =\ stateData[record.state];}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00257}00257\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (east.zipCode\ ==\ 0\ ||\ record.longitude\ <\ east.longitude)\ east\ =\ record;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00258}00258\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (west.zipCode\ ==\ 0\ ||\ record.longitude\ >\ west.longitude)\ west\ =\ record;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00259}00259\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (north.zipCode\ ==\ 0\ ||\ record.latitude\ >\ north.latitude)\ north\ =\ record;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00260}00260\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (south.zipCode\ ==\ 0\ ||\ record.latitude\ <\ south.latitude)\ south\ =\ record;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00261}00261\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00262}00262\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00263}00263\ \ \ \ \ \textcolor{keywordtype}{string}\ outputFilename;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00264}00264\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Enter\ output\ filename:\ "{}};}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00265}00265\ \ \ \ \ cin\ >>\ outputFilename;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00266}00266\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00267}00267\ \ \ \ \ ofstream\ outFile(outputFilename);}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00268}00268\ \ \ \ \ \textcolor{keywordflow}{if}\ (!outFile.is\_open())\ \{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00269}00269\ \ \ \ \ \ \ \ \ cerr\ <<\ \textcolor{stringliteral}{"{}Error:\ Could\ not\ open\ output\ file."{}}\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00270}00270\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00271}00271\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00272}00272\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00273}00273\ \ \ \ \ outFile\ <<\ \textcolor{stringliteral}{"{}State,\ Easternmost,\ Westernmost,\ Northernmost,\ Southernmost"{}}\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00274}00274\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ [state,\ extremes]\ :\ stateData)\ \{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00275}00275\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ [east,\ west,\ north,\ south]\ =\ extremes;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00276}00276\ \ \ \ \ \ \ \ \ outFile\ <<\ state\ <<\ \textcolor{stringliteral}{"{},\ "{}}\ <<\ east.zipCode\ <<\ \textcolor{stringliteral}{"{},\ "{}}\ <<\ west.zipCode\ <<\ \textcolor{stringliteral}{"{},\ "{}}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00277}00277\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ north.zipCode\ <<\ \textcolor{stringliteral}{"{},\ "{}}\ <<\ south.zipCode\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00278}00278\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00279}00279\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00280}00280\ \ \ \ \ outFile.close();}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00281}00281\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Summary\ written\ to\ "{}}\ <<\ outputFilename\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8cpp_source_l00282}00282\ \}}
+
+\end{DoxyCode}

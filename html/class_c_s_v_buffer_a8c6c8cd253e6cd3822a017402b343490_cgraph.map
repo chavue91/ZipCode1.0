@@ -1,0 +1,5 @@
+<map id="CSVBuffer::convertCSVToLengthIndicated" name="CSVBuffer::convertCSVToLengthIndicated">
+<area shape="rect" id="Node000001" title="Converts a standard CSV file to a length&#45;indicated format." alt="" coords="5,5,221,48"/>
+<area shape="rect" id="Node000002" href="$class_header.html#ae4659654e7c5017c17ff589f5ea5bd7c" title="Writes the header to a file." alt="" coords="269,13,403,40"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="221,24,253,24,253,29,221,29"/>
+</map>

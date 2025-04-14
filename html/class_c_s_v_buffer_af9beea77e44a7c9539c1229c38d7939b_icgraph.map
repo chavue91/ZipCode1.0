@@ -1,0 +1,5 @@
+<map id="CSVBuffer::loadRecords" name="CSVBuffer::loadRecords">
+<area shape="rect" id="Node000001" title="Loads records from the CSV file into memory." alt="" coords="207,5,371,32"/>
+<area shape="rect" id="Node000002" href="$class_c_s_v_buffer.html#a628af50ae49d59ad63026853ae9484e7" title="Constructor that opens a CSV or length&#45;indicated file." alt="" coords="5,5,159,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="191,21,159,21,159,16,191,16"/>
+</map>
