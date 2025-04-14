@@ -4,20 +4,28 @@ CXX = g++
 CXXFLAGS = -std=c++17 -Wall -Wextra
 
 # All source files
-SRCS = main.cpp CSVBuffer.cpp DumpUtility.cpp InsertRecord.cpp DeleteRecord.cpp HeaderBuffer3.cpp BlockBuffer.cpp RecordBuffer.cpp
+SRCS = main.cpp CSVBuffer.cpp DumpUtility.cpp InsertRecord.cpp DeleteRecord.cpp HeaderBuffer3.cpp BlockBuffer.cpp RecordBuffer.cpp ConvertToBlock.cpp BuildIndex.cpp
 
 # Header dependencies (not compiled)
-HDRS = CSVBuffer.h DumpUtility.h HeaderBuffer3.h BlockBuffer.h RecordBuffer.h HeaderAndBlockStructures.h
+HDRS = CSVBuffer.h DumpUtility.h HeaderBuffer3.h BlockBuffer.h RecordBuffer.h HeaderAndBlockStructures.h HeaderBuffer.h 
 
 # Executables
 MAIN = myProgram
 INSERT = InsertRecord
 DELETE = DeleteRecord
+CONVERTTOBLOCKED = ConvertToBlocked
+BUILDINDEX = BuildIndex
 
-all: $(MAIN) $(INSERT) $(DELETE)
+all: $(MAIN) $(INSERT) $(DELETE) $(CONVERTTOBLOCKED) $(BUILDINDEX)
 
-$(MAIN): main.cpp CSVBuffer.o DumpUtility.o RecordBuffer.o BlockBuffer.o HeaderBuffer3.o
-	$(CXX) $(CXXFLAGS) -o $@ main.cpp CSVBuffer.o DumpUtility.o RecordBuffer.o BlockBuffer.o HeaderBuffer3.o
+$(MAIN): main.cpp CSVBuffer.o DumpUtility.o RecordBuffer.o BlockBuffer.o HeaderBuffer3.o 
+	$(CXX) $(CXXFLAGS) -o $@ main.cpp CSVBuffer.o DumpUtility.o RecordBuffer.o BlockBuffer.o HeaderBuffer3.o 
+
+ConvertToBlocked: ConvertToBlocked.cpp BlockBuffer.o HeaderBuffer3.o
+	$(CXX) $(CXXFLAGS) -o $@ ConvertToBlocked.cpp BlockBuffer.o HeaderBuffer3.o
+
+BuildIndex: BuildIndex.cpp BlockBuffer.o HeaderBuffer3.o
+	$(CXX) $(CXXFLAGS) -o $@ BuildIndex.cpp BlockBuffer.o HeaderBuffer3.o
 	
 InsertRecord: InsertRecord.cpp BlockBuffer.o HeaderBuffer3.o
 	$(CXX) $(CXXFLAGS) -o $@ InsertRecord.cpp BlockBuffer.o HeaderBuffer3.o
@@ -41,4 +49,4 @@ RecordBuffer.o: RecordBuffer.cpp RecordBuffer.h
 	$(CXX) $(CXXFLAGS) -c RecordBuffer.cpp
 
 clean:
-	rm -f *.o $(MAIN) $(INSERT) $(DELETE)
+	rm -f *.o $(MAIN) $(INSERT) $(DELETE) $(CONVERTTOBLOCKED) $(BUILDINDEX)

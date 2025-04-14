@@ -1,2 +1,11 @@
 latex/
 html/
+.vscode/
+myProgram
+RecordBuffer.o
+InsertRecord
+HeaderBuffer3.o
+DumpUtility.o
+DeleteRecord
+CSVBuffer.o
+BlockBuffer.o

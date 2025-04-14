@@ -16,7 +16,7 @@ public:
     /// @param rbn The relative block number (RBN) to write at.
     /// @param blockSize The fixed size of each block in bytes.
     /// @return True if write is successful.
-    static bool writeBlock(std::fstream& out, const Block& block, int rbn, int blockSize);
+    static bool writeBlock(std::ostream& out, const Block& block, int rbn, int blockSize);
 
     /// @brief Reads a block from the input stream at the specified RBN.
     /// @param in Input stream (binary mode).

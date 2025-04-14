@@ -47,7 +47,6 @@ int main(int argc, char* argv[]) {
     vector<string> buffer;
     string line;
     int currentRBN = 0;
-    int sequenceHead = 0;
     int prevRBN = -1;
     int blockCount = 0;
 

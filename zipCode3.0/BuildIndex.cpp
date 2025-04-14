@@ -44,17 +44,33 @@ int main(int argc, char* argv[]) {
     int blockSize = hb.header.blockSize;
     int blockCount = hb.header.blockCount;
 
+    if (blockSize <= 0 || blockCount <= 0) {
+        cerr << "Invalid block size or block count in header." << endl;
+        return 1;
+    }
+
     vector<pair<string, int>> index; ///< Vector of {highest key in block, RBN}
 
     for (int rbn = 0; rbn < blockCount; ++rbn) {
+        in.clear();
+        in.seekg(0); // reset stream in case it's in a failed state
+
         Block blk;
-        BlockBuffer::readBlock(in, blk, rbn, blockSize);
-        if (blk.recordCount == 0) continue;
+        if (!BlockBuffer::readBlock(in, blk, rbn, blockSize)) {
+            cerr << "Warning: Could not read block " << rbn << endl;
+            continue;
+        }
+
+        if (blk.recordCount == 0 || blk.records.empty()) continue;
 
         vector<string> keys;
         for (const auto& rec : blk.records) {
-            keys.push_back(extractKey(rec));
+            if (!rec.empty()) {
+                keys.push_back(extractKey(rec));
+            }
         }
+
+        if (keys.empty()) continue;
 
         sort(keys.begin(), keys.end());
         string maxKey = keys.back();

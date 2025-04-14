@@ -6,8 +6,8 @@
 
 using namespace std;
 
-bool BlockBuffer::writeBlock(fstream& out, const Block& block, int rbn, int blockSize) {
-    if (!out.is_open()) return false;
+bool BlockBuffer::writeBlock(std::ostream& out, const Block& block, int rbn, int blockSize) {
+    if (out.fail()) return false;
     streampos pos = static_cast<streampos>(rbn) * blockSize;
     out.seekp(pos);
 
