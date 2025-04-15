@@ -22,14 +22,14 @@ public:
     /// @brief Writes the header record to the output stream.
     /// @param out Reference to the output file stream.
     /// @return True if write successful, false otherwise.
-    void write(ofstream& out);
+    void write(ostream& out) const;
 
 private:
     /// @brief Helper to read a single field definition from stream.
     Field readField(istream& in);
 
     /// @brief Helper to write a single field definition to stream.
-    void writeField(ofstream& out, const Field& field) const;
+    void writeField(ostream& out, const Field& field) const;
 };
 
 #endif // HEADERBUFFER3_H

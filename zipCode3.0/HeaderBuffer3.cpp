@@ -40,8 +40,8 @@ bool HeaderBuffer3::read(istream& in) {
     return true;
 }
 
-void HeaderBuffer3::write(ofstream& out) {
-    if (!out.is_open()) return;
+void HeaderBuffer3::write(ostream& out) const {
+    if (!out) return;
 
     out << header.fileStructureType << '\n';
     out << header.version << '\n';
@@ -76,7 +76,7 @@ Field HeaderBuffer3::readField(istream& in) {
     return field;
 }
 
-void HeaderBuffer3::writeField(ofstream& out, const Field& field) const {
+void HeaderBuffer3::writeField(std::ostream& out, const Field& field) const {
     out << field.name << '\n';
     out << field.type << '\n';
     out << field.format << '\n';

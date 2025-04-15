@@ -44,16 +44,20 @@ int main(int argc, char* argv[]) {
     int blockSize = hb.header.blockSize;
     int blockCount = hb.header.blockCount;
 
+    cout << "[Debug] Block Size: " << blockSize << endl;
+    cout << "[Debug] Block Count: " << blockCount << endl;
+
     if (blockSize <= 0 || blockCount <= 0) {
         cerr << "Invalid block size or block count in header." << endl;
         return 1;
     }
 
+    streampos startOfBlocks = in.tellg();
     vector<pair<string, int>> index; ///< Vector of {highest key in block, RBN}
 
     for (int rbn = 0; rbn < blockCount; ++rbn) {
         in.clear();
-        in.seekg(0); // reset stream in case it's in a failed state
+        in.seekg(startOfBlocks + streampos(rbn * blockSize));
 
         Block blk;
         if (!BlockBuffer::readBlock(in, blk, rbn, blockSize)) {

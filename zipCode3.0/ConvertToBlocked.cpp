@@ -8,6 +8,7 @@
 #include <vector>
 #include <sstream>
 #include <cmath>
+#include <stdexcept>
 
 using namespace std;
 
@@ -27,7 +28,7 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    ofstream out(outputFile, ios::binary);
+    fstream out(outputFile, ios::in | ios::out | ios::binary | ios::trunc);
     if (!out.is_open()) {
         cerr << "Error: Could not create output file." << endl;
         return 1;
@@ -41,8 +42,10 @@ int main(int argc, char* argv[]) {
     }
 
     int blockSize = hb.header.blockSize;
-    float minCapacity = hb.header.minBlockCapacity;
-    int minRecordsPerBlock = static_cast<int>(ceil(minCapacity * (blockSize / 64.0))); // rough guess per record size
+    if (blockSize <= 0 || blockSize > 512 * 1024) {
+        cerr << "Invalid or suspicious block size: " << blockSize << endl;
+        return 1;
+    }
 
     vector<string> buffer;
     string line;
@@ -50,23 +53,42 @@ int main(int argc, char* argv[]) {
     int prevRBN = -1;
     int blockCount = 0;
 
-    // Prepare to skip header lines in LI file
-    int headerLinesToSkip = 0;
-    getline(in, line);
-    while (!line.empty() && !isdigit(line[0])) {
-        getline(in, line);
-        headerLinesToSkip++;
+    // Reserve space for header padded to full block size
+    stringstream dummyHeader;
+    hb.write(dummyHeader);
+    string headerText = dummyHeader.str();
+
+    string paddedHeader;
+    try {
+        paddedHeader = headerText;
+        if (paddedHeader.size() > static_cast<size_t>(blockSize)) {
+            cerr << "Error: Header size exceeds block size." << endl;
+            return 1;
+        }
+        paddedHeader.resize(blockSize, ' ');  // pad with spaces
+    } catch (const length_error& e) {
+        cerr << "Error resizing padded header: " << e.what() << endl;
+        return 1;
     }
-    in.clear();
-    in.seekg(0);
-    for (int i = 0; i < headerLinesToSkip; ++i) getline(in, line);
 
-    // Read and build blocks
+    out.seekp(0);
+    out.write(paddedHeader.c_str(), blockSize);
+
+    // Skip metadata header lines (non-data)
     while (getline(in, line)) {
-        if (line.empty()) continue;
-        buffer.push_back(line);
+        if (!line.empty() && isdigit(line[0])) break;
+    }
+    if (!in) {
+        cerr << "Error: No data lines found after header." << endl;
+        return 1;
+    }
 
-        if (buffer.size() >= static_cast<size_t>(minRecordsPerBlock)) {
+    // Start writing data blocks
+    size_t currentSize = 0;
+    do {
+        if (line.empty()) continue;
+        size_t lineSize = line.size() + 1;
+        if (currentSize + lineSize > static_cast<size_t>(blockSize)) {
             Block blk;
             blk.recordCount = buffer.size();
             blk.records = buffer;
@@ -78,10 +100,13 @@ int main(int argc, char* argv[]) {
             ++currentRBN;
             ++blockCount;
             buffer.clear();
+            currentSize = 0;
         }
-    }
+        buffer.push_back(line);
+        currentSize += lineSize;
+    } while (getline(in, line));
 
-    // Write final block if needed
+    // Write remaining records
     if (!buffer.empty()) {
         Block blk;
         blk.recordCount = buffer.size();
@@ -92,7 +117,7 @@ int main(int argc, char* argv[]) {
         ++blockCount;
     }
 
-    // Update and write header
+    // Update header and write it back
     hb.header.sequenceListHeadRBN = 0;
     hb.header.blockCount = blockCount;
     out.seekp(0);
