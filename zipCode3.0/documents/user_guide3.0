@@ -1,0 +1,85 @@
+User Guide: ZIP Code 3.0
+
+Overview
+This application processes ZIP code data from a CSV or structured file format. It allows users to:
+•	Convert standard CSV files into a structured, length-indicated format
+•	Generate summaries of geographic extremes (east, west, north, south) by state
+•	Search and display ZIP code records using command-line flags
+
+----------------------------------------
+Launching the Application
+
+Compilation
+To compile the application:
+    make
+
+Running
+You can run the program in two modes:
+
+1. Interactive Menu Mode (default)
+    ./myProgram
+    This prompts the user to:
+    •	Convert a CSV to a structured format
+    •	Process a file to generate a summary
+
+2. ZIP Code Search Mode
+    ./myProgram ZipCodes.txt -z56301 -z90210 -z99999
+    •	ZipCodes.txt is the length-indicated data file
+    •	Each -z##### is a ZIP code to search for
+
+----------------------------------------
+File Formats
+
+Input CSV
+The CSV must have the following header:
+"Zip Code","Place Name","State","County","Latitude","Longitude"
+
+Length-Indicated Format
+This format includes:
+•	Header metadata
+•	Records prefixed by their length
+It is automatically generated using option 1 in the interactive mode.
+
+----------------------------------------
+Features
+
+Convert CSV to Structured Format
+•	Launch the program
+•	Choose option 1
+•	Provide input and output filenames
+
+Generate State Summary
+•	Choose option 2
+•	Select a sort field: zipCode, placeName, state, latitude, or longitude
+•	Output is written to a CSV file (name provided by the user)
+
+Lookup ZIP Codes (Command-line)
+•	Run with -z##### flags
+•	Matching records are printed
+•	If a ZIP code isn't found, a message is shown
+
+----------------------------------------
+
+Sample Output
+
+State Summary Output
+State, Easternmost, Westernmost, Northernmost, Southernmost
+NY, 10001, 14905, 10598, 10002
+CA, 90210, 96162, 96162, 90001
+
+ZIP Search Output
+Zip Code: 56301, Place Name: Saint Cloud, State: MN, County: Stearns, Latitude: 45.555, Longitude: -94.167
+Zip Code 99999 not found in the file.
+
+----------------------------------------
+Troubleshooting
+•	"Could not open file": Check the file name and path (case-sensitive)
+•	Malformed data: Ensure your CSV uses comma separators and proper quoting
+•	Missing header: First row of CSV must match expected field names
+
+----------------------------------------
+Authors
+•	Cha Vue
+•	Sofia Hoffman
+•	Zoljargal Enkhbayar
+•	Yohannes Niguesse

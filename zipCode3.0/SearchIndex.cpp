@@ -12,7 +12,11 @@
 
 using namespace std;
 
-/// @brief Extracts the primary key (ZIP code) from a record.
+/**
+ * @brief Extracts the primary key (ZIP code) from a record.
+ * @param record A comma-separated ZIP record string.
+ * @return The first field (ZIP code) from the record.
+ */
 string extractKey(const string& record) {
     stringstream ss(record);
     string key;
@@ -20,7 +24,11 @@ string extractKey(const string& record) {
     return key;
 }
 
-/// @brief Loads the index file into a sorted map.
+/**
+ * @brief Loads the index file into a sorted map.
+ * @param indexFile The filename of the index file to load.
+ * @return A map from ZIP key to block RBN.
+ */
 map<string, int> loadIndex(const string& indexFile) {
     map<string, int> index;
     ifstream in(indexFile);
@@ -40,24 +48,35 @@ map<string, int> loadIndex(const string& indexFile) {
     return index;
 }
 
-/// @brief Finds the smallest RBN whose key is >= searchKey.
+/**
+ * @brief Finds the smallest RBN whose key is >= searchKey.
+ * @param index The in-memory map of key-to-RBN.
+ * @param searchKey The ZIP code key to look up.
+ * @return The corresponding block RBN or -1 if not found.
+ */
 int locateBlock(const map<string, int>& index, const string& searchKey) {
     auto it = index.lower_bound(searchKey);
     if (it == index.end()) return -1;
     return it->second;
 }
 
-/// @brief Entry point to search ZIP codes using -z##### flags.
+/**
+ * @brief Entry point to search ZIP codes using -z##### flags.
+ * @param argc Number of command-line arguments.
+ * @param argv Argument vector. Expects: <blocked_file> <index_file> -z##### [-z##### ...]
+ * @return int Exit code.
+ */
 int main(int argc, char* argv[]) {
     if (argc < 3) {
         cerr << "Usage: " << argv[0] << " <blocked_file> <index_file> -z##### [-z##### ...]" << endl;
         return 1;
     }
 
-    string blockedFile = argv[1];
-    string indexFile = argv[2];
-    vector<string> searchZips;
+    string blockedFile = argv[1]; ///< File containing blocked ZIP records.
+    string indexFile = argv[2];   ///< File containing key-to-RBN index.
+    vector<string> searchZips;    ///< ZIP codes passed via -z##### flags.
 
+    // Parse ZIP code flags from command line.
     for (int i = 3; i < argc; ++i) {
         if (strncmp(argv[i], "-z", 2) == 0 || strncmp(argv[i], "-Z", 2) == 0) {
             searchZips.push_back(argv[i] + 2);
@@ -80,6 +99,7 @@ int main(int argc, char* argv[]) {
     }
     int blockSize = hb.header.blockSize;
 
+    // Search for each ZIP in the provided flags
     for (const string& zip : searchZips) {
         int rbn = locateBlock(index, zip);
         if (rbn == -1) {

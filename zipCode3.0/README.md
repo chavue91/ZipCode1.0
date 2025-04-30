@@ -1,91 +1,132 @@
-# ZipCode2.0  
-# Zip Code Data Processor with Index Support
+# ZipCode3.0  
+## ZIP Code Blocked Sequence Set Processor
 
 ## Description
 
-This program processes U.S. ZIP code data from a CSV or length-indicated file and supports both:
-- Generating a state-wise summary of extreme ZIP codes.
-- Searching ZIP codes using a fast in-memory primary key index via command-line flags.
+`ZipCode3.0` is a C++ application that processes U.S. ZIP code data in a structured blocked sequence set format. The application supports:
+
+- Converting CSV data into a **length-indicated** format with metadata.
+- Converting that format into a **blocked sequence set file (.bss)**.
+- Creating a **primary key index** of high keys per block.
+- Searching for ZIP code records using an efficient block index.
+- Dynamically **inserting** or **deleting** ZIP code records with logging and index updates.
+- Dumping the blocked file **by physical** or **logical order**.
 
 ## Features
 
-- Reads ZIP code data from a standard CSV or length-indicated format.
-- Converts CSV to a length-indicated file with a structured header.
-- Extracts fields such as zip code, city, state, latitude, and longitude.
-- Generates a summary of easternmost, westernmost, northernmost, and southernmost ZIP codes per state.
-- Creates and uses a **primary key index** in RAM for fast ZIP code lookups.
-- Accepts `-z#####` flags (e.g. `-z56301`) from the command line to lookup specific ZIP code records.
-- Includes error handling for malformed input and missing files.
+- Converts CSV → Length-Indicated → Blocked Sequence Set (`.bss`)
+- Generates and uses a **simple key-to-RBN index file** (`.idx`)
+- Efficient in-place record **insertion** and **deletion**
+- Includes structured **header metadata**, **record sorting**, and **record splitting**
+- Supports **sequential dumps** of blocks in physical or logical order
+- Fast **primary key search** using `-z#####` flags
+- Log messages for **splits, merges, index rewrites**, and **failures**
 
-## Files in the Project
+## Project Structure
 
-- **`main.cpp`** – The main application logic, including command-line parsing and user interaction.
-- **`CSVBuffer.h / CSVBuffer.cpp`** – Handles reading, indexing, converting, and summarizing ZIP code records.
-- **`HeaderBuffer.h`** – Defines the structure and reading/writing of metadata headers for length-indicated files.
-- **`us_postal_codes.csv`** – Sample CSV input file.
-- **`ZipCodes`** – Sample converted length-indicated file (with header + records).
-- **`README.md`** – This documentation.
+| File               | Description                                                  |
+|--------------------|--------------------------------------------------------------|
+| `main.cpp`         | Entry point for CSV processing, summary generation, or search |
+| `CSVBuffer.cpp/h`  | Converts, loads, searches, and summarizes ZIP code records    |
+| `HeaderBuffer.h`   | Defines headers for length-indicated format                   |
+| `HeaderBuffer3.cpp/h` | Defines and manages blocked sequence set headers             |
+| `BlockBuffer.cpp/h` | Reads and writes blocks from/to `.bss` files                  |
+| `RecordBuffer.cpp/h`| Unpacks record strings to extract fields or keys             |
+| `ConvertToBlocked.cpp` | Converts `.txt` to `.bss` with structured block layout       |
+| `BuildIndex.cpp`   | Generates `key → RBN` index from a `.bss` file                |
+| `InsertRecord.cpp` | Adds records to a `.bss` file and updates the index           |
+| `DeleteRecord.cpp` | Removes records and updates metadata/index                    |
+| `DumpUtility.cpp/h`| Dumps `.bss` file in physical or logical order                |
+| `SearchIndex.cpp`  | Looks up ZIP records from a `.bss` file via `.idx`            |
 
-## Compilation Instructions
+## Build Instructions
 
-Use the following command to compile:
+Run:
 
 ```sh
-g++ -o myProgram main.cpp CSVBuffer.cpp
+make
 ```
 
-This creates an executable named `myProgram`.
+This compiles:
 
-## Running the Program
+- `myProgram` – main UI for conversion and summary
+- `ConvertToBlocked` – convert `.txt` to `.bss`
+- `BuildIndex` – generate `.idx` from `.bss`
+- `InsertRecord`, `DeleteRecord` – add/remove records
+- All shared `.o` dependencies
 
-### 1. Interactive Mode
+## Step-by-Step Usage
 
-Launch the program without flags:
+### 1. Convert CSV to Length-Indicated
 
 ```sh
 ./myProgram
+# Choose option 1
+# Provide CSV file (e.g. us_postal_codes.csv)
+# Output: zipCodes.txt
 ```
 
-You’ll be prompted to:
-- Convert a CSV file to length-indicated format (Option 1), **or**
-- Process a file and generate a summary table (Option 2)
-
-### 2. ZIP Code Lookup via Command Line
-
-You can directly lookup one or more ZIP codes using `-z#####` flags:
+### 2. Convert to Blocked Sequence Set
 
 ```sh
-./myProgram ZipCodes -z56301 -z90210 -z99999
+./ConvertToBlocked zipCodes.txt zipCodes.bss
 ```
 
-If a ZIP code is found, the full record will be printed with all field labels.  
-If not, an appropriate message will be shown.
+### 3. Build Primary Key Index
 
-The file (`ZipCodes`) must be the converted length-indicated format.
-
-## Output Example (ZIP Lookup)
-
-```
-Zip Code: 56301, Place Name: Saint Cloud, State: MN, County: Stearns, Latitude: 45.555, Longitude: -94.167
-Zip Code 99999 not found in the file.
+```sh
+./BuildIndex zipCodes.bss zipCodes.idx
 ```
 
-## Output Example (State Summary)
+### 4. Dump the File
+
+```sh
+./myProgram zipCodes.bss --dump-physical
+./myProgram zipCodes.bss --dump-logical
+```
+
+### 5. Search by ZIP Code
+
+```sh
+./myProgram zipCodes.bss -z56301 -z90210 -z00000
+```
+
+### 6. Insert Records
+
+```sh
+./InsertRecord zipCodes.bss zipCodes.idx new_zips.csv
+```
+
+### 7. Delete Records
+
+```sh
+./DeleteRecord zipCodes.bss zipCodes.idx to_delete.txt
+```
+
+## Output Example (Search)
 
 ```
-State, Easternmost, Westernmost, Northernmost, Southernmost
-MN, 55001, 56763, 56701, 55044
-TX, 78330, 79851, 79083, 78575
-...
+Found: 56301,Saint Cloud,MN,Stearns,45.555,-94.167
+Zip Code 00000 not found in data block.
+```
+
+## Output Example (Dump)
+
+```
+List Head:  0
+Avail Head: -1
+0  10001 10002 10003  1
+1  10004 10005       -1
 ```
 
 ## Error Handling
 
-- If input or output files can’t be opened, a descriptive error will be printed.
-- Malformed rows are skipped gracefully.
-- Invalid ZIP code flags will show a warning.
+- Skips malformed lines
+- Handles corrupted index or `.bss` files
+- Detects overfilled blocks before writing
+- Logs when splitting, merging, or updating header/index fails
 
 ## Authors
 
-Cha Vue, Sofia Hoffman, Alexander Miller, Zoljargal Enkhbayar, Yohannes Niguesse, Fatha Abdi
+Cha Vue, Sofia Hoffman, Zoljargal Enkhbayar, Yohannes Niguesse
 

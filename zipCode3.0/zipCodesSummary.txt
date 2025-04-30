@@ -1,0 +1,3 @@
+State, Easternmost, Westernmost, Northernmost, Southernmost
+MA, 1029, 1068, 1070, 1106
+NY, 501, 501, 501, 501

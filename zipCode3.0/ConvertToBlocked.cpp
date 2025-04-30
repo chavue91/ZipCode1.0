@@ -14,6 +14,8 @@ using namespace std;
 
 /// @brief Entry point for the CSV-to-blocked conversion tool.
 int main(int argc, char* argv[]) {
+    const int MAX_BLOCKS = 50000; // Cap to prevent runaway memory
+
     if (argc < 3) {
         cerr << "Usage: " << argv[0] << " <input_length_indicated_file> <output_blocked_file>" << endl;
         return 1;
@@ -34,16 +36,19 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    // Read header
     HeaderBuffer3 hb;
     if (!hb.read(in)) {
         cerr << "Error: Failed to read header from input file." << endl;
         return 1;
     }
 
-    int blockSize = hb.header.blockSize;
-    if (blockSize <= 0 || blockSize > 512 * 1024) {
-        cerr << "Invalid or suspicious block size: " << blockSize << endl;
+    int blockSize = 1024 * 4; // 4 KB blocks
+    if (hb.header.blockSize > 0) {
+        blockSize = hb.header.blockSize;
+    }
+    hb.header.blockSize = blockSize;
+    if (blockSize < 512) {
+        cerr << "Error: Block size must be at least 512 bytes." << endl;
         return 1;
     }
 
@@ -52,77 +57,134 @@ int main(int argc, char* argv[]) {
     int currentRBN = 0;
     int prevRBN = -1;
     int blockCount = 0;
+    int sequenceListHeadRBN = -1;
 
-    // Reserve space for header padded to full block size
     stringstream dummyHeader;
     hb.write(dummyHeader);
     string headerText = dummyHeader.str();
 
-    string paddedHeader;
-    try {
-        paddedHeader = headerText;
-        if (paddedHeader.size() > static_cast<size_t>(blockSize)) {
-            cerr << "Error: Header size exceeds block size." << endl;
-            return 1;
-        }
-        paddedHeader.resize(blockSize, ' ');  // pad with spaces
-    } catch (const length_error& e) {
-        cerr << "Error resizing padded header: " << e.what() << endl;
+    if (headerText.size() > static_cast<size_t>(blockSize)) {
+        cerr << "Error: Header size exceeds block size." << endl;
         return 1;
     }
+
+    string paddedHeader = headerText;
+    paddedHeader.resize(blockSize, ' ');
 
     out.seekp(0);
     out.write(paddedHeader.c_str(), blockSize);
 
-    // Skip metadata header lines (non-data)
-    while (getline(in, line)) {
-        if (!line.empty() && isdigit(line[0])) break;
-    }
-    if (!in) {
-        cerr << "Error: No data lines found after header." << endl;
-        return 1;
+    int totalHeaderLines = 1 + hb.header.fieldsPerRecord;
+    for (int i = 0; i < totalHeaderLines; ++i) {
+        if (!getline(in, line)) {
+            cerr << "Error: Failed to skip header lines." << endl;
+            return 1;
+        }
     }
 
-    // Start writing data blocks
     size_t currentSize = 0;
-    do {
+    int lineCount = 0;
+    while (getline(in, line)) {
+        ++lineCount;
         if (line.empty()) continue;
+
+        if (line.find(',') == string::npos) {
+            cerr << "[Error] Skipping malformed line: " << line << endl;
+            continue;
+        }
+
         size_t lineSize = line.size() + 1;
+        if (lineSize > static_cast<size_t>(blockSize)) {
+            cerr << "Error: Line too large for block." << endl;
+            return 1;
+        }
+
         if (currentSize + lineSize > static_cast<size_t>(blockSize)) {
+            if (blockCount >= MAX_BLOCKS) {
+                cerr << "Error: Max block count exceeded (" << MAX_BLOCKS << "). Aborting." << endl;
+                return 1;
+            }
+
             Block blk;
             blk.recordCount = buffer.size();
             blk.records = buffer;
             blk.prevRBN = prevRBN;
-            blk.nextRBN = currentRBN + 1;
+            blk.nextRBN = -1; // set to -1 temporarily
+
+            stringstream blockStream;
+            blockStream << blk.recordCount << '\n';
+            blockStream << blk.prevRBN << '\n';
+            blockStream << blk.nextRBN << '\n';
+            for (const auto& rec : blk.records) blockStream << rec << '\n';
+            string rawBlock = blockStream.str();
+            if (rawBlock.size() > static_cast<size_t>(blockSize)) {
+                cerr << "Error: Block content exceeds block size." << endl;
+                return 1;
+            }
 
             BlockBuffer::writeBlock(out, blk, currentRBN, blockSize);
+
+            if (sequenceListHeadRBN == -1) {
+                sequenceListHeadRBN = currentRBN;
+            }
+
             prevRBN = currentRBN;
             ++currentRBN;
             ++blockCount;
             buffer.clear();
             currentSize = 0;
         }
+
         buffer.push_back(line);
         currentSize += lineSize;
-    } while (getline(in, line));
 
-    // Write remaining records
+        if (lineCount % 5000 == 0) {
+            cout << "[Debug] Processed " << lineCount << " lines..." << endl;
+        }
+    }
+
     if (!buffer.empty()) {
         Block blk;
         blk.recordCount = buffer.size();
         blk.records = buffer;
         blk.prevRBN = prevRBN;
         blk.nextRBN = -1;
+
+        stringstream blockStream;
+        blockStream << blk.recordCount << '\n';
+        blockStream << blk.prevRBN << '\n';
+        blockStream << blk.nextRBN << '\n';
+        for (const auto& rec : blk.records) blockStream << rec << '\n';
+        string rawBlock = blockStream.str();
+        if (rawBlock.size() > static_cast<size_t>(blockSize)) {
+            cerr << "Error: Last block content exceeds block size." << endl;
+            return 1;
+        }
+
         BlockBuffer::writeBlock(out, blk, currentRBN, blockSize);
+        if (sequenceListHeadRBN == -1) {
+            sequenceListHeadRBN = currentRBN;
+        }
         ++blockCount;
     }
 
-    // Update header and write it back
-    hb.header.sequenceListHeadRBN = 0;
+    hb.header.sequenceListHeadRBN = sequenceListHeadRBN;
     hb.header.blockCount = blockCount;
-    out.seekp(0);
-    hb.write(out);
 
+    stringstream finalHeader;
+    hb.write(finalHeader);
+    string headerFinal = finalHeader.str();
+
+    if (headerFinal.size() > static_cast<size_t>(blockSize)) {
+        cerr << "Error: Final header size exceeds block size." << endl;
+        return 1;
+    }
+
+    headerFinal.resize(blockSize, ' ');
+    out.seekp(0);
+    out.write(headerFinal.c_str(), blockSize);
+
+    cout << "[Info] Total blocks written: " << blockCount << endl;
     cout << "Blocked sequence set file generated: " << outputFile << endl;
     return 0;
 }
