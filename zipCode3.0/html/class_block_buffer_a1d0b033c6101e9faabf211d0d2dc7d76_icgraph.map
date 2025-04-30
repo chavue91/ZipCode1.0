@@ -1,0 +1,19 @@
+<map id="BlockBuffer::readBlock" name="BlockBuffer::readBlock">
+<area shape="rect" id="Node000001" title="Reads a block from the input stream at the specified RBN." alt="" coords="302,107,456,133"/>
+<area shape="rect" id="Node000002" href="$_dump_utility_8cpp.html#afebb1e9dcfb714e25a4996c2c7b9b484" title="Dumps all blocks in logical order using nextRBN links." alt="" coords="107,5,250,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="345,100,302,73,253,46,225,35,227,30,255,42,305,68,347,96"/>
+<area shape="rect" id="Node000004" href="$_dump_utility_8cpp.html#af4c7003ac02ec488042ccb7e8b5a7e35" title="Dumps all blocks in physical order from the file." alt="" coords="103,56,254,83"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="308,105,234,86,235,81,309,100"/>
+<area shape="rect" id="Node000005" href="$_dump_blocked_8cpp.html#ae0222e7810826afb68b4c7d1059af7d2" title="Dumps blocks in logical sequence order based on header links." alt="" coords="131,107,226,133"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="287,123,226,123,226,117,287,117"/>
+<area shape="rect" id="Node000007" href="$_dump_blocked_8cpp.html#a1eb4e5bbe8e1bf0175f6836c26a87558" title="Dumps all blocks in physical order." alt="" coords="127,157,230,184"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="309,140,231,160,230,155,308,135"/>
+<area shape="rect" id="Node000008" href="$_build_index_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title="Entry point to build an index file from a blocked sequence set." alt="" coords="154,208,203,235"/>
+<area shape="poly" id="edge9_Node000001_Node000008" title=" " alt="" coords="347,144,305,172,255,198,205,217,203,212,253,194,302,167,345,140"/>
+<area shape="rect" id="Node000003" href="$main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title="Main driver function." alt="" coords="5,44,55,71"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="110,39,56,54,55,48,109,34"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="87,65,55,62,55,57,87,59"/>
+<area shape="rect" id="Node000006" href="$_dump_blocked_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,120,55,147"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="116,128,55,134,55,129,115,123"/>
+<area shape="poly" id="edge8_Node000007_Node000006" title=" " alt="" coords="111,156,54,142,56,137,112,151"/>
+</map>

@@ -1,0 +1,193 @@
+\doxysection{Convert\+To\+Blocked.\+cpp}
+\hypertarget{_convert_to_blocked_8cpp_source}{}\label{_convert_to_blocked_8cpp_source}\mbox{\hyperlink{_convert_to_blocked_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_header_buffer3_8h}{HeaderBuffer3.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_block_buffer_8h}{BlockBuffer.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00007}00007\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00008}00008\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00009}00009\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00010}00010\ \textcolor{preprocessor}{\#include\ <cmath>}}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00011}00011\ \textcolor{preprocessor}{\#include\ <stdexcept>}}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00013}00013\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00016}\mbox{\hyperlink{_convert_to_blocked_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{00016}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{_convert_to_blocked_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main}}(\textcolor{keywordtype}{int}\ argc,\ \textcolor{keywordtype}{char}*\ argv[])\ \{}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00017}00017\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ MAX\_BLOCKS\ =\ 50000;\ \textcolor{comment}{//\ Cap\ to\ prevent\ runaway\ memory}}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00019}00019\ \ \ \ \ \textcolor{keywordflow}{if}\ (argc\ <\ 3)\ \{}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00020}00020\ \ \ \ \ \ \ \ \ cerr\ <<\ \textcolor{stringliteral}{"{}Usage:\ "{}}\ <<\ argv[0]\ <<\ \textcolor{stringliteral}{"{}\ <input\_length\_indicated\_file>\ <output\_blocked\_file>"{}}\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00021}00021\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00022}00022\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00024}00024\ \ \ \ \ \textcolor{keywordtype}{string}\ inputFile\ =\ argv[1];}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00025}00025\ \ \ \ \ \textcolor{keywordtype}{string}\ outputFile\ =\ argv[2];}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00027}00027\ \ \ \ \ ifstream\ in(inputFile);}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00028}00028\ \ \ \ \ \textcolor{keywordflow}{if}\ (!in.is\_open())\ \{}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00029}00029\ \ \ \ \ \ \ \ \ cerr\ <<\ \textcolor{stringliteral}{"{}Error:\ Could\ not\ open\ input\ file."{}}\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00030}00030\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00031}00031\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00033}00033\ \ \ \ \ fstream\ out(outputFile,\ ios::in\ |\ ios::out\ |\ ios::binary\ |\ ios::trunc);}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00034}00034\ \ \ \ \ \textcolor{keywordflow}{if}\ (!out.is\_open())\ \{}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00035}00035\ \ \ \ \ \ \ \ \ cerr\ <<\ \textcolor{stringliteral}{"{}Error:\ Could\ not\ create\ output\ file."{}}\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00036}00036\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00037}00037\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00039}00039\ \ \ \ \ \mbox{\hyperlink{class_header_buffer3}{HeaderBuffer3}}\ hb;}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00040}00040\ \ \ \ \ \textcolor{keywordflow}{if}\ (!hb.\mbox{\hyperlink{class_header_buffer3_ae99bda9df506d9aeabe3d2fcc23a5a02}{read}}(in))\ \{}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00041}00041\ \ \ \ \ \ \ \ \ cerr\ <<\ \textcolor{stringliteral}{"{}Error:\ Failed\ to\ read\ header\ from\ input\ file."{}}\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00042}00042\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00043}00043\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00045}00045\ \ \ \ \ \textcolor{keywordtype}{int}\ blockSize\ =\ 1024\ *\ 4;\ \textcolor{comment}{//\ 4\ KB\ blocks}}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00046}00046\ \ \ \ \ \textcolor{keywordflow}{if}\ (hb.\mbox{\hyperlink{class_header_buffer3_a297405f7199487b9b8c27885e7babd5e}{header}}.\mbox{\hyperlink{struct_header_a6794018d2fa1ba92881a44a0ee011f77}{blockSize}}\ >\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00047}00047\ \ \ \ \ \ \ \ \ blockSize\ =\ hb.\mbox{\hyperlink{class_header_buffer3_a297405f7199487b9b8c27885e7babd5e}{header}}.\mbox{\hyperlink{struct_header_a6794018d2fa1ba92881a44a0ee011f77}{blockSize}};}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00048}00048\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00049}00049\ \ \ \ \ hb.\mbox{\hyperlink{class_header_buffer3_a297405f7199487b9b8c27885e7babd5e}{header}}.\mbox{\hyperlink{struct_header_a6794018d2fa1ba92881a44a0ee011f77}{blockSize}}\ =\ blockSize;}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00050}00050\ \ \ \ \ \textcolor{keywordflow}{if}\ (blockSize\ <\ 512)\ \{}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00051}00051\ \ \ \ \ \ \ \ \ cerr\ <<\ \textcolor{stringliteral}{"{}Error:\ Block\ size\ must\ be\ at\ least\ 512\ bytes."{}}\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00052}00052\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00053}00053\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00055}00055\ \ \ \ \ vector<string>\ buffer;}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00056}00056\ \ \ \ \ \textcolor{keywordtype}{string}\ line;}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00057}00057\ \ \ \ \ \textcolor{keywordtype}{int}\ currentRBN\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00058}00058\ \ \ \ \ \textcolor{keywordtype}{int}\ prevRBN\ =\ -\/1;}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00059}00059\ \ \ \ \ \textcolor{keywordtype}{int}\ blockCount\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00060}00060\ \ \ \ \ \textcolor{keywordtype}{int}\ sequenceListHeadRBN\ =\ -\/1;}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00062}00062\ \ \ \ \ stringstream\ dummyHeader;}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00063}00063\ \ \ \ \ hb.\mbox{\hyperlink{class_header_buffer3_ab249189db386173d691cbdf87a4f03e2}{write}}(dummyHeader);}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00064}00064\ \ \ \ \ \textcolor{keywordtype}{string}\ headerText\ =\ dummyHeader.str();}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00066}00066\ \ \ \ \ \textcolor{keywordflow}{if}\ (headerText.size()\ >\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{size\_t}\textcolor{keyword}{>}(blockSize))\ \{}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00067}00067\ \ \ \ \ \ \ \ \ cerr\ <<\ \textcolor{stringliteral}{"{}Error:\ Header\ size\ exceeds\ block\ size."{}}\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00068}00068\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00069}00069\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00071}00071\ \ \ \ \ \textcolor{keywordtype}{string}\ paddedHeader\ =\ headerText;}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00072}00072\ \ \ \ \ paddedHeader.resize(blockSize,\ \textcolor{charliteral}{'\ '});}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00074}00074\ \ \ \ \ out.seekp(0);}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00075}00075\ \ \ \ \ out.write(paddedHeader.c\_str(),\ blockSize);}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00077}00077\ \ \ \ \ \textcolor{keywordtype}{int}\ totalHeaderLines\ =\ 1\ +\ hb.\mbox{\hyperlink{class_header_buffer3_a297405f7199487b9b8c27885e7babd5e}{header}}.\mbox{\hyperlink{struct_header_ad4d5c196f8cd44363dfcca533873ae26}{fieldsPerRecord}};}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00078}00078\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ totalHeaderLines;\ ++i)\ \{}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00079}00079\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!getline(in,\ line))\ \{}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ cerr\ <<\ \textcolor{stringliteral}{"{}Error:\ Failed\ to\ skip\ header\ lines."{}}\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00082}00082\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00083}00083\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00085}00085\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ currentSize\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00086}00086\ \ \ \ \ \textcolor{keywordtype}{int}\ lineCount\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00087}00087\ \ \ \ \ \textcolor{keywordflow}{while}\ (getline(in,\ line))\ \{}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00088}00088\ \ \ \ \ \ \ \ \ ++lineCount;}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00089}00089\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (line.empty())\ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00090}00090\ }
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00091}00091\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (line.find(\textcolor{charliteral}{','})\ ==\ string::npos)\ \{}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ cerr\ <<\ \textcolor{stringliteral}{"{}[Error]\ Skipping\ malformed\ line:\ "{}}\ <<\ line\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00094}00094\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00095}00095\ }
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00096}00096\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ lineSize\ =\ line.size()\ +\ 1;}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00097}00097\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (lineSize\ >\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{size\_t}\textcolor{keyword}{>}(blockSize))\ \{}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ cerr\ <<\ \textcolor{stringliteral}{"{}Error:\ Line\ too\ large\ for\ block."{}}\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00100}00100\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00101}00101\ }
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00102}00102\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (currentSize\ +\ lineSize\ >\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{size\_t}\textcolor{keyword}{>}(blockSize))\ \{}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (blockCount\ >=\ MAX\_BLOCKS)\ \{}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cerr\ <<\ \textcolor{stringliteral}{"{}Error:\ Max\ block\ count\ exceeded\ ("{}}\ <<\ MAX\_BLOCKS\ <<\ \textcolor{stringliteral}{"{}).\ Aborting."{}}\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00105}00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00107}00107\ }
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00108}00108\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_block}{Block}}\ blk;}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00109}00109\ \ \ \ \ \ \ \ \ \ \ \ \ blk.\mbox{\hyperlink{struct_block_ae1fc0d163b6fea12d497d3fca0f98e2c}{recordCount}}\ =\ buffer.size();}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00110}00110\ \ \ \ \ \ \ \ \ \ \ \ \ blk.\mbox{\hyperlink{struct_block_aeaf53c3395c28c5a844fa077929e2a10}{records}}\ =\ buffer;}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00111}00111\ \ \ \ \ \ \ \ \ \ \ \ \ blk.\mbox{\hyperlink{struct_block_a1bb924bfcd0c69342428709115bc5773}{prevRBN}}\ =\ prevRBN;}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00112}00112\ \ \ \ \ \ \ \ \ \ \ \ \ blk.\mbox{\hyperlink{struct_block_a7218441480b3579c1a8d7d67c2f1f058}{nextRBN}}\ =\ -\/1;\ \textcolor{comment}{//\ set\ to\ -\/1\ temporarily}}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00113}00113\ }
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00114}00114\ \ \ \ \ \ \ \ \ \ \ \ \ stringstream\ blockStream;}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00115}00115\ \ \ \ \ \ \ \ \ \ \ \ \ blockStream\ <<\ blk.\mbox{\hyperlink{struct_block_ae1fc0d163b6fea12d497d3fca0f98e2c}{recordCount}}\ <<\ \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00116}00116\ \ \ \ \ \ \ \ \ \ \ \ \ blockStream\ <<\ blk.\mbox{\hyperlink{struct_block_a1bb924bfcd0c69342428709115bc5773}{prevRBN}}\ <<\ \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00117}00117\ \ \ \ \ \ \ \ \ \ \ \ \ blockStream\ <<\ blk.\mbox{\hyperlink{struct_block_a7218441480b3579c1a8d7d67c2f1f058}{nextRBN}}\ <<\ \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00118}00118\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ rec\ :\ blk.\mbox{\hyperlink{struct_block_aeaf53c3395c28c5a844fa077929e2a10}{records}})\ blockStream\ <<\ rec\ <<\ \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00119}00119\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ rawBlock\ =\ blockStream.str();}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00120}00120\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (rawBlock.size()\ >\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{size\_t}\textcolor{keyword}{>}(blockSize))\ \{}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00121}00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cerr\ <<\ \textcolor{stringliteral}{"{}Error:\ Block\ content\ exceeds\ block\ size."{}}\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00122}00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00123}00123\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00124}00124\ }
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00125}00125\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_block_buffer_a2362ffca9da187df21c6ae0e4fe253a7}{BlockBuffer::writeBlock}}(out,\ blk,\ currentRBN,\ blockSize);}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00126}00126\ }
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00127}00127\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sequenceListHeadRBN\ ==\ -\/1)\ \{}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00128}00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sequenceListHeadRBN\ =\ currentRBN;}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00129}00129\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00130}00130\ }
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00131}00131\ \ \ \ \ \ \ \ \ \ \ \ \ prevRBN\ =\ currentRBN;}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00132}00132\ \ \ \ \ \ \ \ \ \ \ \ \ ++currentRBN;}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00133}00133\ \ \ \ \ \ \ \ \ \ \ \ \ ++blockCount;}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00134}00134\ \ \ \ \ \ \ \ \ \ \ \ \ buffer.clear();}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00135}00135\ \ \ \ \ \ \ \ \ \ \ \ \ currentSize\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00136}00136\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00137}00137\ }
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00138}00138\ \ \ \ \ \ \ \ \ buffer.push\_back(line);}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00139}00139\ \ \ \ \ \ \ \ \ currentSize\ +=\ lineSize;}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00140}00140\ }
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00141}00141\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (lineCount\ \%\ 5000\ ==\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00142}00142\ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}[Debug]\ Processed\ "{}}\ <<\ lineCount\ <<\ \textcolor{stringliteral}{"{}\ lines..."{}}\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00143}00143\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00144}00144\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00145}00145\ }
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00146}00146\ \ \ \ \ \textcolor{keywordflow}{if}\ (!buffer.empty())\ \{}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00147}00147\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_block}{Block}}\ blk;}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00148}00148\ \ \ \ \ \ \ \ \ blk.\mbox{\hyperlink{struct_block_ae1fc0d163b6fea12d497d3fca0f98e2c}{recordCount}}\ =\ buffer.size();}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00149}00149\ \ \ \ \ \ \ \ \ blk.\mbox{\hyperlink{struct_block_aeaf53c3395c28c5a844fa077929e2a10}{records}}\ =\ buffer;}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00150}00150\ \ \ \ \ \ \ \ \ blk.\mbox{\hyperlink{struct_block_a1bb924bfcd0c69342428709115bc5773}{prevRBN}}\ =\ prevRBN;}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00151}00151\ \ \ \ \ \ \ \ \ blk.\mbox{\hyperlink{struct_block_a7218441480b3579c1a8d7d67c2f1f058}{nextRBN}}\ =\ -\/1;}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00152}00152\ }
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00153}00153\ \ \ \ \ \ \ \ \ stringstream\ blockStream;}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00154}00154\ \ \ \ \ \ \ \ \ blockStream\ <<\ blk.\mbox{\hyperlink{struct_block_ae1fc0d163b6fea12d497d3fca0f98e2c}{recordCount}}\ <<\ \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00155}00155\ \ \ \ \ \ \ \ \ blockStream\ <<\ blk.\mbox{\hyperlink{struct_block_a1bb924bfcd0c69342428709115bc5773}{prevRBN}}\ <<\ \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00156}00156\ \ \ \ \ \ \ \ \ blockStream\ <<\ blk.\mbox{\hyperlink{struct_block_a7218441480b3579c1a8d7d67c2f1f058}{nextRBN}}\ <<\ \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00157}00157\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ rec\ :\ blk.\mbox{\hyperlink{struct_block_aeaf53c3395c28c5a844fa077929e2a10}{records}})\ blockStream\ <<\ rec\ <<\ \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00158}00158\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ rawBlock\ =\ blockStream.str();}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00159}00159\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (rawBlock.size()\ >\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{size\_t}\textcolor{keyword}{>}(blockSize))\ \{}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00160}00160\ \ \ \ \ \ \ \ \ \ \ \ \ cerr\ <<\ \textcolor{stringliteral}{"{}Error:\ Last\ block\ content\ exceeds\ block\ size."{}}\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00161}00161\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00162}00162\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00163}00163\ }
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00164}00164\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_block_buffer_a2362ffca9da187df21c6ae0e4fe253a7}{BlockBuffer::writeBlock}}(out,\ blk,\ currentRBN,\ blockSize);}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00165}00165\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sequenceListHeadRBN\ ==\ -\/1)\ \{}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00166}00166\ \ \ \ \ \ \ \ \ \ \ \ \ sequenceListHeadRBN\ =\ currentRBN;}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00167}00167\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00168}00168\ \ \ \ \ \ \ \ \ ++blockCount;}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00169}00169\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00170}00170\ }
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00171}00171\ \ \ \ \ hb.\mbox{\hyperlink{class_header_buffer3_a297405f7199487b9b8c27885e7babd5e}{header}}.\mbox{\hyperlink{struct_header_acaa769a2a6035628049a90a3e7a4ca1a}{sequenceListHeadRBN}}\ =\ sequenceListHeadRBN;}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00172}00172\ \ \ \ \ hb.\mbox{\hyperlink{class_header_buffer3_a297405f7199487b9b8c27885e7babd5e}{header}}.\mbox{\hyperlink{struct_header_abb03b2abaeee57d21a10db254b56acb0}{blockCount}}\ =\ blockCount;}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00173}00173\ }
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00174}00174\ \ \ \ \ stringstream\ finalHeader;}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00175}00175\ \ \ \ \ hb.\mbox{\hyperlink{class_header_buffer3_ab249189db386173d691cbdf87a4f03e2}{write}}(finalHeader);}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00176}00176\ \ \ \ \ \textcolor{keywordtype}{string}\ headerFinal\ =\ finalHeader.str();}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00177}00177\ }
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00178}00178\ \ \ \ \ \textcolor{keywordflow}{if}\ (headerFinal.size()\ >\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{size\_t}\textcolor{keyword}{>}(blockSize))\ \{}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00179}00179\ \ \ \ \ \ \ \ \ cerr\ <<\ \textcolor{stringliteral}{"{}Error:\ Final\ header\ size\ exceeds\ block\ size."{}}\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00180}00180\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00181}00181\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00182}00182\ }
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00183}00183\ \ \ \ \ headerFinal.resize(blockSize,\ \textcolor{charliteral}{'\ '});}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00184}00184\ \ \ \ \ out.seekp(0);}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00185}00185\ \ \ \ \ out.write(headerFinal.c\_str(),\ blockSize);}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00186}00186\ }
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00187}00187\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}[Info]\ Total\ blocks\ written:\ "{}}\ <<\ blockCount\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00188}00188\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Blocked\ sequence\ set\ file\ generated:\ "{}}\ <<\ outputFile\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00189}00189\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{_convert_to_blocked_8cpp_source_l00190}00190\ \}}
+
+\end{DoxyCode}

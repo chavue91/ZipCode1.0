@@ -1,0 +1,53 @@
+\doxysection{CSVBuffer.\+h}
+\hypertarget{_c_s_v_buffer_8h_source}{}\label{_c_s_v_buffer_8h_source}\mbox{\hyperlink{_c_s_v_buffer_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8h_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8h_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8h_source_l00005}00005\ \textcolor{preprocessor}{\#ifndef\ CSVBUFFER\_H}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8h_source_l00006}00006\ \textcolor{preprocessor}{\#define\ CSVBUFFER\_H}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8h_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8h_source_l00008}00008\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8h_source_l00009}00009\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8h_source_l00010}00010\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8h_source_l00011}00011\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8h_source_l00012}00012\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8h_source_l00013}00013\ \textcolor{preprocessor}{\#include\ <tuple>}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8h_source_l00014}00014\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8h_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8h_source_l00016}00016\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8h_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8h_source_l00019}\mbox{\hyperlink{struct_zip_record}{00019}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_zip_record}{ZipRecord}}\ \{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8h_source_l00020}\mbox{\hyperlink{struct_zip_record_ab8e8a51e07351155b75981b209364a3b}{00020}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_zip_record_ab8e8a51e07351155b75981b209364a3b}{zipCode}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8h_source_l00021}\mbox{\hyperlink{struct_zip_record_a710d782181f63e77ddc15fff7658a0a8}{00021}}\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{struct_zip_record_a710d782181f63e77ddc15fff7658a0a8}{placeName}};\ \ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8h_source_l00022}\mbox{\hyperlink{struct_zip_record_ac6866d993efce32a117bd5ea273fc7d3}{00022}}\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{struct_zip_record_ac6866d993efce32a117bd5ea273fc7d3}{state}};\ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8h_source_l00023}\mbox{\hyperlink{struct_zip_record_ad827fefbf1e6f5e51d54ffd6fe01622b}{00023}}\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{struct_zip_record_ad827fefbf1e6f5e51d54ffd6fe01622b}{county}};\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8h_source_l00024}\mbox{\hyperlink{struct_zip_record_abfa4d83fee6ffc625e1ae4b658165067}{00024}}\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{struct_zip_record_abfa4d83fee6ffc625e1ae4b658165067}{latitude}};\ \ \ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8h_source_l00025}\mbox{\hyperlink{struct_zip_record_a8ffaac1dd00b7d6bfa1407c78340812f}{00025}}\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{struct_zip_record_a8ffaac1dd00b7d6bfa1407c78340812f}{longitude}};\ \ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8h_source_l00026}00026\ \};}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8h_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8h_source_l00029}\mbox{\hyperlink{class_c_s_v_buffer}{00029}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_c_s_v_buffer_a628af50ae49d59ad63026853ae9484e7}{CSVBuffer}}\ \{}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8h_source_l00030}00030\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8h_source_l00031}\mbox{\hyperlink{class_c_s_v_buffer_a8bbd004a11e69f39757198d921077f77}{00031}}\ \ \ \ \ ifstream\ \mbox{\hyperlink{class_c_s_v_buffer_a8bbd004a11e69f39757198d921077f77}{file}};\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8h_source_l00032}\mbox{\hyperlink{class_c_s_v_buffer_a8925db1e0e800a63c1029941b1b5700b}{00032}}\ \ \ \ \ vector<ZipRecord>\ \mbox{\hyperlink{class_c_s_v_buffer_a8925db1e0e800a63c1029941b1b5700b}{records}};\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8h_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8h_source_l00035}00035\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_s_v_buffer_af9beea77e44a7c9539c1229c38d7939b}{loadRecords}}();}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8h_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8h_source_l00038}00038\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_s_v_buffer_a7e04c3b95f505bb483332b51a1a05bf8}{loadLengthIndicatedRecords}}();}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8h_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8h_source_l00040}00040\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8h_source_l00043}00043\ \ \ \ \ \mbox{\hyperlink{class_c_s_v_buffer_a628af50ae49d59ad63026853ae9484e7}{CSVBuffer}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ filename);}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8h_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8h_source_l00047}\mbox{\hyperlink{class_c_s_v_buffer_ab166803f1d544b087b4e85ce7dde178b}{00047}}\ \ \ \ \ \textcolor{keyword}{const}\ vector<ZipRecord>\&\ \mbox{\hyperlink{class_c_s_v_buffer_ab166803f1d544b087b4e85ce7dde178b}{getRecords}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8h_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8h_source_l00051}00051\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_s_v_buffer_a4649b2d70f7a2509283be4620a46f602}{generateStateTable}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8h_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8h_source_l00056}00056\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_s_v_buffer_a8c6c8cd253e6cd3822a017402b343490}{convertCSVToLengthIndicated}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ inputFile,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ outputFile);}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8h_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8h_source_l00060}00060\ \ \ \ \ unordered\_map<int,\ ZipRecord>\ \mbox{\hyperlink{class_c_s_v_buffer_ab48aba8be89c9f51df8f0ab905c53840}{buildPrimaryKeyIndex}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8h_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8h_source_l00064}00064\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_s_v_buffer_abb8f7961a10e8673b72c34fc7e4f5288}{searchByZipCodes}}(\textcolor{keyword}{const}\ vector<int>\&\ zipCodes)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8h_source_l00065}00065\ \};}
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8h_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{_c_s_v_buffer_8h_source_l00067}00067\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ CSVBUFFER\_H}}
+
+\end{DoxyCode}

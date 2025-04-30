@@ -1,0 +1,136 @@
+\doxysection{Delete\+Record.\+cpp}
+\hypertarget{_delete_record_8cpp_source}{}\label{_delete_record_8cpp_source}\mbox{\hyperlink{_delete_record_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_header_buffer3_8h}{HeaderBuffer3.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_block_buffer_8h}{BlockBuffer.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00007}00007\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00008}00008\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00009}00009\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00010}00010\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00011}00011\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00012}00012\ \textcolor{preprocessor}{\#include\ <set>}}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00014}00014\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00016}\mbox{\hyperlink{_delete_record_8cpp_adbadb55f3590dcf5c967f8fb80947983}{00016}}\ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{_delete_record_8cpp_adbadb55f3590dcf5c967f8fb80947983}{extractKey}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ record)\ \{}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00017}00017\ \ \ \ \ stringstream\ ss(record);}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00018}00018\ \ \ \ \ \textcolor{keywordtype}{string}\ key;}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00019}00019\ \ \ \ \ getline(ss,\ key,\ \textcolor{charliteral}{','});}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00020}00020\ \ \ \ \ \textcolor{keywordflow}{return}\ key;}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00021}00021\ \}}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00023}\mbox{\hyperlink{_delete_record_8cpp_a7cd0fd4cd59e0ae4ea9003e386470c2c}{00023}}\ map<string,\ int>\ \mbox{\hyperlink{_delete_record_8cpp_a7cd0fd4cd59e0ae4ea9003e386470c2c}{loadIndex}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ indexFile)\ \{}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00024}00024\ \ \ \ \ map<string,\ int>\ index;}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00025}00025\ \ \ \ \ ifstream\ in(indexFile);}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00026}00026\ \ \ \ \ \textcolor{keywordtype}{string}\ line;}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00027}00027\ \ \ \ \ \textcolor{keywordflow}{while}\ (getline(in,\ line))\ \{}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00028}00028\ \ \ \ \ \ \ \ \ stringstream\ ss(line);}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00029}00029\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ key;\ \textcolor{keywordtype}{int}\ rbn;}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00030}00030\ \ \ \ \ \ \ \ \ getline(ss,\ key,\ \textcolor{charliteral}{','});}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00031}00031\ \ \ \ \ \ \ \ \ ss\ >>\ rbn;}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00032}00032\ \ \ \ \ \ \ \ \ index[key]\ =\ rbn;}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00033}00033\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00034}00034\ \ \ \ \ \textcolor{keywordflow}{return}\ index;}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00035}00035\ \}}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00037}\mbox{\hyperlink{_delete_record_8cpp_ab8d0ee1ba496dba77709a496a025c37a}{00037}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_delete_record_8cpp_ab8d0ee1ba496dba77709a496a025c37a}{writeIndex}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ indexFile,\ \textcolor{keyword}{const}\ map<string,\ int>\&\ index)\ \{}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00038}00038\ \ \ \ \ ofstream\ out(indexFile);}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00039}00039\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ [key,\ rbn]\ :\ index)\ \{}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00040}00040\ \ \ \ \ \ \ \ \ out\ <<\ key\ <<\ \textcolor{stringliteral}{"{},"{}}\ <<\ rbn\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00041}00041\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00042}00042\ \}}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00044}\mbox{\hyperlink{_delete_record_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{00044}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{_delete_record_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main}}(\textcolor{keywordtype}{int}\ argc,\ \textcolor{keywordtype}{char}*\ argv[])\ \{}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00045}00045\ \ \ \ \ \textcolor{keywordflow}{if}\ (argc\ <\ 4)\ \{}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00046}00046\ \ \ \ \ \ \ \ \ cerr\ <<\ \textcolor{stringliteral}{"{}Usage:\ "{}}\ <<\ argv[0]\ <<\ \textcolor{stringliteral}{"{}\ <blocked\_file>\ <index\_file>\ <delete\_keys\_file>"{}}\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00047}00047\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00048}00048\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00050}00050\ \ \ \ \ \textcolor{keywordtype}{string}\ blockedFile\ =\ argv[1];}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00051}00051\ \ \ \ \ \textcolor{keywordtype}{string}\ indexFile\ =\ argv[2];}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00052}00052\ \ \ \ \ \textcolor{keywordtype}{string}\ deleteFile\ =\ argv[3];}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00054}00054\ \ \ \ \ map<string,\ int>\ index\ =\ \mbox{\hyperlink{_delete_record_8cpp_a7cd0fd4cd59e0ae4ea9003e386470c2c}{loadIndex}}(indexFile);}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00055}00055\ \ \ \ \ \textcolor{keywordflow}{if}\ (index.empty())\ \{}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00056}00056\ \ \ \ \ \ \ \ \ cerr\ <<\ \textcolor{stringliteral}{"{}Empty\ or\ missing\ index\ file."{}}\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00057}00057\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00058}00058\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00060}00060\ \ \ \ \ fstream\ data(blockedFile,\ ios::in\ |\ ios::out\ |\ ios::binary);}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00061}00061\ \ \ \ \ \textcolor{keywordflow}{if}\ (!data.is\_open())\ \{}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00062}00062\ \ \ \ \ \ \ \ \ cerr\ <<\ \textcolor{stringliteral}{"{}Failed\ to\ open\ blocked\ file."{}}\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00063}00063\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00064}00064\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00066}00066\ \ \ \ \ \mbox{\hyperlink{class_header_buffer3}{HeaderBuffer3}}\ hb;}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00067}00067\ \ \ \ \ \textcolor{keywordflow}{if}\ (!hb.\mbox{\hyperlink{class_header_buffer3_ae99bda9df506d9aeabe3d2fcc23a5a02}{read}}(data))\ \{}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00068}00068\ \ \ \ \ \ \ \ \ cerr\ <<\ \textcolor{stringliteral}{"{}Failed\ to\ read\ header."{}}\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00069}00069\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00070}00070\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00072}00072\ \ \ \ \ \textcolor{keywordtype}{int}\ blockSize\ =\ hb.\mbox{\hyperlink{class_header_buffer3_a297405f7199487b9b8c27885e7babd5e}{header}}.\mbox{\hyperlink{struct_header_a6794018d2fa1ba92881a44a0ee011f77}{blockSize}};}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00073}00073\ \ \ \ \ set<string>\ deleted;}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00075}00075\ \ \ \ \ ifstream\ delFile(deleteFile);}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00076}00076\ \ \ \ \ \textcolor{keywordtype}{string}\ zip;}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00077}00077\ \ \ \ \ \textcolor{keywordflow}{while}\ (getline(delFile,\ zip))\ \{}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00078}00078\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ it\ =\ index.lower\_bound(zip);}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00079}00079\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (it\ ==\ index.end())\ \{}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Zip\ Code\ "{}}\ <<\ zip\ <<\ \textcolor{stringliteral}{"{}\ not\ found\ in\ index."{}}\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00082}00082\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00084}00084\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ rbn\ =\ it-\/>second;}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00085}00085\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_block}{Block}}\ blk;}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00086}00086\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_block_buffer_a1d0b033c6101e9faabf211d0d2dc7d76}{BlockBuffer::readBlock}}(data,\ blk,\ rbn,\ blockSize))\ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00087}00087\ }
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00088}00088\ \ \ \ \ \ \ \ \ blk.\mbox{\hyperlink{struct_block_aeaf53c3395c28c5a844fa077929e2a10}{records}}.erase(remove\_if(blk.\mbox{\hyperlink{struct_block_aeaf53c3395c28c5a844fa077929e2a10}{records}}.begin(),\ blk.\mbox{\hyperlink{struct_block_aeaf53c3395c28c5a844fa077929e2a10}{records}}.end(),\ [\&](\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ rec)\ \{}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ return\ extractKey(rec)\ ==\ zip;}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00090}00090\ \ \ \ \ \ \ \ \ \}),\ blk.\mbox{\hyperlink{struct_block_aeaf53c3395c28c5a844fa077929e2a10}{records}}.end());}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00092}00092\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (blk.\mbox{\hyperlink{struct_block_aeaf53c3395c28c5a844fa077929e2a10}{records}}.empty())\ \{}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ blk.\mbox{\hyperlink{struct_block_ae1fc0d163b6fea12d497d3fca0f98e2c}{recordCount}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fstream\ outFile(blockedFile,\ ios::in\ |\ ios::out\ |\ ios::binary);}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ outFile.seekp(data.tellp());}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_block_buffer_a8905e337aab440a80e2fe33aa7646de5}{BlockBuffer::writeAvailBlock}}(outFile,\ \mbox{\hyperlink{struct_avail_block}{AvailBlock}}(blockSize),\ rbn,\ blockSize);}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ index.erase(it);}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Deleted\ entire\ block\ RBN\ "{}}\ <<\ rbn\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00101}00101\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ blk.\mbox{\hyperlink{struct_block_ae1fc0d163b6fea12d497d3fca0f98e2c}{recordCount}}\ =\ blk.\mbox{\hyperlink{struct_block_aeaf53c3395c28c5a844fa077929e2a10}{records}}.size();}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fstream\ outFile(blockedFile,\ ios::in\ |\ ios::out\ |\ ios::binary);}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00105}00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ outFile.seekp(data.tellp());}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_block_buffer_a2362ffca9da187df21c6ae0e4fe253a7}{BlockBuffer::writeBlock}}(outFile,\ blk,\ rbn,\ blockSize);}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00107}00107\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00108}00108\ }
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00109}00109\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ newMaxKey\ =\ \mbox{\hyperlink{_delete_record_8cpp_adbadb55f3590dcf5c967f8fb80947983}{extractKey}}(blk.\mbox{\hyperlink{struct_block_aeaf53c3395c28c5a844fa077929e2a10}{records}}.back());}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00110}00110\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{_delete_record_8cpp_adbadb55f3590dcf5c967f8fb80947983}{extractKey}}(it-\/>first)\ !=\ newMaxKey)\ \{}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00111}00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ index.erase(it);}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00112}00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ index[newMaxKey]\ =\ rbn;}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00113}00113\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00114}00114\ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Deleted\ zip\ "{}}\ <<\ zip\ <<\ \textcolor{stringliteral}{"{}\ from\ RBN\ "{}}\ <<\ rbn\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00115}00115\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00116}00116\ }
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00117}00117\ \ \ \ \ \ \ \ \ deleted.insert(zip);}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00118}00118\ \ \ \ \ \ \ \ \ -\/-\/hb.\mbox{\hyperlink{class_header_buffer3_a297405f7199487b9b8c27885e7babd5e}{header}}.\mbox{\hyperlink{struct_header_af22c13458cbf3c73a4f16ba18f808aad}{recordCount}};}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00119}00119\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00120}00120\ }
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00121}00121\ \ \ \ \ data.close();}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00122}00122\ \ \ \ \ ofstream\ outFile(blockedFile,\ ios::out\ |\ ios::binary);}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00123}00123\ \ \ \ \ \textcolor{keywordflow}{if}\ (!outFile.is\_open())\ \{}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00124}00124\ \ \ \ \ \ \ \ \ cerr\ <<\ \textcolor{stringliteral}{"{}Failed\ to\ reopen\ blocked\ file\ for\ writing\ header."{}}\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00125}00125\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00126}00126\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00127}00127\ \ \ \ \ hb.\mbox{\hyperlink{class_header_buffer3_ab249189db386173d691cbdf87a4f03e2}{write}}(outFile);}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00128}00128\ \ \ \ \ \mbox{\hyperlink{_delete_record_8cpp_ab8d0ee1ba496dba77709a496a025c37a}{writeIndex}}(indexFile,\ index);}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00129}00129\ }
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00130}00130\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Deleted\ "{}}\ <<\ deleted.size()\ <<\ \textcolor{stringliteral}{"{}\ records."{}}\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00131}00131\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{_delete_record_8cpp_source_l00132}00132\ \}}
+
+\end{DoxyCode}

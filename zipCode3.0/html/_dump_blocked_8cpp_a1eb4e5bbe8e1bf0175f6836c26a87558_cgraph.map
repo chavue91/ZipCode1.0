@@ -1,0 +1,5 @@
+<map id="dumpPhysical" name="dumpPhysical">
+<area shape="rect" id="Node000001" title="Dumps all blocks in physical order." alt="" coords="5,5,109,32"/>
+<area shape="rect" id="Node000002" href="$class_block_buffer.html#a1d0b033c6101e9faabf211d0d2dc7d76" title="Reads a block from the input stream at the specified RBN." alt="" coords="157,5,311,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="109,16,141,16,141,21,109,21"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="HeaderBuffer3" name="HeaderBuffer3">
+<area shape="rect" id="Node000001" title="Class responsible for reading/writing the Header to/from a file." alt="" coords="5,96,110,123"/>
+<area shape="rect" id="Node000002" href="$struct_header.html" title="Structure representing the header of a blocked sequence set file." alt="" coords="26,5,89,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="60,48,60,95,55,95,55,48"/>
+</map>

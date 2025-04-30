@@ -1,0 +1,118 @@
+\doxysection{Dump\+Blocked.\+cpp File Reference}
+\hypertarget{_dump_blocked_8cpp}{}\label{_dump_blocked_8cpp}\index{DumpBlocked.cpp@{DumpBlocked.cpp}}
+
+
+Utility to dump blocked sequence set content in physical or logical order.  
+
+
+{\ttfamily \#include "{}Header\+Buffer3.\+h"{}}\newline
+{\ttfamily \#include "{}Block\+Buffer.\+h"{}}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$unordered\+\_\+set$>$}\newline
+Include dependency graph for Dump\+Blocked.\+cpp\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_dump_blocked_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_dump_blocked_8cpp_a1eb4e5bbe8e1bf0175f6836c26a87558}{dump\+Physical}} (const string \&filename, int block\+Size, int block\+Count)
+\begin{DoxyCompactList}\small\item\em Dumps all blocks in physical order. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_dump_blocked_8cpp_ae0222e7810826afb68b4c7d1059af7d2}{dump\+Logical}} (const string \&filename, int block\+Size, int start\+RBN)
+\begin{DoxyCompactList}\small\item\em Dumps blocks in logical sequence order based on header links. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{_dump_blocked_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int argc, char \texorpdfstring{$\ast$}{*}argv\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Utility to dump blocked sequence set content in physical or logical order. 
+
+
+
+Definition in file \mbox{\hyperlink{_dump_blocked_8cpp_source}{Dump\+Blocked.\+cpp}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{_dump_blocked_8cpp_ae0222e7810826afb68b4c7d1059af7d2}\index{DumpBlocked.cpp@{DumpBlocked.cpp}!dumpLogical@{dumpLogical}}
+\index{dumpLogical@{dumpLogical}!DumpBlocked.cpp@{DumpBlocked.cpp}}
+\doxysubsubsection{\texorpdfstring{dumpLogical()}{dumpLogical()}}
+{\footnotesize\ttfamily \label{_dump_blocked_8cpp_ae0222e7810826afb68b4c7d1059af7d2} 
+void dump\+Logical (\begin{DoxyParamCaption}\item[{const string \&}]{filename}{, }\item[{int}]{block\+Size}{, }\item[{int}]{start\+RBN}{}\end{DoxyParamCaption})}
+
+
+
+Dumps blocks in logical sequence order based on header links. 
+
+
+
+Definition at line \mbox{\hyperlink{_dump_blocked_8cpp_source_l00040}{40}} of file \mbox{\hyperlink{_dump_blocked_8cpp_source}{Dump\+Blocked.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=303pt]{_dump_blocked_8cpp_ae0222e7810826afb68b4c7d1059af7d2_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=224pt]{_dump_blocked_8cpp_ae0222e7810826afb68b4c7d1059af7d2_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{_dump_blocked_8cpp_a1eb4e5bbe8e1bf0175f6836c26a87558}\index{DumpBlocked.cpp@{DumpBlocked.cpp}!dumpPhysical@{dumpPhysical}}
+\index{dumpPhysical@{dumpPhysical}!DumpBlocked.cpp@{DumpBlocked.cpp}}
+\doxysubsubsection{\texorpdfstring{dumpPhysical()}{dumpPhysical()}}
+{\footnotesize\ttfamily \label{_dump_blocked_8cpp_a1eb4e5bbe8e1bf0175f6836c26a87558} 
+void dump\+Physical (\begin{DoxyParamCaption}\item[{const string \&}]{filename}{, }\item[{int}]{block\+Size}{, }\item[{int}]{block\+Count}{}\end{DoxyParamCaption})}
+
+
+
+Dumps all blocks in physical order. 
+
+
+
+Definition at line \mbox{\hyperlink{_dump_blocked_8cpp_source_l00013}{13}} of file \mbox{\hyperlink{_dump_blocked_8cpp_source}{Dump\+Blocked.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=309pt]{_dump_blocked_8cpp_a1eb4e5bbe8e1bf0175f6836c26a87558_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=231pt]{_dump_blocked_8cpp_a1eb4e5bbe8e1bf0175f6836c26a87558_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{_dump_blocked_8cpp_a0ddf1224851353fc92bfbff6f499fa97}\index{DumpBlocked.cpp@{DumpBlocked.cpp}!main@{main}}
+\index{main@{main}!DumpBlocked.cpp@{DumpBlocked.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \label{_dump_blocked_8cpp_a0ddf1224851353fc92bfbff6f499fa97} 
+int main (\begin{DoxyParamCaption}\item[{int}]{argc}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{argv}{\mbox{[}$\,$\mbox{]}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_dump_blocked_8cpp_source_l00071}{71}} of file \mbox{\hyperlink{_dump_blocked_8cpp_source}{Dump\+Blocked.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_dump_blocked_8cpp_a0ddf1224851353fc92bfbff6f499fa97_cgraph}
+\end{center}
+\end{figure}

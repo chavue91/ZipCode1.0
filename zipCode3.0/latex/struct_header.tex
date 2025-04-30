@@ -1,0 +1,442 @@
+\doxysection{Header Class Reference}
+\hypertarget{struct_header}{}\label{struct_header}\index{Header@{Header}}
+
+
+Structure representing the header of a blocked sequence set file.  
+
+
+
+
+{\ttfamily \#include $<$Header\+And\+Block\+Structures.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_header_ab20eba80063f6fa6a74c474f09bca886}{Header}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor initializing fields to default values. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_header_a53cdc8594285bc9d21a32ab2279c3804}{Header}} (const string \&\mbox{\hyperlink{struct_header_ad989c0118d3bc203635a54a4613037e4}{file\+Structure\+Type}}, const string \&\mbox{\hyperlink{struct_header_a465adaa6f78c42f66568341b53bc0ae8}{version}}, int \mbox{\hyperlink{struct_header_a023113fea452b6270a955baea03a46c8}{size\+In\+Bytes}}, const string \&\mbox{\hyperlink{struct_header_a1ad3d90de6eb96fb6d3a82a1f570501a}{size\+Format\+Type}}, const string \&\mbox{\hyperlink{struct_header_ac3660b9b17ab905c12df0e95e59f8037}{primary\+Key\+File\+Name}}, int \mbox{\hyperlink{struct_header_af22c13458cbf3c73a4f16ba18f808aad}{record\+Count}}, const vector$<$ \mbox{\hyperlink{struct_field}{Field}} $>$ \&\mbox{\hyperlink{struct_header_ab94117f895aab68fce0c4c84d41686d2}{fields}}, const string \&\mbox{\hyperlink{struct_header_a37173eb1af4f2243bb919969cb4abedd}{primary\+Key}})
+\begin{DoxyCompactList}\small\item\em Parameterized constructor to initialize with custom values. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{struct_header_ae4659654e7c5017c17ff589f5ea5bd7c}{write\+To\+File}} (ofstream \&out) const
+\begin{DoxyCompactList}\small\item\em Writes the header to a file. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{struct_header_a2541c1a0f4ce4fe26f41369ba9479ee8}{read\+From\+File}} (ifstream \&in)
+\begin{DoxyCompactList}\small\item\em Reads the header from a file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+string \mbox{\hyperlink{struct_header_ad989c0118d3bc203635a54a4613037e4}{file\+Structure\+Type}}
+\begin{DoxyCompactList}\small\item\em e.\+g., "{}\+Blocked\+Sequence\+Set"{} \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{struct_header_a465adaa6f78c42f66568341b53bc0ae8}{version}}
+\begin{DoxyCompactList}\small\item\em Version of the format. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{struct_header_a57b5a84a3de7c738e3f451884a151f7f}{header\+Size}}
+\begin{DoxyCompactList}\small\item\em Total size in bytes of the header. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{struct_header_a0567e3b0fb3b796b090932ba56df0584}{record\+Size\+Field\+Length}}
+\begin{DoxyCompactList}\small\item\em Size in bytes of the length field for each record. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{struct_header_a1ad3d90de6eb96fb6d3a82a1f570501a}{size\+Format\+Type}}
+\begin{DoxyCompactList}\small\item\em e.\+g., "{}\+ASCII"{} or "{}binary"{} \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{struct_header_a6794018d2fa1ba92881a44a0ee011f77}{block\+Size}}
+\begin{DoxyCompactList}\small\item\em Size of each block in bytes (e.\+g., 512). \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{struct_header_a853f037f5a2a384398f4c8f8045ecda0}{min\+Block\+Capacity}}
+\begin{DoxyCompactList}\small\item\em Minimum block fill ratio (e.\+g., 0.\+5). \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{struct_header_a03c0ca65bd0fe37e36c5addebf550636}{index\+File\+Name}}
+\begin{DoxyCompactList}\small\item\em Associated index file. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{struct_header_a8cb783d0ddf48ab0d25e6f550f4ceb74}{index\+Schema}}
+\begin{DoxyCompactList}\small\item\em Description of index format. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{struct_header_af22c13458cbf3c73a4f16ba18f808aad}{record\+Count}}
+\begin{DoxyCompactList}\small\item\em Total number of records. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{struct_header_abb03b2abaeee57d21a10db254b56acb0}{block\+Count}}
+\begin{DoxyCompactList}\small\item\em Total number of blocks. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{struct_header_ad4d5c196f8cd44363dfcca533873ae26}{fields\+Per\+Record}}
+\begin{DoxyCompactList}\small\item\em Number of fields in each record. \end{DoxyCompactList}\item 
+vector$<$ \mbox{\hyperlink{struct_field}{Field}} $>$ \mbox{\hyperlink{struct_header_ab94117f895aab68fce0c4c84d41686d2}{fields}}
+\begin{DoxyCompactList}\small\item\em \doxylink{struct_field}{Field} metadata list. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{struct_header_a1422f76d827acdc9327deef273d000d9}{primary\+Key\+Ordinal}}
+\begin{DoxyCompactList}\small\item\em Index of primary key field in the fields vector. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{struct_header_a2cb4ea884f318d6cac28b512eeee7078}{avail\+List\+Head\+RBN}}
+\begin{DoxyCompactList}\small\item\em Head of the avail list (RBN). \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{struct_header_acaa769a2a6035628049a90a3e7a4ca1a}{sequence\+List\+Head\+RBN}}
+\begin{DoxyCompactList}\small\item\em Head of the active block list (RBN). \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{struct_header_ad5923d332c4a4611201de6d237d2b694}{stale}}
+\begin{DoxyCompactList}\small\item\em Indicates if the data is stale. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{struct_header_a023113fea452b6270a955baea03a46c8}{size\+In\+Bytes}}
+\item 
+string \mbox{\hyperlink{struct_header_ac3660b9b17ab905c12df0e95e59f8037}{primary\+Key\+File\+Name}}
+\item 
+string \mbox{\hyperlink{struct_header_a37173eb1af4f2243bb919969cb4abedd}{primary\+Key}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Structure representing the header of a blocked sequence set file. 
+
+Class to manage header metadata for record-\/based file storage. 
+
+Definition at line \mbox{\hyperlink{_header_and_block_structures_8h_source_l00022}{22}} of file \mbox{\hyperlink{_header_and_block_structures_8h_source}{Header\+And\+Block\+Structures.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{struct_header_ab20eba80063f6fa6a74c474f09bca886}\index{Header@{Header}!Header@{Header}}
+\index{Header@{Header}!Header@{Header}}
+\doxysubsubsection{\texorpdfstring{Header()}{Header()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{struct_header_ab20eba80063f6fa6a74c474f09bca886} 
+Header\+::\+Header (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Default constructor initializing fields to default values. 
+
+
+
+Definition at line \mbox{\hyperlink{_header_buffer_8h_source_l00040}{40}} of file \mbox{\hyperlink{_header_buffer_8h_source}{Header\+Buffer.\+h}}.
+
+\Hypertarget{struct_header_a53cdc8594285bc9d21a32ab2279c3804}\index{Header@{Header}!Header@{Header}}
+\index{Header@{Header}!Header@{Header}}
+\doxysubsubsection{\texorpdfstring{Header()}{Header()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{struct_header_a53cdc8594285bc9d21a32ab2279c3804} 
+Header\+::\+Header (\begin{DoxyParamCaption}\item[{const string \&}]{file\+Structure\+Type}{, }\item[{const string \&}]{version}{, }\item[{int}]{size\+In\+Bytes}{, }\item[{const string \&}]{size\+Format\+Type}{, }\item[{const string \&}]{primary\+Key\+File\+Name}{, }\item[{int}]{record\+Count}{, }\item[{const vector$<$ \mbox{\hyperlink{struct_field}{Field}} $>$ \&}]{fields}{, }\item[{const string \&}]{primary\+Key}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Parameterized constructor to initialize with custom values. 
+
+
+
+Definition at line \mbox{\hyperlink{_header_buffer_8h_source_l00045}{45}} of file \mbox{\hyperlink{_header_buffer_8h_source}{Header\+Buffer.\+h}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{struct_header_a2541c1a0f4ce4fe26f41369ba9479ee8}\index{Header@{Header}!readFromFile@{readFromFile}}
+\index{readFromFile@{readFromFile}!Header@{Header}}
+\doxysubsubsection{\texorpdfstring{readFromFile()}{readFromFile()}}
+{\footnotesize\ttfamily \label{struct_header_a2541c1a0f4ce4fe26f41369ba9479ee8} 
+bool Header\+::read\+From\+File (\begin{DoxyParamCaption}\item[{ifstream \&}]{in}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Reads the header from a file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em in} & Input file stream to read the structured header. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if successfully read, false otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_header_buffer_8h_source_l00077}{77}} of file \mbox{\hyperlink{_header_buffer_8h_source}{Header\+Buffer.\+h}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=342pt]{struct_header_a2541c1a0f4ce4fe26f41369ba9479ee8_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{struct_header_ae4659654e7c5017c17ff589f5ea5bd7c}\index{Header@{Header}!writeToFile@{writeToFile}}
+\index{writeToFile@{writeToFile}!Header@{Header}}
+\doxysubsubsection{\texorpdfstring{writeToFile()}{writeToFile()}}
+{\footnotesize\ttfamily \label{struct_header_ae4659654e7c5017c17ff589f5ea5bd7c} 
+void Header\+::write\+To\+File (\begin{DoxyParamCaption}\item[{ofstream \&}]{out}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Writes the header to a file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em out} & Output file stream to write the structured header. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_header_buffer_8h_source_l00058}{58}} of file \mbox{\hyperlink{_header_buffer_8h_source}{Header\+Buffer.\+h}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{struct_header_ae4659654e7c5017c17ff589f5ea5bd7c_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{struct_header_a2cb4ea884f318d6cac28b512eeee7078}\index{Header@{Header}!availListHeadRBN@{availListHeadRBN}}
+\index{availListHeadRBN@{availListHeadRBN}!Header@{Header}}
+\doxysubsubsection{\texorpdfstring{availListHeadRBN}{availListHeadRBN}}
+{\footnotesize\ttfamily \label{struct_header_a2cb4ea884f318d6cac28b512eeee7078} 
+int Header\+::avail\+List\+Head\+RBN}
+
+
+
+Head of the avail list (RBN). 
+
+
+
+Definition at line \mbox{\hyperlink{_header_and_block_structures_8h_source_l00037}{37}} of file \mbox{\hyperlink{_header_and_block_structures_8h_source}{Header\+And\+Block\+Structures.\+h}}.
+
+\Hypertarget{struct_header_abb03b2abaeee57d21a10db254b56acb0}\index{Header@{Header}!blockCount@{blockCount}}
+\index{blockCount@{blockCount}!Header@{Header}}
+\doxysubsubsection{\texorpdfstring{blockCount}{blockCount}}
+{\footnotesize\ttfamily \label{struct_header_abb03b2abaeee57d21a10db254b56acb0} 
+int Header\+::block\+Count}
+
+
+
+Total number of blocks. 
+
+
+
+Definition at line \mbox{\hyperlink{_header_and_block_structures_8h_source_l00033}{33}} of file \mbox{\hyperlink{_header_and_block_structures_8h_source}{Header\+And\+Block\+Structures.\+h}}.
+
+\Hypertarget{struct_header_a6794018d2fa1ba92881a44a0ee011f77}\index{Header@{Header}!blockSize@{blockSize}}
+\index{blockSize@{blockSize}!Header@{Header}}
+\doxysubsubsection{\texorpdfstring{blockSize}{blockSize}}
+{\footnotesize\ttfamily \label{struct_header_a6794018d2fa1ba92881a44a0ee011f77} 
+int Header\+::block\+Size}
+
+
+
+Size of each block in bytes (e.\+g., 512). 
+
+
+
+Definition at line \mbox{\hyperlink{_header_and_block_structures_8h_source_l00028}{28}} of file \mbox{\hyperlink{_header_and_block_structures_8h_source}{Header\+And\+Block\+Structures.\+h}}.
+
+\Hypertarget{struct_header_ab94117f895aab68fce0c4c84d41686d2}\index{Header@{Header}!fields@{fields}}
+\index{fields@{fields}!Header@{Header}}
+\doxysubsubsection{\texorpdfstring{fields}{fields}}
+{\footnotesize\ttfamily \label{struct_header_ab94117f895aab68fce0c4c84d41686d2} 
+vector$<$ \mbox{\hyperlink{struct_field}{Field}} $>$ Header\+::fields}
+
+
+
+\doxylink{struct_field}{Field} metadata list. 
+
+
+
+Definition at line \mbox{\hyperlink{_header_and_block_structures_8h_source_l00035}{35}} of file \mbox{\hyperlink{_header_and_block_structures_8h_source}{Header\+And\+Block\+Structures.\+h}}.
+
+\Hypertarget{struct_header_ad4d5c196f8cd44363dfcca533873ae26}\index{Header@{Header}!fieldsPerRecord@{fieldsPerRecord}}
+\index{fieldsPerRecord@{fieldsPerRecord}!Header@{Header}}
+\doxysubsubsection{\texorpdfstring{fieldsPerRecord}{fieldsPerRecord}}
+{\footnotesize\ttfamily \label{struct_header_ad4d5c196f8cd44363dfcca533873ae26} 
+int Header\+::fields\+Per\+Record}
+
+
+
+Number of fields in each record. 
+
+
+
+Definition at line \mbox{\hyperlink{_header_and_block_structures_8h_source_l00034}{34}} of file \mbox{\hyperlink{_header_and_block_structures_8h_source}{Header\+And\+Block\+Structures.\+h}}.
+
+\Hypertarget{struct_header_ad989c0118d3bc203635a54a4613037e4}\index{Header@{Header}!fileStructureType@{fileStructureType}}
+\index{fileStructureType@{fileStructureType}!Header@{Header}}
+\doxysubsubsection{\texorpdfstring{fileStructureType}{fileStructureType}}
+{\footnotesize\ttfamily \label{struct_header_ad989c0118d3bc203635a54a4613037e4} 
+string Header\+::file\+Structure\+Type}
+
+
+
+e.\+g., "{}\+Blocked\+Sequence\+Set"{} 
+
+
+
+Definition at line \mbox{\hyperlink{_header_and_block_structures_8h_source_l00023}{23}} of file \mbox{\hyperlink{_header_and_block_structures_8h_source}{Header\+And\+Block\+Structures.\+h}}.
+
+\Hypertarget{struct_header_a57b5a84a3de7c738e3f451884a151f7f}\index{Header@{Header}!headerSize@{headerSize}}
+\index{headerSize@{headerSize}!Header@{Header}}
+\doxysubsubsection{\texorpdfstring{headerSize}{headerSize}}
+{\footnotesize\ttfamily \label{struct_header_a57b5a84a3de7c738e3f451884a151f7f} 
+int Header\+::header\+Size}
+
+
+
+Total size in bytes of the header. 
+
+
+
+Definition at line \mbox{\hyperlink{_header_and_block_structures_8h_source_l00025}{25}} of file \mbox{\hyperlink{_header_and_block_structures_8h_source}{Header\+And\+Block\+Structures.\+h}}.
+
+\Hypertarget{struct_header_a03c0ca65bd0fe37e36c5addebf550636}\index{Header@{Header}!indexFileName@{indexFileName}}
+\index{indexFileName@{indexFileName}!Header@{Header}}
+\doxysubsubsection{\texorpdfstring{indexFileName}{indexFileName}}
+{\footnotesize\ttfamily \label{struct_header_a03c0ca65bd0fe37e36c5addebf550636} 
+string Header\+::index\+File\+Name}
+
+
+
+Associated index file. 
+
+
+
+Definition at line \mbox{\hyperlink{_header_and_block_structures_8h_source_l00030}{30}} of file \mbox{\hyperlink{_header_and_block_structures_8h_source}{Header\+And\+Block\+Structures.\+h}}.
+
+\Hypertarget{struct_header_a8cb783d0ddf48ab0d25e6f550f4ceb74}\index{Header@{Header}!indexSchema@{indexSchema}}
+\index{indexSchema@{indexSchema}!Header@{Header}}
+\doxysubsubsection{\texorpdfstring{indexSchema}{indexSchema}}
+{\footnotesize\ttfamily \label{struct_header_a8cb783d0ddf48ab0d25e6f550f4ceb74} 
+string Header\+::index\+Schema}
+
+
+
+Description of index format. 
+
+
+
+Definition at line \mbox{\hyperlink{_header_and_block_structures_8h_source_l00031}{31}} of file \mbox{\hyperlink{_header_and_block_structures_8h_source}{Header\+And\+Block\+Structures.\+h}}.
+
+\Hypertarget{struct_header_a853f037f5a2a384398f4c8f8045ecda0}\index{Header@{Header}!minBlockCapacity@{minBlockCapacity}}
+\index{minBlockCapacity@{minBlockCapacity}!Header@{Header}}
+\doxysubsubsection{\texorpdfstring{minBlockCapacity}{minBlockCapacity}}
+{\footnotesize\ttfamily \label{struct_header_a853f037f5a2a384398f4c8f8045ecda0} 
+float Header\+::min\+Block\+Capacity}
+
+
+
+Minimum block fill ratio (e.\+g., 0.\+5). 
+
+
+
+Definition at line \mbox{\hyperlink{_header_and_block_structures_8h_source_l00029}{29}} of file \mbox{\hyperlink{_header_and_block_structures_8h_source}{Header\+And\+Block\+Structures.\+h}}.
+
+\Hypertarget{struct_header_a37173eb1af4f2243bb919969cb4abedd}\index{Header@{Header}!primaryKey@{primaryKey}}
+\index{primaryKey@{primaryKey}!Header@{Header}}
+\doxysubsubsection{\texorpdfstring{primaryKey}{primaryKey}}
+{\footnotesize\ttfamily \label{struct_header_a37173eb1af4f2243bb919969cb4abedd} 
+string Header\+::primary\+Key}
+
+
+
+Definition at line \mbox{\hyperlink{_header_buffer_8h_source_l00037}{37}} of file \mbox{\hyperlink{_header_buffer_8h_source}{Header\+Buffer.\+h}}.
+
+\Hypertarget{struct_header_ac3660b9b17ab905c12df0e95e59f8037}\index{Header@{Header}!primaryKeyFileName@{primaryKeyFileName}}
+\index{primaryKeyFileName@{primaryKeyFileName}!Header@{Header}}
+\doxysubsubsection{\texorpdfstring{primaryKeyFileName}{primaryKeyFileName}}
+{\footnotesize\ttfamily \label{struct_header_ac3660b9b17ab905c12df0e95e59f8037} 
+string Header\+::primary\+Key\+File\+Name}
+
+
+
+Definition at line \mbox{\hyperlink{_header_buffer_8h_source_l00033}{33}} of file \mbox{\hyperlink{_header_buffer_8h_source}{Header\+Buffer.\+h}}.
+
+\Hypertarget{struct_header_a1422f76d827acdc9327deef273d000d9}\index{Header@{Header}!primaryKeyOrdinal@{primaryKeyOrdinal}}
+\index{primaryKeyOrdinal@{primaryKeyOrdinal}!Header@{Header}}
+\doxysubsubsection{\texorpdfstring{primaryKeyOrdinal}{primaryKeyOrdinal}}
+{\footnotesize\ttfamily \label{struct_header_a1422f76d827acdc9327deef273d000d9} 
+int Header\+::primary\+Key\+Ordinal}
+
+
+
+Index of primary key field in the fields vector. 
+
+
+
+Definition at line \mbox{\hyperlink{_header_and_block_structures_8h_source_l00036}{36}} of file \mbox{\hyperlink{_header_and_block_structures_8h_source}{Header\+And\+Block\+Structures.\+h}}.
+
+\Hypertarget{struct_header_af22c13458cbf3c73a4f16ba18f808aad}\index{Header@{Header}!recordCount@{recordCount}}
+\index{recordCount@{recordCount}!Header@{Header}}
+\doxysubsubsection{\texorpdfstring{recordCount}{recordCount}}
+{\footnotesize\ttfamily \label{struct_header_af22c13458cbf3c73a4f16ba18f808aad} 
+int Header\+::record\+Count}
+
+
+
+Total number of records. 
+
+
+
+Definition at line \mbox{\hyperlink{_header_and_block_structures_8h_source_l00032}{32}} of file \mbox{\hyperlink{_header_and_block_structures_8h_source}{Header\+And\+Block\+Structures.\+h}}.
+
+\Hypertarget{struct_header_a0567e3b0fb3b796b090932ba56df0584}\index{Header@{Header}!recordSizeFieldLength@{recordSizeFieldLength}}
+\index{recordSizeFieldLength@{recordSizeFieldLength}!Header@{Header}}
+\doxysubsubsection{\texorpdfstring{recordSizeFieldLength}{recordSizeFieldLength}}
+{\footnotesize\ttfamily \label{struct_header_a0567e3b0fb3b796b090932ba56df0584} 
+int Header\+::record\+Size\+Field\+Length}
+
+
+
+Size in bytes of the length field for each record. 
+
+
+
+Definition at line \mbox{\hyperlink{_header_and_block_structures_8h_source_l00026}{26}} of file \mbox{\hyperlink{_header_and_block_structures_8h_source}{Header\+And\+Block\+Structures.\+h}}.
+
+\Hypertarget{struct_header_acaa769a2a6035628049a90a3e7a4ca1a}\index{Header@{Header}!sequenceListHeadRBN@{sequenceListHeadRBN}}
+\index{sequenceListHeadRBN@{sequenceListHeadRBN}!Header@{Header}}
+\doxysubsubsection{\texorpdfstring{sequenceListHeadRBN}{sequenceListHeadRBN}}
+{\footnotesize\ttfamily \label{struct_header_acaa769a2a6035628049a90a3e7a4ca1a} 
+int Header\+::sequence\+List\+Head\+RBN}
+
+
+
+Head of the active block list (RBN). 
+
+
+
+Definition at line \mbox{\hyperlink{_header_and_block_structures_8h_source_l00038}{38}} of file \mbox{\hyperlink{_header_and_block_structures_8h_source}{Header\+And\+Block\+Structures.\+h}}.
+
+\Hypertarget{struct_header_a1ad3d90de6eb96fb6d3a82a1f570501a}\index{Header@{Header}!sizeFormatType@{sizeFormatType}}
+\index{sizeFormatType@{sizeFormatType}!Header@{Header}}
+\doxysubsubsection{\texorpdfstring{sizeFormatType}{sizeFormatType}}
+{\footnotesize\ttfamily \label{struct_header_a1ad3d90de6eb96fb6d3a82a1f570501a} 
+string Header\+::size\+Format\+Type}
+
+
+
+e.\+g., "{}\+ASCII"{} or "{}binary"{} 
+
+
+
+Definition at line \mbox{\hyperlink{_header_and_block_structures_8h_source_l00027}{27}} of file \mbox{\hyperlink{_header_and_block_structures_8h_source}{Header\+And\+Block\+Structures.\+h}}.
+
+\Hypertarget{struct_header_a023113fea452b6270a955baea03a46c8}\index{Header@{Header}!sizeInBytes@{sizeInBytes}}
+\index{sizeInBytes@{sizeInBytes}!Header@{Header}}
+\doxysubsubsection{\texorpdfstring{sizeInBytes}{sizeInBytes}}
+{\footnotesize\ttfamily \label{struct_header_a023113fea452b6270a955baea03a46c8} 
+int Header\+::size\+In\+Bytes}
+
+
+
+Definition at line \mbox{\hyperlink{_header_buffer_8h_source_l00031}{31}} of file \mbox{\hyperlink{_header_buffer_8h_source}{Header\+Buffer.\+h}}.
+
+\Hypertarget{struct_header_ad5923d332c4a4611201de6d237d2b694}\index{Header@{Header}!stale@{stale}}
+\index{stale@{stale}!Header@{Header}}
+\doxysubsubsection{\texorpdfstring{stale}{stale}}
+{\footnotesize\ttfamily \label{struct_header_ad5923d332c4a4611201de6d237d2b694} 
+bool Header\+::stale}
+
+
+
+Indicates if the data is stale. 
+
+
+
+Definition at line \mbox{\hyperlink{_header_and_block_structures_8h_source_l00039}{39}} of file \mbox{\hyperlink{_header_and_block_structures_8h_source}{Header\+And\+Block\+Structures.\+h}}.
+
+\Hypertarget{struct_header_a465adaa6f78c42f66568341b53bc0ae8}\index{Header@{Header}!version@{version}}
+\index{version@{version}!Header@{Header}}
+\doxysubsubsection{\texorpdfstring{version}{version}}
+{\footnotesize\ttfamily \label{struct_header_a465adaa6f78c42f66568341b53bc0ae8} 
+string Header\+::version}
+
+
+
+Version of the format. 
+
+
+
+Definition at line \mbox{\hyperlink{_header_and_block_structures_8h_source_l00024}{24}} of file \mbox{\hyperlink{_header_and_block_structures_8h_source}{Header\+And\+Block\+Structures.\+h}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_header_and_block_structures_8h}{Header\+And\+Block\+Structures.\+h}}\item 
+\mbox{\hyperlink{_header_buffer_8h}{Header\+Buffer.\+h}}\end{DoxyCompactItemize}

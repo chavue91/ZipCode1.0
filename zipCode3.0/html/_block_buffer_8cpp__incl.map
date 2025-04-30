@@ -1,0 +1,17 @@
+<map id="BlockBuffer.cpp" name="BlockBuffer.cpp">
+<area shape="rect" id="Node000001" title="Implements BlockBuffer class functions for handling block&#45;level I/O." alt="" coords="185,5,298,32"/>
+<area shape="rect" id="Node000002" href="$_block_buffer_8h.html" title="Defines the BlockBuffer class for managing read/write operations on blocked sequence set blocks." alt="" coords="138,80,238,107"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="234,34,208,69,204,66,230,31"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="262,80,330,107"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="253,31,279,66,275,69,249,34"/>
+<area shape="rect" id="Node000003" href="$_header_and_block_structures_8h.html" title="Defines structures for the header and block layouts used in the Blocked Sequence Set." alt="" coords="17,155,207,181"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="177,109,138,146,134,142,173,105"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="231,155,297,181"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="203,105,242,142,238,146,199,109"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="5,229,59,256"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="100,184,59,221,55,217,96,180"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="83,229,141,256"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="115,182,115,214,109,214,109,182"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="164,229,225,256"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="128,180,171,217,167,221,125,184"/>
+</map>

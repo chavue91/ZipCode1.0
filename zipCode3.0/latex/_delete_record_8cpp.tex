@@ -1,0 +1,118 @@
+\doxysection{Delete\+Record.\+cpp File Reference}
+\hypertarget{_delete_record_8cpp}{}\label{_delete_record_8cpp}\index{DeleteRecord.cpp@{DeleteRecord.cpp}}
+
+
+Handles deletion of ZIP code records from a blocked sequence set.  
+
+
+{\ttfamily \#include "{}Header\+Buffer3.\+h"{}}\newline
+{\ttfamily \#include "{}Block\+Buffer.\+h"{}}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$map$>$}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include $<$set$>$}\newline
+Include dependency graph for Delete\+Record.\+cpp\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_delete_record_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+string \mbox{\hyperlink{_delete_record_8cpp_adbadb55f3590dcf5c967f8fb80947983}{extract\+Key}} (const string \&record)
+\item 
+map$<$ string, int $>$ \mbox{\hyperlink{_delete_record_8cpp_a7cd0fd4cd59e0ae4ea9003e386470c2c}{load\+Index}} (const string \&index\+File)
+\item 
+void \mbox{\hyperlink{_delete_record_8cpp_ab8d0ee1ba496dba77709a496a025c37a}{write\+Index}} (const string \&index\+File, const map$<$ string, int $>$ \&index)
+\item 
+int \mbox{\hyperlink{_delete_record_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int argc, char \texorpdfstring{$\ast$}{*}argv\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Handles deletion of ZIP code records from a blocked sequence set. 
+
+
+
+Definition in file \mbox{\hyperlink{_delete_record_8cpp_source}{Delete\+Record.\+cpp}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{_delete_record_8cpp_adbadb55f3590dcf5c967f8fb80947983}\index{DeleteRecord.cpp@{DeleteRecord.cpp}!extractKey@{extractKey}}
+\index{extractKey@{extractKey}!DeleteRecord.cpp@{DeleteRecord.cpp}}
+\doxysubsubsection{\texorpdfstring{extractKey()}{extractKey()}}
+{\footnotesize\ttfamily \label{_delete_record_8cpp_adbadb55f3590dcf5c967f8fb80947983} 
+string extract\+Key (\begin{DoxyParamCaption}\item[{const string \&}]{record}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_delete_record_8cpp_source_l00016}{16}} of file \mbox{\hyperlink{_delete_record_8cpp_source}{Delete\+Record.\+cpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=216pt]{_delete_record_8cpp_adbadb55f3590dcf5c967f8fb80947983_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{_delete_record_8cpp_a7cd0fd4cd59e0ae4ea9003e386470c2c}\index{DeleteRecord.cpp@{DeleteRecord.cpp}!loadIndex@{loadIndex}}
+\index{loadIndex@{loadIndex}!DeleteRecord.cpp@{DeleteRecord.cpp}}
+\doxysubsubsection{\texorpdfstring{loadIndex()}{loadIndex()}}
+{\footnotesize\ttfamily \label{_delete_record_8cpp_a7cd0fd4cd59e0ae4ea9003e386470c2c} 
+map$<$ string, int $>$ load\+Index (\begin{DoxyParamCaption}\item[{const string \&}]{index\+File}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_delete_record_8cpp_source_l00023}{23}} of file \mbox{\hyperlink{_delete_record_8cpp_source}{Delete\+Record.\+cpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=211pt]{_delete_record_8cpp_a7cd0fd4cd59e0ae4ea9003e386470c2c_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{_delete_record_8cpp_a0ddf1224851353fc92bfbff6f499fa97}\index{DeleteRecord.cpp@{DeleteRecord.cpp}!main@{main}}
+\index{main@{main}!DeleteRecord.cpp@{DeleteRecord.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \label{_delete_record_8cpp_a0ddf1224851353fc92bfbff6f499fa97} 
+int main (\begin{DoxyParamCaption}\item[{int}]{argc}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{argv}{\mbox{[}$\,$\mbox{]}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_delete_record_8cpp_source_l00044}{44}} of file \mbox{\hyperlink{_delete_record_8cpp_source}{Delete\+Record.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_delete_record_8cpp_a0ddf1224851353fc92bfbff6f499fa97_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{_delete_record_8cpp_ab8d0ee1ba496dba77709a496a025c37a}\index{DeleteRecord.cpp@{DeleteRecord.cpp}!writeIndex@{writeIndex}}
+\index{writeIndex@{writeIndex}!DeleteRecord.cpp@{DeleteRecord.cpp}}
+\doxysubsubsection{\texorpdfstring{writeIndex()}{writeIndex()}}
+{\footnotesize\ttfamily \label{_delete_record_8cpp_ab8d0ee1ba496dba77709a496a025c37a} 
+void write\+Index (\begin{DoxyParamCaption}\item[{const string \&}]{index\+File}{, }\item[{const map$<$ string, int $>$ \&}]{index}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_delete_record_8cpp_source_l00037}{37}} of file \mbox{\hyperlink{_delete_record_8cpp_source}{Delete\+Record.\+cpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=214pt]{_delete_record_8cpp_ab8d0ee1ba496dba77709a496a025c37a_icgraph}
+\end{center}
+\end{figure}

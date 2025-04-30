@@ -1,0 +1,32 @@
+<map id="DumpUtility.cpp" name="DumpUtility.cpp">
+<area shape="rect" id="Node000001" title="Implements dump functions for the blocked sequence set structure." alt="" coords="349,5,463,32"/>
+<area shape="rect" id="Node000002" href="$_dump_utility_8h.html" title="Provides functions to dump the blocked sequence set file structure." alt="" coords="5,80,106,107"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="349,34,121,81,120,76,348,29"/>
+<area shape="rect" id="Node000005" href="$_header_buffer3_8h.html" title="Provides a class for reading and writing header records for blocked sequence set files." alt="" coords="254,80,369,107"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="391,35,342,73,338,68,388,30"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="366,229,423,256"/>
+<area shape="poly" id="edge17_Node000001_Node000007" title=" " alt="" coords="419,31,438,58,458,96,470,139,469,161,463,182,449,204,430,222,427,218,445,201,458,180,464,160,464,140,453,98,434,61,414,34"/>
+<area shape="rect" id="Node000009" href="$_block_buffer_8h.html" title="Defines the BlockBuffer class for managing read/write operations on blocked sequence set blocks." alt="" coords="130,80,229,107"/>
+<area shape="poly" id="edge10_Node000001_Node000009" title=" " alt="" coords="367,35,234,77,233,72,366,30"/>
+<area shape="rect" id="Node000010" href="$_record_buffer_8h.html" title="Provides a utility class to unpack a record string into fields." alt="" coords="340,155,448,181"/>
+<area shape="poly" id="edge13_Node000001_Node000010" title=" " alt="" coords="408,33,399,139,394,139,402,32"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="524,80,595,107"/>
+<area shape="poly" id="edge16_Node000001_Node000011" title=" " alt="" coords="434,30,520,70,518,75,432,35"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="620,80,686,107"/>
+<area shape="poly" id="edge18_Node000001_Node000012" title=" " alt="" coords="450,30,605,75,604,80,448,35"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="153,229,206,256"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="47,108,25,143,20,162,26,180,48,203,77,219,108,229,138,235,137,241,107,235,75,224,45,207,21,183,15,162,20,141,42,105"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="36,155,102,181"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="60,107,66,139,61,140,55,108"/>
+<area shape="poly" id="edge9_Node000005_Node000004" title=" " alt="" coords="270,110,117,155,115,150,268,105"/>
+<area shape="rect" id="Node000006" href="$_header_and_block_structures_8h.html" title="Defines structures for the header and block layouts used in the Blocked Sequence Set." alt="" coords="126,155,316,181"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="297,109,250,147,246,143,294,105"/>
+<area shape="poly" id="edge6_Node000006_Node000003" title=" " alt="" coords="216,183,196,217,192,215,211,181"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="252,179,352,221,350,226,250,184"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="231,229,291,256"/>
+<area shape="poly" id="edge8_Node000006_Node000008" title=" " alt="" coords="230,181,249,214,244,217,225,183"/>
+<area shape="poly" id="edge12_Node000009_Node000004" title=" " alt="" coords="162,109,102,148,99,144,159,105"/>
+<area shape="poly" id="edge11_Node000009_Node000006" title=" " alt="" coords="189,106,209,140,204,143,184,109"/>
+<area shape="poly" id="edge14_Node000010_Node000003" title=" " alt="" coords="358,184,222,230,220,225,356,179"/>
+<area shape="poly" id="edge15_Node000010_Node000007" title=" " alt="" coords="397,182,397,214,392,214,392,182"/>
+</map>

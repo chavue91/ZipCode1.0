@@ -1,0 +1,127 @@
+\doxysection{main.\+cpp File Reference}
+\hypertarget{main_8cpp}{}\label{main_8cpp}\index{main.cpp@{main.cpp}}
+
+
+Main application to process Zip Code data from CSV or length-\/indicated file.  
+
+
+{\ttfamily \#include "{}CSVBuffer.\+h"{}}\newline
+{\ttfamily \#include "{}Dump\+Utility.\+h"{}}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$cstring$>$}\newline
+{\ttfamily \#include $<$cstdlib$>$}\newline
+Include dependency graph for main.\+cpp\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{main_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int argc, char \texorpdfstring{$\ast$}{*}argv\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Main driver function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Main application to process Zip Code data from CSV or length-\/indicated file. 
+
+Main application to process Zip Code data using blocked sequence set structure.
+
+Uses \doxylink{class_c_s_v_buffer}{CSVBuffer} to generate a state-\/wise table of extreme Zip Codes or convert CSV to length-\/indicated format.
+
+Supports CSV conversion, summary generation, zip code search, record insertion, deletion, and dump features for blocked sequence set files. 
+
+Definition in file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}\index{main.cpp@{main.cpp}!main@{main}}
+\index{main@{main}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \label{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97} 
+int main (\begin{DoxyParamCaption}\item[{int}]{argc}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{argv}{\mbox{[}$\,$\mbox{]}}\end{DoxyParamCaption})}
+
+
+
+Main driver function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em argc} & Argument count. \\
+\hline
+{\em argv} & Argument vector. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Exit code. 
+\end{DoxyReturn}
+\texorpdfstring{$<$}{<} List of zip codes for search.
+
+\texorpdfstring{$<$}{<} Input data file name.
+
+\texorpdfstring{$<$}{<} Default index file name.
+
+\texorpdfstring{$<$}{<} File containing records to insert.
+
+\texorpdfstring{$<$}{<} File containing records to delete.
+
+\texorpdfstring{$<$}{<} Flag for physical dump.
+
+\texorpdfstring{$<$}{<} Flag for logical dump.
+
+\texorpdfstring{$<$}{<} Flag for insertion.
+
+\texorpdfstring{$<$}{<} Flag for deletion.
+
+\texorpdfstring{$<$}{<} Flag for zip code search.
+
+Parse command-\/line arguments.
+
+\texorpdfstring{$<$}{<} Add zip code from argument.
+
+\texorpdfstring{$<$}{<} Assume non-\/flag argument is input file.
+
+Validate that an input file was specified.
+
+Perform zip code search if applicable.
+
+\texorpdfstring{$<$}{<} Load file into \doxylink{class_c_s_v_buffer}{CSVBuffer}.
+
+\texorpdfstring{$<$}{<} Perform zip code search.
+
+Dump blocks in physical order if flag set.
+
+Dump blocks in logical order if flag set.
+
+Run Insert\+Record program if insertion requested.
+
+\texorpdfstring{$<$}{<} Execute external insert program.
+
+Run Delete\+Record program if deletion requested.
+
+\texorpdfstring{$<$}{<} Execute external delete program.
+
+If no arguments matched, enter interactive mode.
+
+Option 1\+: Convert CSV to length-\/indicated format.
+
+Option 2\+: Generate extreme zip summary per state.
+
+\texorpdfstring{$<$}{<} Generate summary report.
+
+\texorpdfstring{$<$}{<} Success.
+
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00021}{21}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97_cgraph}
+\end{center}
+\end{figure}

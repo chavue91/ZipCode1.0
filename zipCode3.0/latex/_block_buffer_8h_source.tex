@@ -1,0 +1,25 @@
+\doxysection{Block\+Buffer.\+h}
+\hypertarget{_block_buffer_8h_source}{}\label{_block_buffer_8h_source}\mbox{\hyperlink{_block_buffer_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_block_buffer_8h_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{_block_buffer_8h_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_block_buffer_8h_source_l00004}00004\ \textcolor{preprocessor}{\#ifndef\ BLOCKBUFFER\_H}}
+\DoxyCodeLine{\Hypertarget{_block_buffer_8h_source_l00005}00005\ \textcolor{preprocessor}{\#define\ BLOCKBUFFER\_H}}
+\DoxyCodeLine{\Hypertarget{_block_buffer_8h_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{_block_buffer_8h_source_l00007}00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_header_and_block_structures_8h}{HeaderAndBlockStructures.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_block_buffer_8h_source_l00008}00008\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{\Hypertarget{_block_buffer_8h_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{_block_buffer_8h_source_l00011}\mbox{\hyperlink{class_block_buffer}{00011}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_block_buffer}{BlockBuffer}}\ \{}
+\DoxyCodeLine{\Hypertarget{_block_buffer_8h_source_l00012}00012\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_block_buffer_8h_source_l00019}00019\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_block_buffer_a2362ffca9da187df21c6ae0e4fe253a7}{writeBlock}}(std::ostream\&\ out,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_block}{Block}}\&\ block,\ \textcolor{keywordtype}{int}\ rbn,\ \textcolor{keywordtype}{int}\ blockSize);}
+\DoxyCodeLine{\Hypertarget{_block_buffer_8h_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_block_buffer_8h_source_l00027}\mbox{\hyperlink{class_block_buffer_a1d0b033c6101e9faabf211d0d2dc7d76}{00027}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_block_buffer_a1d0b033c6101e9faabf211d0d2dc7d76}{readBlock}}(std::istream\&\ in,\ \mbox{\hyperlink{struct_block}{Block}}\&\ block,\ \textcolor{keywordtype}{int}\ rbn,\ \textcolor{keywordtype}{int}\ blockSize);}
+\DoxyCodeLine{\Hypertarget{_block_buffer_8h_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{_block_buffer_8h_source_l00035}\mbox{\hyperlink{class_block_buffer_a8905e337aab440a80e2fe33aa7646de5}{00035}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_block_buffer_a8905e337aab440a80e2fe33aa7646de5}{writeAvailBlock}}(std::ostream\&\ out,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_avail_block}{AvailBlock}}\&\ avail,\ \textcolor{keywordtype}{int}\ rbn,\ \textcolor{keywordtype}{int}\ blockSize);}
+\DoxyCodeLine{\Hypertarget{_block_buffer_8h_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_block_buffer_8h_source_l00042}\mbox{\hyperlink{class_block_buffer_a0211cf60d95dcb85a831f7ffce0778a9}{00042}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_block_buffer_a0211cf60d95dcb85a831f7ffce0778a9}{readNextAvailRBN}}(std::ifstream\&\ in,\ \textcolor{keywordtype}{int}\ rbn,\ \textcolor{keywordtype}{int}\ blockSize);}
+\DoxyCodeLine{\Hypertarget{_block_buffer_8h_source_l00043}00043\ \};}
+\DoxyCodeLine{\Hypertarget{_block_buffer_8h_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{_block_buffer_8h_source_l00045}00045\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ BLOCKBUFFER\_H}}
+
+\end{DoxyCode}

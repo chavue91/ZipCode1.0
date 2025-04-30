@@ -1,0 +1,166 @@
+\doxysection{Insert\+Record.\+cpp File Reference}
+\hypertarget{_insert_record_8cpp}{}\label{_insert_record_8cpp}\index{InsertRecord.cpp@{InsertRecord.cpp}}
+
+
+Handles insertion of new ZIP code records into a blocked sequence set.  
+
+
+{\ttfamily \#include "{}Header\+Buffer3.\+h"{}}\newline
+{\ttfamily \#include "{}Block\+Buffer.\+h"{}}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$map$>$}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+Include dependency graph for Insert\+Record.\+cpp\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_insert_record_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+string \mbox{\hyperlink{_insert_record_8cpp_adbadb55f3590dcf5c967f8fb80947983}{extract\+Key}} (const string \&record)
+\begin{DoxyCompactList}\small\item\em Extracts the primary key (ZIP code) from a record string. \end{DoxyCompactList}\item 
+map$<$ string, int $>$ \mbox{\hyperlink{_insert_record_8cpp_a7cd0fd4cd59e0ae4ea9003e386470c2c}{load\+Index}} (const string \&index\+File)
+\begin{DoxyCompactList}\small\item\em Loads the index file into a map of \texorpdfstring{$<$}{<}key, RBN\texorpdfstring{$>$}{>} pairs. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_insert_record_8cpp_ab8d0ee1ba496dba77709a496a025c37a}{write\+Index}} (const string \&index\+File, const map$<$ string, int $>$ \&index)
+\begin{DoxyCompactList}\small\item\em Writes the index map to the index file. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{_insert_record_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int argc, char \texorpdfstring{$\ast$}{*}argv\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Main function for inserting ZIP code records into a blocked sequence set. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Handles insertion of new ZIP code records into a blocked sequence set. 
+
+
+
+Definition in file \mbox{\hyperlink{_insert_record_8cpp_source}{Insert\+Record.\+cpp}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{_insert_record_8cpp_adbadb55f3590dcf5c967f8fb80947983}\index{InsertRecord.cpp@{InsertRecord.cpp}!extractKey@{extractKey}}
+\index{extractKey@{extractKey}!InsertRecord.cpp@{InsertRecord.cpp}}
+\doxysubsubsection{\texorpdfstring{extractKey()}{extractKey()}}
+{\footnotesize\ttfamily \label{_insert_record_8cpp_adbadb55f3590dcf5c967f8fb80947983} 
+string extract\+Key (\begin{DoxyParamCaption}\item[{const string \&}]{record}{}\end{DoxyParamCaption})}
+
+
+
+Extracts the primary key (ZIP code) from a record string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em record} & A comma-\/separated string representing a ZIP code record. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The primary key (ZIP code). 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_insert_record_8cpp_source_l00018}{18}} of file \mbox{\hyperlink{_insert_record_8cpp_source}{Insert\+Record.\+cpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=216pt]{_insert_record_8cpp_adbadb55f3590dcf5c967f8fb80947983_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{_insert_record_8cpp_a7cd0fd4cd59e0ae4ea9003e386470c2c}\index{InsertRecord.cpp@{InsertRecord.cpp}!loadIndex@{loadIndex}}
+\index{loadIndex@{loadIndex}!InsertRecord.cpp@{InsertRecord.cpp}}
+\doxysubsubsection{\texorpdfstring{loadIndex()}{loadIndex()}}
+{\footnotesize\ttfamily \label{_insert_record_8cpp_a7cd0fd4cd59e0ae4ea9003e386470c2c} 
+map$<$ string, int $>$ load\+Index (\begin{DoxyParamCaption}\item[{const string \&}]{index\+File}{}\end{DoxyParamCaption})}
+
+
+
+Loads the index file into a map of \texorpdfstring{$<$}{<}key, RBN\texorpdfstring{$>$}{>} pairs. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index\+File} & Path to the index file. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Map containing highest keys and their corresponding RBNs. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_insert_record_8cpp_source_l00028}{28}} of file \mbox{\hyperlink{_insert_record_8cpp_source}{Insert\+Record.\+cpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=211pt]{_insert_record_8cpp_a7cd0fd4cd59e0ae4ea9003e386470c2c_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{_insert_record_8cpp_a0ddf1224851353fc92bfbff6f499fa97}\index{InsertRecord.cpp@{InsertRecord.cpp}!main@{main}}
+\index{main@{main}!InsertRecord.cpp@{InsertRecord.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \label{_insert_record_8cpp_a0ddf1224851353fc92bfbff6f499fa97} 
+int main (\begin{DoxyParamCaption}\item[{int}]{argc}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{argv}{\mbox{[}$\,$\mbox{]}}\end{DoxyParamCaption})}
+
+
+
+Main function for inserting ZIP code records into a blocked sequence set. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em argc} & Argument count. \\
+\hline
+{\em argv} & Command-\/line arguments\+: $<$blocked\+\_\+file$>$ $<$index\+\_\+file$>$ $<$insert\+\_\+file$>$. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, 1 on failure. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_insert_record_8cpp_source_l00056}{56}} of file \mbox{\hyperlink{_insert_record_8cpp_source}{Insert\+Record.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_insert_record_8cpp_a0ddf1224851353fc92bfbff6f499fa97_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{_insert_record_8cpp_ab8d0ee1ba496dba77709a496a025c37a}\index{InsertRecord.cpp@{InsertRecord.cpp}!writeIndex@{writeIndex}}
+\index{writeIndex@{writeIndex}!InsertRecord.cpp@{InsertRecord.cpp}}
+\doxysubsubsection{\texorpdfstring{writeIndex()}{writeIndex()}}
+{\footnotesize\ttfamily \label{_insert_record_8cpp_ab8d0ee1ba496dba77709a496a025c37a} 
+void write\+Index (\begin{DoxyParamCaption}\item[{const string \&}]{index\+File}{, }\item[{const map$<$ string, int $>$ \&}]{index}{}\end{DoxyParamCaption})}
+
+
+
+Writes the index map to the index file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index\+File} & Path to the index file. \\
+\hline
+{\em index} & Map containing updated \texorpdfstring{$<$}{<}key, RBN\texorpdfstring{$>$}{>} pairs. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_insert_record_8cpp_source_l00045}{45}} of file \mbox{\hyperlink{_insert_record_8cpp_source}{Insert\+Record.\+cpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=214pt]{_insert_record_8cpp_ab8d0ee1ba496dba77709a496a025c37a_icgraph}
+\end{center}
+\end{figure}

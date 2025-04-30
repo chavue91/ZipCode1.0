@@ -1,0 +1,329 @@
+\begin{theindex}
+
+  \item {AvailBlock}, \hyperpage{9}
+    \subitem {AvailBlock}, \hyperpage{9}
+    \subitem {blankFill}, \hyperpage{10}
+    \subitem {nextAvailRBN}, \hyperpage{10}
+    \subitem {recordCount}, \hyperpage{10}
+  \item {availListHeadRBN}
+    \subitem {Header}, \hyperpage{25}
+
+  \indexspace
+
+  \item {blankFill}
+    \subitem {AvailBlock}, \hyperpage{10}
+  \item {Block}, \hyperpage{10}
+    \subitem {nextRBN}, \hyperpage{11}
+    \subitem {prevRBN}, \hyperpage{11}
+    \subitem {recordCount}, \hyperpage{11}
+    \subitem {records}, \hyperpage{11}
+  \item {BlockBuffer}, \hyperpage{11}
+    \subitem {readBlock}, \hyperpage{12}
+    \subitem {readNextAvailRBN}, \hyperpage{13}
+    \subitem {writeAvailBlock}, \hyperpage{13}
+    \subitem {writeBlock}, \hyperpage{14}
+  \item {BlockBuffer.cpp}, \hyperpage{37}
+  \item {BlockBuffer.h}, \hyperpage{39}
+  \item {blockCount}
+    \subitem {Header}, \hyperpage{25}
+  \item {blockSize}
+    \subitem {Header}, \hyperpage{25}
+  \item {BuildIndex.cpp}, \hyperpage{40}
+    \subitem {extractKey}, \hyperpage{41}
+    \subitem {main}, \hyperpage{41}
+  \item {buildPrimaryKeyIndex}
+    \subitem {CSVBuffer}, \hyperpage{17}
+
+  \indexspace
+
+  \item {convertCSVToLengthIndicated}
+    \subitem {CSVBuffer}, \hyperpage{17}
+  \item {ConvertToBlocked.cpp}, \hyperpage{43}
+    \subitem {main}, \hyperpage{44}
+  \item {county}
+    \subitem {ZipRecord}, \hyperpage{35}
+  \item {CSVBuffer}, \hyperpage{15}
+    \subitem {buildPrimaryKeyIndex}, \hyperpage{17}
+    \subitem {convertCSVToLengthIndicated}, \hyperpage{17}
+    \subitem {CSVBuffer}, \hyperpage{16}
+    \subitem {file}, \hyperpage{20}
+    \subitem {generateStateTable}, \hyperpage{18}
+    \subitem {getRecords}, \hyperpage{18}
+    \subitem {loadLengthIndicatedRecords}, \hyperpage{18}
+    \subitem {loadRecords}, \hyperpage{19}
+    \subitem {records}, \hyperpage{20}
+    \subitem {searchByZipCodes}, \hyperpage{19}
+  \item {CSVBuffer.cpp}, \hyperpage{46}
+  \item {CSVBuffer.h}, \hyperpage{50}
+
+  \indexspace
+
+  \item {DeleteRecord.cpp}, \hyperpage{52}
+    \subitem {extractKey}, \hyperpage{53}
+    \subitem {loadIndex}, \hyperpage{53}
+    \subitem {main}, \hyperpage{53}
+    \subitem {writeIndex}, \hyperpage{54}
+  \item {DumpBlocked.cpp}, \hyperpage{56}
+    \subitem {dumpLogical}, \hyperpage{57}
+    \subitem {dumpPhysical}, \hyperpage{57}
+    \subitem {main}, \hyperpage{58}
+  \item {dumpByLogicalOrder}
+    \subitem {DumpUtility.cpp}, \hyperpage{61}
+    \subitem {DumpUtility.h}, \hyperpage{66}
+  \item {dumpByPhysicalOrder}
+    \subitem {DumpUtility.cpp}, \hyperpage{61}
+    \subitem {DumpUtility.h}, \hyperpage{66}
+  \item {dumpLogical}
+    \subitem {DumpBlocked.cpp}, \hyperpage{57}
+  \item {dumpPhysical}
+    \subitem {DumpBlocked.cpp}, \hyperpage{57}
+  \item {DumpUtility.cpp}, \hyperpage{60}
+    \subitem {dumpByLogicalOrder}, \hyperpage{61}
+    \subitem {dumpByPhysicalOrder}, \hyperpage{61}
+    \subitem {printAvail}, \hyperpage{62}
+    \subitem {printBlock}, \hyperpage{63}
+  \item {DumpUtility.h}, \hyperpage{65}
+    \subitem {dumpByLogicalOrder}, \hyperpage{66}
+    \subitem {dumpByPhysicalOrder}, \hyperpage{66}
+
+  \indexspace
+
+  \item {extractKey}
+    \subitem {BuildIndex.cpp}, \hyperpage{41}
+    \subitem {DeleteRecord.cpp}, \hyperpage{53}
+    \subitem {InsertRecord.cpp}, \hyperpage{76}
+    \subitem {SearchIndex.cpp}, \hyperpage{88}
+
+  \indexspace
+
+  \item {Field}, \hyperpage{21}
+    \subitem {format}, \hyperpage{21}
+    \subitem {isPrimaryKey}, \hyperpage{21}
+    \subitem {name}, \hyperpage{21}
+    \subitem {type}, \hyperpage{22}
+  \item {fields}
+    \subitem {Header}, \hyperpage{25}
+    \subitem {RecordBuffer}, \hyperpage{35}
+  \item {fieldsPerRecord}
+    \subitem {Header}, \hyperpage{26}
+  \item {file}
+    \subitem {CSVBuffer}, \hyperpage{20}
+  \item {fileStructureType}
+    \subitem {Header}, \hyperpage{26}
+  \item {format}
+    \subitem {Field}, \hyperpage{21}
+
+  \indexspace
+
+  \item {generateStateTable}
+    \subitem {CSVBuffer}, \hyperpage{18}
+  \item {getFields}
+    \subitem {RecordBuffer}, \hyperpage{34}
+  \item {getKey}
+    \subitem {RecordBuffer}, \hyperpage{34}
+  \item {getRecords}
+    \subitem {CSVBuffer}, \hyperpage{18}
+
+  \indexspace
+
+  \item {Header}, \hyperpage{22}
+    \subitem {availListHeadRBN}, \hyperpage{25}
+    \subitem {blockCount}, \hyperpage{25}
+    \subitem {blockSize}, \hyperpage{25}
+    \subitem {fields}, \hyperpage{25}
+    \subitem {fieldsPerRecord}, \hyperpage{26}
+    \subitem {fileStructureType}, \hyperpage{26}
+    \subitem {Header}, \hyperpage{24}
+    \subitem {headerSize}, \hyperpage{26}
+    \subitem {indexFileName}, \hyperpage{26}
+    \subitem {indexSchema}, \hyperpage{26}
+    \subitem {minBlockCapacity}, \hyperpage{26}
+    \subitem {primaryKey}, \hyperpage{27}
+    \subitem {primaryKeyFileName}, \hyperpage{27}
+    \subitem {primaryKeyOrdinal}, \hyperpage{27}
+    \subitem {readFromFile}, \hyperpage{24}
+    \subitem {recordCount}, \hyperpage{27}
+    \subitem {recordSizeFieldLength}, \hyperpage{27}
+    \subitem {sequenceListHeadRBN}, \hyperpage{27}
+    \subitem {sizeFormatType}, \hyperpage{28}
+    \subitem {sizeInBytes}, \hyperpage{28}
+    \subitem {stale}, \hyperpage{28}
+    \subitem {version}, \hyperpage{28}
+    \subitem {writeToFile}, \hyperpage{24}
+  \item {header}
+    \subitem {HeaderBuffer3}, \hyperpage{33}
+  \item {HeaderAndBlockStructures.h}, \hyperpage{67}
+  \item {HeaderBuffer.h}, \hyperpage{68}
+  \item {HeaderBuffer3}, \hyperpage{29}
+    \subitem {header}, \hyperpage{33}
+    \subitem {read}, \hyperpage{29}
+    \subitem {readField}, \hyperpage{30}
+    \subitem {write}, \hyperpage{31}
+    \subitem {writeField}, \hyperpage{32}
+  \item {HeaderBuffer3.cpp}, \hyperpage{71}
+  \item {HeaderBuffer3.h}, \hyperpage{73}
+  \item {headerSize}
+    \subitem {Header}, \hyperpage{26}
+
+  \indexspace
+
+  \item {indexFileName}
+    \subitem {Header}, \hyperpage{26}
+  \item {indexSchema}
+    \subitem {Header}, \hyperpage{26}
+  \item {InsertRecord.cpp}, \hyperpage{75}
+    \subitem {extractKey}, \hyperpage{76}
+    \subitem {loadIndex}, \hyperpage{76}
+    \subitem {main}, \hyperpage{77}
+    \subitem {writeIndex}, \hyperpage{78}
+  \item {isPrimaryKey}
+    \subitem {Field}, \hyperpage{21}
+
+  \indexspace
+
+  \item {latitude}
+    \subitem {ZipRecord}, \hyperpage{35}
+  \item {loadIndex}
+    \subitem {DeleteRecord.cpp}, \hyperpage{53}
+    \subitem {InsertRecord.cpp}, \hyperpage{76}
+    \subitem {SearchIndex.cpp}, \hyperpage{88}
+  \item {loadLengthIndicatedRecords}
+    \subitem {CSVBuffer}, \hyperpage{18}
+  \item {loadRecords}
+    \subitem {CSVBuffer}, \hyperpage{19}
+  \item {locateBlock}
+    \subitem {SearchIndex.cpp}, \hyperpage{89}
+  \item {longitude}
+    \subitem {ZipRecord}, \hyperpage{36}
+
+  \indexspace
+
+  \item {main}
+    \subitem {BuildIndex.cpp}, \hyperpage{41}
+    \subitem {ConvertToBlocked.cpp}, \hyperpage{44}
+    \subitem {DeleteRecord.cpp}, \hyperpage{53}
+    \subitem {DumpBlocked.cpp}, \hyperpage{58}
+    \subitem {InsertRecord.cpp}, \hyperpage{77}
+    \subitem {main.cpp}, \hyperpage{81}
+    \subitem {SearchIndex.cpp}, \hyperpage{89}
+  \item {main.cpp}, \hyperpage{80}
+    \subitem {main}, \hyperpage{81}
+  \item {minBlockCapacity}
+    \subitem {Header}, \hyperpage{26}
+
+  \indexspace
+
+  \item {name}
+    \subitem {Field}, \hyperpage{21}
+  \item {nextAvailRBN}
+    \subitem {AvailBlock}, \hyperpage{10}
+  \item {nextRBN}
+    \subitem {Block}, \hyperpage{11}
+
+  \indexspace
+
+  \item {placeName}
+    \subitem {ZipRecord}, \hyperpage{36}
+  \item {prevRBN}
+    \subitem {Block}, \hyperpage{11}
+  \item {primaryKey}
+    \subitem {Header}, \hyperpage{27}
+  \item {primaryKeyFileName}
+    \subitem {Header}, \hyperpage{27}
+  \item {primaryKeyOrdinal}
+    \subitem {Header}, \hyperpage{27}
+  \item {printAvail}
+    \subitem {DumpUtility.cpp}, \hyperpage{62}
+  \item {printBlock}
+    \subitem {DumpUtility.cpp}, \hyperpage{63}
+
+  \indexspace
+
+  \item {read}
+    \subitem {HeaderBuffer3}, \hyperpage{29}
+  \item {readBlock}
+    \subitem {BlockBuffer}, \hyperpage{12}
+  \item {readField}
+    \subitem {HeaderBuffer3}, \hyperpage{30}
+  \item {readFromFile}
+    \subitem {Header}, \hyperpage{24}
+  \item {README.md}, \hyperpage{84}
+  \item {readNextAvailRBN}
+    \subitem {BlockBuffer}, \hyperpage{13}
+  \item {RecordBuffer}, \hyperpage{33}
+    \subitem {fields}, \hyperpage{35}
+    \subitem {getFields}, \hyperpage{34}
+    \subitem {getKey}, \hyperpage{34}
+    \subitem {RecordBuffer}, \hyperpage{33}
+  \item {RecordBuffer.cpp}, \hyperpage{84}
+  \item {RecordBuffer.h}, \hyperpage{85}
+  \item {recordCount}
+    \subitem {AvailBlock}, \hyperpage{10}
+    \subitem {Block}, \hyperpage{11}
+    \subitem {Header}, \hyperpage{27}
+  \item {records}
+    \subitem {Block}, \hyperpage{11}
+    \subitem {CSVBuffer}, \hyperpage{20}
+  \item {recordSizeFieldLength}
+    \subitem {Header}, \hyperpage{27}
+
+  \indexspace
+
+  \item {searchByZipCodes}
+    \subitem {CSVBuffer}, \hyperpage{19}
+  \item {SearchIndex.cpp}, \hyperpage{87}
+    \subitem {extractKey}, \hyperpage{88}
+    \subitem {loadIndex}, \hyperpage{88}
+    \subitem {locateBlock}, \hyperpage{89}
+    \subitem {main}, \hyperpage{89}
+  \item {sequenceListHeadRBN}
+    \subitem {Header}, \hyperpage{27}
+  \item {sizeFormatType}
+    \subitem {Header}, \hyperpage{28}
+  \item {sizeInBytes}
+    \subitem {Header}, \hyperpage{28}
+  \item {stale}
+    \subitem {Header}, \hyperpage{28}
+  \item {state}
+    \subitem {ZipRecord}, \hyperpage{36}
+
+  \indexspace
+
+  \item {type}
+    \subitem {Field}, \hyperpage{22}
+
+  \indexspace
+
+  \item {version}
+    \subitem {Header}, \hyperpage{28}
+
+  \indexspace
+
+  \item {write}
+    \subitem {HeaderBuffer3}, \hyperpage{31}
+  \item {writeAvailBlock}
+    \subitem {BlockBuffer}, \hyperpage{13}
+  \item {writeBlock}
+    \subitem {BlockBuffer}, \hyperpage{14}
+  \item {writeField}
+    \subitem {HeaderBuffer3}, \hyperpage{32}
+  \item {writeIndex}
+    \subitem {DeleteRecord.cpp}, \hyperpage{54}
+    \subitem {InsertRecord.cpp}, \hyperpage{78}
+  \item {writeToFile}
+    \subitem {Header}, \hyperpage{24}
+
+  \indexspace
+
+  \item {zipCode}
+    \subitem {ZipRecord}, \hyperpage{36}
+  \item {ZipCode3.0}, \hyperpage{1}
+  \item {ZipRecord}, \hyperpage{35}
+    \subitem {county}, \hyperpage{35}
+    \subitem {latitude}, \hyperpage{35}
+    \subitem {longitude}, \hyperpage{36}
+    \subitem {placeName}, \hyperpage{36}
+    \subitem {state}, \hyperpage{36}
+    \subitem {zipCode}, \hyperpage{36}
+
+\end{theindex}

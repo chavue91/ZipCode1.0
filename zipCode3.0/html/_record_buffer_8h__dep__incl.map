@@ -1,0 +1,7 @@
+<map id="RecordBuffer.h" name="RecordBuffer.h">
+<area shape="rect" id="Node000001" title="Provides a utility class to unpack a record string into fields." alt="" coords="79,5,187,32"/>
+<area shape="rect" id="Node000002" href="$_dump_utility_8cpp.html" title="Implements dump functions for the blocked sequence set structure." alt="" coords="5,80,120,107"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="112,45,77,81,73,78,108,41"/>
+<area shape="rect" id="Node000003" href="$_record_buffer_8cpp.html" title="Implements the RecordBuffer class for parsing CSV records." alt="" coords="144,80,266,107"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="158,41,195,78,191,81,155,45"/>
+</map>

@@ -1,0 +1,99 @@
+\doxysection{Avail\+Block Struct Reference}
+\hypertarget{struct_avail_block}{}\label{struct_avail_block}\index{AvailBlock@{AvailBlock}}
+
+
+Structure for a free/available block.  
+
+
+
+
+{\ttfamily \#include $<$Header\+And\+Block\+Structures.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_avail_block_ae2dda25b254e21210fd1b7eccab743e4}{Avail\+Block}} (int block\+Size)
+\begin{DoxyCompactList}\small\item\em Constructor to initialize and blank-\/fill an avail block. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{struct_avail_block_a2c8227a014c1e358531ac16302fb24ae}{record\+Count}} = 0
+\begin{DoxyCompactList}\small\item\em Should always be 0 for an avail block. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{struct_avail_block_ad8a28915319b22c6c0d7cacf1d82cf30}{next\+Avail\+RBN}}
+\begin{DoxyCompactList}\small\item\em Pointer to the next available block in the avail list. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{struct_avail_block_a5187028ed9e14fec2ef8107f49602cd1}{blank\+Fill}}
+\begin{DoxyCompactList}\small\item\em Fill remaining block with whitespace for reuse. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Structure for a free/available block. 
+
+Definition at line \mbox{\hyperlink{_header_and_block_structures_8h_source_l00051}{51}} of file \mbox{\hyperlink{_header_and_block_structures_8h_source}{Header\+And\+Block\+Structures.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{struct_avail_block_ae2dda25b254e21210fd1b7eccab743e4}\index{AvailBlock@{AvailBlock}!AvailBlock@{AvailBlock}}
+\index{AvailBlock@{AvailBlock}!AvailBlock@{AvailBlock}}
+\doxysubsubsection{\texorpdfstring{AvailBlock()}{AvailBlock()}}
+{\footnotesize\ttfamily \label{struct_avail_block_ae2dda25b254e21210fd1b7eccab743e4} 
+Avail\+Block\+::\+Avail\+Block (\begin{DoxyParamCaption}\item[{int}]{block\+Size}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor to initialize and blank-\/fill an avail block. 
+
+
+
+Definition at line \mbox{\hyperlink{_header_and_block_structures_8h_source_l00057}{57}} of file \mbox{\hyperlink{_header_and_block_structures_8h_source}{Header\+And\+Block\+Structures.\+h}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{struct_avail_block_a5187028ed9e14fec2ef8107f49602cd1}\index{AvailBlock@{AvailBlock}!blankFill@{blankFill}}
+\index{blankFill@{blankFill}!AvailBlock@{AvailBlock}}
+\doxysubsubsection{\texorpdfstring{blankFill}{blankFill}}
+{\footnotesize\ttfamily \label{struct_avail_block_a5187028ed9e14fec2ef8107f49602cd1} 
+string Avail\+Block\+::blank\+Fill}
+
+
+
+Fill remaining block with whitespace for reuse. 
+
+
+
+Definition at line \mbox{\hyperlink{_header_and_block_structures_8h_source_l00054}{54}} of file \mbox{\hyperlink{_header_and_block_structures_8h_source}{Header\+And\+Block\+Structures.\+h}}.
+
+\Hypertarget{struct_avail_block_ad8a28915319b22c6c0d7cacf1d82cf30}\index{AvailBlock@{AvailBlock}!nextAvailRBN@{nextAvailRBN}}
+\index{nextAvailRBN@{nextAvailRBN}!AvailBlock@{AvailBlock}}
+\doxysubsubsection{\texorpdfstring{nextAvailRBN}{nextAvailRBN}}
+{\footnotesize\ttfamily \label{struct_avail_block_ad8a28915319b22c6c0d7cacf1d82cf30} 
+int Avail\+Block\+::next\+Avail\+RBN}
+
+
+
+Pointer to the next available block in the avail list. 
+
+
+
+Definition at line \mbox{\hyperlink{_header_and_block_structures_8h_source_l00053}{53}} of file \mbox{\hyperlink{_header_and_block_structures_8h_source}{Header\+And\+Block\+Structures.\+h}}.
+
+\Hypertarget{struct_avail_block_a2c8227a014c1e358531ac16302fb24ae}\index{AvailBlock@{AvailBlock}!recordCount@{recordCount}}
+\index{recordCount@{recordCount}!AvailBlock@{AvailBlock}}
+\doxysubsubsection{\texorpdfstring{recordCount}{recordCount}}
+{\footnotesize\ttfamily \label{struct_avail_block_a2c8227a014c1e358531ac16302fb24ae} 
+int Avail\+Block\+::record\+Count = 0}
+
+
+
+Should always be 0 for an avail block. 
+
+
+
+Definition at line \mbox{\hyperlink{_header_and_block_structures_8h_source_l00052}{52}} of file \mbox{\hyperlink{_header_and_block_structures_8h_source}{Header\+And\+Block\+Structures.\+h}}.
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_header_and_block_structures_8h}{Header\+And\+Block\+Structures.\+h}}\end{DoxyCompactItemize}

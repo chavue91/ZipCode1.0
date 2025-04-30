@@ -1,0 +1,5 @@
+<map id="dumpLogical" name="dumpLogical">
+<area shape="rect" id="Node000001" title="Dumps blocks in logical sequence order based on header links." alt="" coords="5,5,100,32"/>
+<area shape="rect" id="Node000002" href="$class_block_buffer.html#a1d0b033c6101e9faabf211d0d2dc7d76" title="Reads a block from the input stream at the specified RBN." alt="" coords="148,5,302,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="100,16,132,16,132,21,100,21"/>
+</map>

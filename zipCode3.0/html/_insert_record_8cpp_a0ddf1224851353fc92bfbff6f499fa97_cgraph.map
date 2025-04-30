@@ -1,0 +1,21 @@
+<map id="main" name="main">
+<area shape="rect" id="Node000001" title="Main function for inserting ZIP code records into a blocked sequence set." alt="" coords="5,157,55,184"/>
+<area shape="rect" id="Node000002" href="$_insert_record_8cpp.html#adbadb55f3590dcf5c967f8fb80947983" title="Extracts the primary key (ZIP code) from a record string." alt="" coords="139,5,224,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="33,156,56,101,75,69,101,42,123,29,126,34,104,46,80,73,60,104,38,158"/>
+<area shape="rect" id="Node000003" href="$_insert_record_8cpp.html#a7cd0fd4cd59e0ae4ea9003e386470c2c" title="Loads the index file into a map of &lt;key, RBN&gt; pairs." alt="" coords="143,56,220,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="39,155,65,124,101,92,126,80,129,85,104,97,68,128,43,159"/>
+<area shape="rect" id="Node000004" href="$class_header_buffer3.html#ae99bda9df506d9aeabe3d2fcc23a5a02" title="Reads a header record from the input stream." alt="" coords="113,107,250,133"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="54,160,102,143,122,136,123,141,104,148,56,165"/>
+<area shape="rect" id="Node000006" href="$class_block_buffer.html#a1d0b033c6101e9faabf211d0d2dc7d76" title="Reads a block from the input stream at the specified RBN." alt="" coords="104,157,258,184"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="55,168,89,168,89,173,55,173"/>
+<area shape="rect" id="Node000007" href="$class_header_buffer3.html#ab249189db386173d691cbdf87a4f03e2" title="Writes the header record to the output stream." alt="" coords="111,208,252,235"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="56,177,104,193,123,200,122,205,102,199,54,182"/>
+<area shape="rect" id="Node000009" href="$class_block_buffer.html#a2362ffca9da187df21c6ae0e4fe253a7" title="Writes a block to the output stream at the specified RBN." alt="" coords="103,259,260,285"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="43,183,68,214,104,244,113,249,110,254,101,249,65,218,39,186"/>
+<area shape="rect" id="Node000010" href="$_insert_record_8cpp.html#ab8d0ee1ba496dba77709a496a025c37a" title="Writes the index map to the index file." alt="" coords="141,309,222,336"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="38,183,60,238,80,269,104,295,127,308,125,313,101,299,75,272,56,240,33,185"/>
+<area shape="rect" id="Node000005" href="$class_header_buffer3.html#a084171e9e06700ac67f2c69ddb600df9" title="Helper to read a single field definition from stream." alt="" coords="310,107,475,133"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="250,117,294,117,294,123,250,123"/>
+<area shape="rect" id="Node000008" href="$class_header_buffer3.html#aea2e546245ad8c9ef5b754c463fe1472" title="Helper to write a single field definition to stream." alt="" coords="308,208,476,235"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="252,219,292,219,292,224,252,224"/>
+</map>

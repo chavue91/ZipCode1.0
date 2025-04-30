@@ -1,0 +1,99 @@
+\doxysection{Build\+Index.\+cpp}
+\hypertarget{_build_index_8cpp_source}{}\label{_build_index_8cpp_source}\mbox{\hyperlink{_build_index_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_header_buffer3_8h}{HeaderBuffer3.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_block_buffer_8h}{BlockBuffer.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00007}00007\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00008}00008\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00009}00009\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00010}00010\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00012}00012\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00015}\mbox{\hyperlink{_build_index_8cpp_adbadb55f3590dcf5c967f8fb80947983}{00015}}\ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{_build_index_8cpp_adbadb55f3590dcf5c967f8fb80947983}{extractKey}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ record)\ \{}
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00016}00016\ \ \ \ \ stringstream\ ss(record);}
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00017}00017\ \ \ \ \ \textcolor{keywordtype}{string}\ key;}
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00018}00018\ \ \ \ \ getline(ss,\ key,\ \textcolor{charliteral}{','});}
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00019}00019\ \ \ \ \ \textcolor{keywordflow}{return}\ key;}
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00020}00020\ \}}
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00023}\mbox{\hyperlink{_build_index_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{00023}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{_build_index_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main}}(\textcolor{keywordtype}{int}\ argc,\ \textcolor{keywordtype}{char}*\ argv[])\ \{}
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00024}00024\ \ \ \ \ \textcolor{keywordflow}{if}\ (argc\ <\ 3)\ \{}
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00025}00025\ \ \ \ \ \ \ \ \ cerr\ <<\ \textcolor{stringliteral}{"{}Usage:\ "{}}\ <<\ argv[0]\ <<\ \textcolor{stringliteral}{"{}\ <blocked\_file>\ <output\_index\_file>"{}}\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00026}00026\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00027}00027\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00029}00029\ \ \ \ \ \textcolor{keywordtype}{string}\ blockedFile\ =\ argv[1];}
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00030}00030\ \ \ \ \ \textcolor{keywordtype}{string}\ indexFile\ =\ argv[2];}
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00032}00032\ \ \ \ \ ifstream\ in(blockedFile,\ ios::binary);}
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00033}00033\ \ \ \ \ \textcolor{keywordflow}{if}\ (!in.is\_open())\ \{}
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00034}00034\ \ \ \ \ \ \ \ \ cerr\ <<\ \textcolor{stringliteral}{"{}Error\ opening\ blocked\ file."{}}\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00035}00035\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00036}00036\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00038}00038\ \ \ \ \ \mbox{\hyperlink{class_header_buffer3}{HeaderBuffer3}}\ hb;}
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00039}00039\ \ \ \ \ \textcolor{keywordflow}{if}\ (!hb.\mbox{\hyperlink{class_header_buffer3_ae99bda9df506d9aeabe3d2fcc23a5a02}{read}}(in))\ \{}
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00040}00040\ \ \ \ \ \ \ \ \ cerr\ <<\ \textcolor{stringliteral}{"{}Failed\ to\ read\ header."{}}\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00041}00041\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00042}00042\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00044}00044\ \ \ \ \ \textcolor{keywordtype}{int}\ blockSize\ =\ hb.\mbox{\hyperlink{class_header_buffer3_a297405f7199487b9b8c27885e7babd5e}{header}}.\mbox{\hyperlink{struct_header_a6794018d2fa1ba92881a44a0ee011f77}{blockSize}};}
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00045}00045\ \ \ \ \ \textcolor{keywordtype}{int}\ blockCount\ =\ hb.\mbox{\hyperlink{class_header_buffer3_a297405f7199487b9b8c27885e7babd5e}{header}}.\mbox{\hyperlink{struct_header_abb03b2abaeee57d21a10db254b56acb0}{blockCount}};}
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00047}00047\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}[Debug]\ Block\ Size:\ "{}}\ <<\ blockSize\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00048}00048\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}[Debug]\ Block\ Count:\ "{}}\ <<\ blockCount\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00050}00050\ \ \ \ \ \textcolor{keywordflow}{if}\ (blockSize\ <=\ 0\ ||\ blockCount\ <=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00051}00051\ \ \ \ \ \ \ \ \ cerr\ <<\ \textcolor{stringliteral}{"{}Invalid\ block\ size\ or\ block\ count\ in\ header."{}}\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00052}00052\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00053}00053\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00055}00055\ \ \ \ \ streampos\ startOfBlocks\ =\ in.tellg();}
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00056}00056\ \ \ \ \ vector<pair<string,\ int>>\ index;\ }
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00058}00058\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ rbn\ =\ 0;\ rbn\ <\ blockCount;\ ++rbn)\ \{}
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00059}00059\ \ \ \ \ \ \ \ \ in.clear();}
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00060}00060\ \ \ \ \ \ \ \ \ in.seekg(startOfBlocks\ +\ streampos(rbn\ *\ blockSize));}
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00062}00062\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_block}{Block}}\ blk;}
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00063}00063\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_block_buffer_a1d0b033c6101e9faabf211d0d2dc7d76}{BlockBuffer::readBlock}}(in,\ blk,\ rbn,\ blockSize))\ \{}
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ cerr\ <<\ \textcolor{stringliteral}{"{}Warning:\ Could\ not\ read\ block\ "{}}\ <<\ rbn\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00066}00066\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00068}00068\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (blk.\mbox{\hyperlink{struct_block_ae1fc0d163b6fea12d497d3fca0f98e2c}{recordCount}}\ ==\ 0\ ||\ blk.\mbox{\hyperlink{struct_block_aeaf53c3395c28c5a844fa077929e2a10}{records}}.empty())\ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00070}00070\ \ \ \ \ \ \ \ \ vector<string>\ keys;}
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00071}00071\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ rec\ :\ blk.\mbox{\hyperlink{struct_block_aeaf53c3395c28c5a844fa077929e2a10}{records}})\ \{}
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!rec.empty())\ \{}
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ keys.push\_back(\mbox{\hyperlink{_build_index_8cpp_adbadb55f3590dcf5c967f8fb80947983}{extractKey}}(rec));}
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00075}00075\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00077}00077\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (keys.empty())\ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00079}00079\ \ \ \ \ \ \ \ \ sort(keys.begin(),\ keys.end());}
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00080}00080\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ maxKey\ =\ keys.back();}
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00081}00081\ \ \ \ \ \ \ \ \ index.emplace\_back(maxKey,\ rbn);}
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00082}00082\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00084}00084\ \ \ \ \ in.close();}
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00085}00085\ \ \ \ \ ofstream\ out(indexFile);}
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00086}00086\ \ \ \ \ \textcolor{keywordflow}{if}\ (!out.is\_open())\ \{}
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00087}00087\ \ \ \ \ \ \ \ \ cerr\ <<\ \textcolor{stringliteral}{"{}Error\ opening\ output\ index\ file."{}}\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00088}00088\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00089}00089\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00090}00090\ }
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00091}00091\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ [key,\ rbn]\ :\ index)\ \{}
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00092}00092\ \ \ \ \ \ \ \ \ out\ <<\ key\ <<\ \textcolor{stringliteral}{"{},"{}}\ <<\ rbn\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00093}00093\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00094}00094\ }
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00095}00095\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Index\ file\ generated:\ "{}}\ <<\ indexFile\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00096}00096\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{_build_index_8cpp_source_l00097}00097\ \}}
+
+\end{DoxyCode}

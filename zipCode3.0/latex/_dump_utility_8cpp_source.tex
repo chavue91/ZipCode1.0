@@ -1,0 +1,98 @@
+\doxysection{Dump\+Utility.\+cpp}
+\hypertarget{_dump_utility_8cpp_source}{}\label{_dump_utility_8cpp_source}\mbox{\hyperlink{_dump_utility_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_dump_utility_8h}{DumpUtility.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_header_buffer3_8h}{HeaderBuffer3.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00006}00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_block_buffer_8h}{BlockBuffer.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00007}00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_record_buffer_8h}{RecordBuffer.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00008}00008\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00009}00009\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00010}00010\ \textcolor{preprocessor}{\#include\ <iomanip>}}
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00012}00012\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00019}\mbox{\hyperlink{_dump_utility_8cpp_a3eef9592ab3773b6456e492c15332f59}{00019}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_dump_utility_8cpp_a3eef9592ab3773b6456e492c15332f59}{printBlock}}(\textcolor{keywordtype}{int}\ rbn,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_block}{Block}}\&\ block)\ \{}
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00020}00020\ \ \ \ \ cout\ <<\ rbn\ <<\ \textcolor{stringliteral}{"{}\ \ "{}};}
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00021}00021\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ rec\ :\ block.\mbox{\hyperlink{struct_block_aeaf53c3395c28c5a844fa077929e2a10}{records}})\ \{}
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00022}00022\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_record_buffer}{RecordBuffer}}\ rb(rec);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Extract\ fields\ using\ record\ buffer}}
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00023}00023\ \ \ \ \ \ \ \ \ cout\ <<\ rb.\mbox{\hyperlink{class_record_buffer_a00061d9dd158a0413ab57b8cbfa428e9}{getKey}}()\ <<\ \textcolor{stringliteral}{"{}\ "{}};\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Print\ key\ field}}
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00024}00024\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00025}00025\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}\ \ "{}}\ <<\ block.\mbox{\hyperlink{struct_block_a7218441480b3579c1a8d7d67c2f1f058}{nextRBN}}\ <<\ endl;\ \ \textcolor{comment}{//\ Show\ next\ RBN\ link}}
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00026}00026\ \}}
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00033}\mbox{\hyperlink{_dump_utility_8cpp_aa656905818d457c43fca3cc7ef37ab00}{00033}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_dump_utility_8cpp_aa656905818d457c43fca3cc7ef37ab00}{printAvail}}(\textcolor{keywordtype}{int}\ rbn,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_avail_block}{AvailBlock}}\&\ avail)\ \{}
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00034}00034\ \ \ \ \ cout\ <<\ rbn\ <<\ \textcolor{stringliteral}{"{}\ \ *available*\ \ \ \ "{}}\ <<\ avail.\mbox{\hyperlink{struct_avail_block_ad8a28915319b22c6c0d7cacf1d82cf30}{nextAvailRBN}}\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00035}00035\ \}}
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00041}\mbox{\hyperlink{_dump_utility_8cpp_af4c7003ac02ec488042ccb7e8b5a7e35}{00041}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_dump_utility_8cpp_af4c7003ac02ec488042ccb7e8b5a7e35}{dumpByPhysicalOrder}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ filename)\ \{}
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00042}00042\ \ \ \ \ ifstream\ in(filename,\ ios::in\ |\ ios::binary);}
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00043}00043\ \ \ \ \ \textcolor{keywordflow}{if}\ (!in.is\_open())\ \{}
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00044}00044\ \ \ \ \ \ \ \ \ cerr\ <<\ \textcolor{stringliteral}{"{}Could\ not\ open\ file:\ "{}}\ <<\ filename\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00045}00045\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00046}00046\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00048}00048\ \ \ \ \ \mbox{\hyperlink{class_header_buffer3}{HeaderBuffer3}}\ hb;}
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00049}00049\ \ \ \ \ \textcolor{keywordflow}{if}\ (!hb.\mbox{\hyperlink{class_header_buffer3_ae99bda9df506d9aeabe3d2fcc23a5a02}{read}}(in))\ \{}
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00050}00050\ \ \ \ \ \ \ \ \ cerr\ <<\ \textcolor{stringliteral}{"{}Failed\ to\ read\ header."{}}\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00051}00051\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00052}00052\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00054}00054\ \ \ \ \ \textcolor{keywordtype}{int}\ blockSize\ =\ hb.\mbox{\hyperlink{class_header_buffer3_a297405f7199487b9b8c27885e7babd5e}{header}}.\mbox{\hyperlink{struct_header_a6794018d2fa1ba92881a44a0ee011f77}{blockSize}};}
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00056}00056\ \ \ \ \ \textcolor{comment}{//\ Print\ header\ pointers}}
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00057}00057\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}List\ Head:\ \ "{}}\ <<\ hb.\mbox{\hyperlink{class_header_buffer3_a297405f7199487b9b8c27885e7babd5e}{header}}.\mbox{\hyperlink{struct_header_acaa769a2a6035628049a90a3e7a4ca1a}{sequenceListHeadRBN}}\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00058}00058\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Avail\ Head:\ "{}}\ <<\ hb.\mbox{\hyperlink{class_header_buffer3_a297405f7199487b9b8c27885e7babd5e}{header}}.\mbox{\hyperlink{struct_header_a2cb4ea884f318d6cac28b512eeee7078}{availListHeadRBN}}\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00060}00060\ \ \ \ \ \textcolor{comment}{//\ Traverse\ blocks\ sequentially\ by\ physical\ RBN}}
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00061}00061\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ rbn\ =\ 0;\ rbn\ <\ hb.\mbox{\hyperlink{class_header_buffer3_a297405f7199487b9b8c27885e7babd5e}{header}}.\mbox{\hyperlink{struct_header_abb03b2abaeee57d21a10db254b56acb0}{blockCount}};\ ++rbn)\ \{}
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00062}00062\ \ \ \ \ \ \ \ \ in.clear();\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Clear\ EOF/failure\ flags}}
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00063}00063\ \ \ \ \ \ \ \ \ in.seekg(0);\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Reset\ file\ position}}
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00065}00065\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_block}{Block}}\ blk;}
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00066}00066\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_block_buffer_a1d0b033c6101e9faabf211d0d2dc7d76}{BlockBuffer::readBlock}}(in,\ blk,\ rbn,\ blockSize))\ \{}
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (blk.\mbox{\hyperlink{struct_block_ae1fc0d163b6fea12d497d3fca0f98e2c}{recordCount}}\ ==\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Handle\ avail\ block}}
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_avail_block}{AvailBlock}}\ avail(\mbox{\hyperlink{class_block_buffer_a0211cf60d95dcb85a831f7ffce0778a9}{BlockBuffer::readNextAvailRBN}}(in,\ rbn,\ blockSize));}
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_dump_utility_8cpp_aa656905818d457c43fca3cc7ef37ab00}{printAvail}}(rbn,\ avail);}
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_dump_utility_8cpp_a3eef9592ab3773b6456e492c15332f59}{printBlock}}(rbn,\ blk);}
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00074}00074\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00075}00075\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00076}00076\ \}}
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00082}\mbox{\hyperlink{_dump_utility_8cpp_afebb1e9dcfb714e25a4996c2c7b9b484}{00082}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_dump_utility_8cpp_afebb1e9dcfb714e25a4996c2c7b9b484}{dumpByLogicalOrder}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ filename)\ \{}
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00083}00083\ \ \ \ \ fstream\ in(filename,\ ios::in\ |\ ios::binary);}
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00084}00084\ \ \ \ \ \textcolor{keywordflow}{if}\ (!in.is\_open())\ \{}
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00085}00085\ \ \ \ \ \ \ \ \ cerr\ <<\ \textcolor{stringliteral}{"{}Could\ not\ open\ file:\ "{}}\ <<\ filename\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00086}00086\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00087}00087\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00088}00088\ }
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00089}00089\ \ \ \ \ \mbox{\hyperlink{class_header_buffer3}{HeaderBuffer3}}\ hb;}
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00090}00090\ \ \ \ \ \textcolor{keywordflow}{if}\ (!hb.\mbox{\hyperlink{class_header_buffer3_ae99bda9df506d9aeabe3d2fcc23a5a02}{read}}(in))\ \{}
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00091}00091\ \ \ \ \ \ \ \ \ cerr\ <<\ \textcolor{stringliteral}{"{}Failed\ to\ read\ header."{}}\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00092}00092\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00093}00093\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00094}00094\ }
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00095}00095\ \ \ \ \ \textcolor{keywordtype}{int}\ blockSize\ =\ hb.\mbox{\hyperlink{class_header_buffer3_a297405f7199487b9b8c27885e7babd5e}{header}}.\mbox{\hyperlink{struct_header_a6794018d2fa1ba92881a44a0ee011f77}{blockSize}};}
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00096}00096\ }
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00097}00097\ \ \ \ \ \textcolor{comment}{//\ Print\ header\ pointers}}
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00098}00098\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}List\ Head:\ \ "{}}\ <<\ hb.\mbox{\hyperlink{class_header_buffer3_a297405f7199487b9b8c27885e7babd5e}{header}}.\mbox{\hyperlink{struct_header_acaa769a2a6035628049a90a3e7a4ca1a}{sequenceListHeadRBN}}\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00099}00099\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Avail\ Head:\ "{}}\ <<\ hb.\mbox{\hyperlink{class_header_buffer3_a297405f7199487b9b8c27885e7babd5e}{header}}.\mbox{\hyperlink{struct_header_a2cb4ea884f318d6cac28b512eeee7078}{availListHeadRBN}}\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00100}00100\ }
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00101}00101\ \ \ \ \ \textcolor{comment}{//\ Follow\ logical\ linked\ list\ using\ nextRBN}}
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00102}00102\ \ \ \ \ \textcolor{keywordtype}{int}\ rbn\ =\ hb.\mbox{\hyperlink{class_header_buffer3_a297405f7199487b9b8c27885e7babd5e}{header}}.\mbox{\hyperlink{struct_header_acaa769a2a6035628049a90a3e7a4ca1a}{sequenceListHeadRBN}};}
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00103}00103\ \ \ \ \ \textcolor{keywordflow}{while}\ (rbn\ !=\ -\/1)\ \{}
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00104}00104\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_block}{Block}}\ blk;}
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00105}00105\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_block_buffer_a1d0b033c6101e9faabf211d0d2dc7d76}{BlockBuffer::readBlock}}(in,\ blk,\ rbn,\ blockSize))\ \{}
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_dump_utility_8cpp_a3eef9592ab3773b6456e492c15332f59}{printBlock}}(rbn,\ blk);}
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00107}00107\ \ \ \ \ \ \ \ \ \ \ \ \ rbn\ =\ blk.\mbox{\hyperlink{struct_block_a7218441480b3579c1a8d7d67c2f1f058}{nextRBN}};\ \ \textcolor{comment}{//\ Move\ to\ next\ logical\ block}}
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00108}00108\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00109}00109\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Stop\ on\ read\ failure}}
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00110}00110\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00111}00111\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_dump_utility_8cpp_source_l00112}00112\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,13 @@
+<map id="dumpByLogicalOrder" name="dumpByLogicalOrder">
+<area shape="rect" id="Node000001" title="Dumps all blocks in logical order using nextRBN links." alt="" coords="5,56,148,83"/>
+<area shape="rect" id="Node000002" href="$_dump_utility_8cpp.html#a3eef9592ab3773b6456e492c15332f59" title="Prints a block’s RBN, keys, and next RBN." alt="" coords="233,5,312,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="131,53,218,30,219,35,132,58"/>
+<area shape="rect" id="Node000004" href="$class_header_buffer3.html#ae99bda9df506d9aeabe3d2fcc23a5a02" title="Reads a header record from the input stream." alt="" coords="204,56,342,83"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="148,67,189,67,189,72,148,72"/>
+<area shape="rect" id="Node000006" href="$class_block_buffer.html#a1d0b033c6101e9faabf211d0d2dc7d76" title="Reads a block from the input stream at the specified RBN." alt="" coords="196,107,350,133"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="132,81,204,100,203,105,131,86"/>
+<area shape="rect" id="Node000003" href="$class_record_buffer.html#a00061d9dd158a0413ab57b8cbfa428e9" title="Returns the value of the key field (assumed to be first)." alt="" coords="408,5,554,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="313,16,392,16,392,21,313,21"/>
+<area shape="rect" id="Node000005" href="$class_header_buffer3.html#a084171e9e06700ac67f2c69ddb600df9" title="Helper to read a single field definition from stream." alt="" coords="398,56,563,83"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="342,67,382,67,382,72,342,72"/>
+</map>

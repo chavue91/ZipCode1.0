@@ -1,0 +1,84 @@
+\doxysection{Build\+Index.\+cpp File Reference}
+\hypertarget{_build_index_8cpp}{}\label{_build_index_8cpp}\index{BuildIndex.cpp@{BuildIndex.cpp}}
+
+
+Builds a simple primary key index file from a blocked sequence set.  
+
+
+{\ttfamily \#include "{}Header\+Buffer3.\+h"{}}\newline
+{\ttfamily \#include "{}Block\+Buffer.\+h"{}}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+Include dependency graph for Build\+Index.\+cpp\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_build_index_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+string \mbox{\hyperlink{_build_index_8cpp_adbadb55f3590dcf5c967f8fb80947983}{extract\+Key}} (const string \&record)
+\begin{DoxyCompactList}\small\item\em Extracts the primary key (ZIP code) from a record string. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{_build_index_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int argc, char \texorpdfstring{$\ast$}{*}argv\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Entry point to build an index file from a blocked sequence set. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Builds a simple primary key index file from a blocked sequence set. 
+
+
+
+Definition in file \mbox{\hyperlink{_build_index_8cpp_source}{Build\+Index.\+cpp}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{_build_index_8cpp_adbadb55f3590dcf5c967f8fb80947983}\index{BuildIndex.cpp@{BuildIndex.cpp}!extractKey@{extractKey}}
+\index{extractKey@{extractKey}!BuildIndex.cpp@{BuildIndex.cpp}}
+\doxysubsubsection{\texorpdfstring{extractKey()}{extractKey()}}
+{\footnotesize\ttfamily \label{_build_index_8cpp_adbadb55f3590dcf5c967f8fb80947983} 
+string extract\+Key (\begin{DoxyParamCaption}\item[{const string \&}]{record}{}\end{DoxyParamCaption})}
+
+
+
+Extracts the primary key (ZIP code) from a record string. 
+
+
+
+Definition at line \mbox{\hyperlink{_build_index_8cpp_source_l00015}{15}} of file \mbox{\hyperlink{_build_index_8cpp_source}{Build\+Index.\+cpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=216pt]{_build_index_8cpp_adbadb55f3590dcf5c967f8fb80947983_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{_build_index_8cpp_a0ddf1224851353fc92bfbff6f499fa97}\index{BuildIndex.cpp@{BuildIndex.cpp}!main@{main}}
+\index{main@{main}!BuildIndex.cpp@{BuildIndex.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \label{_build_index_8cpp_a0ddf1224851353fc92bfbff6f499fa97} 
+int main (\begin{DoxyParamCaption}\item[{int}]{argc}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{argv}{\mbox{[}$\,$\mbox{]}}\end{DoxyParamCaption})}
+
+
+
+Entry point to build an index file from a blocked sequence set. 
+
+\texorpdfstring{$<$}{<} Vector of \{highest key in block, RBN\}
+
+Definition at line \mbox{\hyperlink{_build_index_8cpp_source_l00023}{23}} of file \mbox{\hyperlink{_build_index_8cpp_source}{Build\+Index.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_build_index_8cpp_a0ddf1224851353fc92bfbff6f499fa97_cgraph}
+\end{center}
+\end{figure}

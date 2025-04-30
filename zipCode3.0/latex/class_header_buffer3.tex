@@ -1,0 +1,228 @@
+\doxysection{Header\+Buffer3 Class Reference}
+\hypertarget{class_header_buffer3}{}\label{class_header_buffer3}\index{HeaderBuffer3@{HeaderBuffer3}}
+
+
+Class responsible for reading/writing the \doxylink{struct_header}{Header} to/from a file.  
+
+
+
+
+{\ttfamily \#include $<$Header\+Buffer3.\+h$>$}
+
+
+
+Collaboration diagram for Header\+Buffer3\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=158pt]{class_header_buffer3__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_header_buffer3_ae99bda9df506d9aeabe3d2fcc23a5a02}{read}} (istream \&in)
+\begin{DoxyCompactList}\small\item\em Reads a header record from the input stream. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_header_buffer3_ab249189db386173d691cbdf87a4f03e2}{write}} (ostream \&out) const
+\begin{DoxyCompactList}\small\item\em Writes the header record to the output stream. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_header}{Header}} \mbox{\hyperlink{class_header_buffer3_a297405f7199487b9b8c27885e7babd5e}{header}}
+\begin{DoxyCompactList}\small\item\em The header structure being managed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_field}{Field}} \mbox{\hyperlink{class_header_buffer3_a084171e9e06700ac67f2c69ddb600df9}{read\+Field}} (istream \&in)
+\begin{DoxyCompactList}\small\item\em Helper to read a single field definition from stream. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_header_buffer3_aea2e546245ad8c9ef5b754c463fe1472}{write\+Field}} (ostream \&out, const \mbox{\hyperlink{struct_field}{Field}} \&field) const
+\begin{DoxyCompactList}\small\item\em Helper to write a single field definition to stream. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class responsible for reading/writing the \doxylink{struct_header}{Header} to/from a file. 
+
+Definition at line \mbox{\hyperlink{_header_buffer3_8h_source_l00013}{13}} of file \mbox{\hyperlink{_header_buffer3_8h_source}{Header\+Buffer3.\+h}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_header_buffer3_ae99bda9df506d9aeabe3d2fcc23a5a02}\index{HeaderBuffer3@{HeaderBuffer3}!read@{read}}
+\index{read@{read}!HeaderBuffer3@{HeaderBuffer3}}
+\doxysubsubsection{\texorpdfstring{read()}{read()}}
+{\footnotesize\ttfamily \label{class_header_buffer3_ae99bda9df506d9aeabe3d2fcc23a5a02} 
+bool Header\+Buffer3\+::read (\begin{DoxyParamCaption}\item[{istream \&}]{in}{}\end{DoxyParamCaption})}
+
+
+
+Reads a header record from the input stream. 
+
+Reads a header record from the given input stream.
+
+
+\begin{DoxyParams}{Parameters}
+{\em in} & Reference to the input stream (e.\+g. ifstream or fstream). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if read successfully, false otherwise.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em in} & The input stream to read the header from. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the header was successfully read, false otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_header_buffer3_8cpp_source_l00014}{14}} of file \mbox{\hyperlink{_header_buffer3_8cpp_source}{Header\+Buffer3.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=343pt]{class_header_buffer3_ae99bda9df506d9aeabe3d2fcc23a5a02_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_header_buffer3_ae99bda9df506d9aeabe3d2fcc23a5a02_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_header_buffer3_a084171e9e06700ac67f2c69ddb600df9}\index{HeaderBuffer3@{HeaderBuffer3}!readField@{readField}}
+\index{readField@{readField}!HeaderBuffer3@{HeaderBuffer3}}
+\doxysubsubsection{\texorpdfstring{readField()}{readField()}}
+{\footnotesize\ttfamily \label{class_header_buffer3_a084171e9e06700ac67f2c69ddb600df9} 
+\mbox{\hyperlink{struct_field}{Field}} Header\+Buffer3\+::read\+Field (\begin{DoxyParamCaption}\item[{istream \&}]{in}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Helper to read a single field definition from stream. 
+
+Reads a single \doxylink{struct_field}{Field} structure from the stream.
+
+
+\begin{DoxyParams}{Parameters}
+{\em in} & The input stream to read from. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A \doxylink{struct_field}{Field} populated with values read from the stream. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_header_buffer3_8cpp_source_l00089}{89}} of file \mbox{\hyperlink{_header_buffer3_8cpp_source}{Header\+Buffer3.\+cpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_header_buffer3_a084171e9e06700ac67f2c69ddb600df9_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_header_buffer3_ab249189db386173d691cbdf87a4f03e2}\index{HeaderBuffer3@{HeaderBuffer3}!write@{write}}
+\index{write@{write}!HeaderBuffer3@{HeaderBuffer3}}
+\doxysubsubsection{\texorpdfstring{write()}{write()}}
+{\footnotesize\ttfamily \label{class_header_buffer3_ab249189db386173d691cbdf87a4f03e2} 
+void Header\+Buffer3\+::write (\begin{DoxyParamCaption}\item[{ostream \&}]{out}{}\end{DoxyParamCaption}) const}
+
+
+
+Writes the header record to the output stream. 
+
+Writes the header record to the given output stream.
+
+
+\begin{DoxyParams}{Parameters}
+{\em out} & Reference to the output file stream. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if write successful, false otherwise.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em out} & The output file stream to write the header to. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_header_buffer3_8cpp_source_l00055}{55}} of file \mbox{\hyperlink{_header_buffer3_8cpp_source}{Header\+Buffer3.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=348pt]{class_header_buffer3_ab249189db386173d691cbdf87a4f03e2_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=258pt]{class_header_buffer3_ab249189db386173d691cbdf87a4f03e2_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_header_buffer3_aea2e546245ad8c9ef5b754c463fe1472}\index{HeaderBuffer3@{HeaderBuffer3}!writeField@{writeField}}
+\index{writeField@{writeField}!HeaderBuffer3@{HeaderBuffer3}}
+\doxysubsubsection{\texorpdfstring{writeField()}{writeField()}}
+{\footnotesize\ttfamily \label{class_header_buffer3_aea2e546245ad8c9ef5b754c463fe1472} 
+void Header\+Buffer3\+::write\+Field (\begin{DoxyParamCaption}\item[{ostream \&}]{out}{, }\item[{const \mbox{\hyperlink{struct_field}{Field}} \&}]{field}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Helper to write a single field definition to stream. 
+
+Writes a single \doxylink{struct_field}{Field} structure to the stream.
+
+
+\begin{DoxyParams}{Parameters}
+{\em out} & The output stream. \\
+\hline
+{\em field} & The \doxylink{struct_field}{Field} to write. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_header_buffer3_8cpp_source_l00104}{104}} of file \mbox{\hyperlink{_header_buffer3_8cpp_source}{Header\+Buffer3.\+cpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_header_buffer3_aea2e546245ad8c9ef5b754c463fe1472_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_header_buffer3_a297405f7199487b9b8c27885e7babd5e}\index{HeaderBuffer3@{HeaderBuffer3}!header@{header}}
+\index{header@{header}!HeaderBuffer3@{HeaderBuffer3}}
+\doxysubsubsection{\texorpdfstring{header}{header}}
+{\footnotesize\ttfamily \label{class_header_buffer3_a297405f7199487b9b8c27885e7babd5e} 
+\mbox{\hyperlink{struct_header}{Header}} Header\+Buffer3\+::header}
+
+
+
+The header structure being managed. 
+
+
+
+Definition at line \mbox{\hyperlink{_header_buffer3_8h_source_l00015}{15}} of file \mbox{\hyperlink{_header_buffer3_8h_source}{Header\+Buffer3.\+h}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_header_buffer3_8h}{Header\+Buffer3.\+h}}\item 
+\mbox{\hyperlink{_header_buffer3_8cpp}{Header\+Buffer3.\+cpp}}\end{DoxyCompactItemize}

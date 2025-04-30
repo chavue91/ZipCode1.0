@@ -1,0 +1,168 @@
+\doxysection{Block\+Buffer Class Reference}
+\hypertarget{class_block_buffer}{}\label{class_block_buffer}\index{BlockBuffer@{BlockBuffer}}
+
+
+Handles packing and unpacking of active and avail blocks in the blocked sequence set.  
+
+
+
+
+{\ttfamily \#include $<$Block\+Buffer.\+h$>$}
+
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static bool \mbox{\hyperlink{class_block_buffer_a2362ffca9da187df21c6ae0e4fe253a7}{write\+Block}} (std\+::ostream \&out, const \mbox{\hyperlink{struct_block}{Block}} \&block, int rbn, int block\+Size)
+\begin{DoxyCompactList}\small\item\em Writes a block to the output stream at the specified RBN. \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{class_block_buffer_a1d0b033c6101e9faabf211d0d2dc7d76}{read\+Block}} (std\+::istream \&in, \mbox{\hyperlink{struct_block}{Block}} \&block, int rbn, int block\+Size)
+\begin{DoxyCompactList}\small\item\em Reads a block from the input stream at the specified RBN. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_block_buffer_a8905e337aab440a80e2fe33aa7646de5}{write\+Avail\+Block}} (std\+::ostream \&out, const \mbox{\hyperlink{struct_avail_block}{Avail\+Block}} \&avail, int rbn, int block\+Size)
+\begin{DoxyCompactList}\small\item\em Writes an avail block to the output stream at the specified RBN. \end{DoxyCompactList}\item 
+static int \mbox{\hyperlink{class_block_buffer_a0211cf60d95dcb85a831f7ffce0778a9}{read\+Next\+Avail\+RBN}} (std\+::ifstream \&in, int rbn, int block\+Size)
+\begin{DoxyCompactList}\small\item\em Reads the RBN of the next avail block (for traversing avail list). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Handles packing and unpacking of active and avail blocks in the blocked sequence set. 
+
+Definition at line \mbox{\hyperlink{_block_buffer_8h_source_l00011}{11}} of file \mbox{\hyperlink{_block_buffer_8h_source}{Block\+Buffer.\+h}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_block_buffer_a1d0b033c6101e9faabf211d0d2dc7d76}\index{BlockBuffer@{BlockBuffer}!readBlock@{readBlock}}
+\index{readBlock@{readBlock}!BlockBuffer@{BlockBuffer}}
+\doxysubsubsection{\texorpdfstring{readBlock()}{readBlock()}}
+{\footnotesize\ttfamily \label{class_block_buffer_a1d0b033c6101e9faabf211d0d2dc7d76} 
+static bool Block\+Buffer\+::read\+Block (\begin{DoxyParamCaption}\item[{std\+::istream \&}]{in}{, }\item[{\mbox{\hyperlink{struct_block}{Block}} \&}]{block}{, }\item[{int}]{rbn}{, }\item[{int}]{block\+Size}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Reads a block from the input stream at the specified RBN. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em in} & Input stream (binary mode). \\
+\hline
+{\em block} & Destination block structure to populate. \\
+\hline
+{\em rbn} & The relative block number (RBN) to read from. \\
+\hline
+{\em block\+Size} & The fixed size of each block in bytes. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if read is successful. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_buffer_a1d0b033c6101e9faabf211d0d2dc7d76_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_block_buffer_a0211cf60d95dcb85a831f7ffce0778a9}\index{BlockBuffer@{BlockBuffer}!readNextAvailRBN@{readNextAvailRBN}}
+\index{readNextAvailRBN@{readNextAvailRBN}!BlockBuffer@{BlockBuffer}}
+\doxysubsubsection{\texorpdfstring{readNextAvailRBN()}{readNextAvailRBN()}}
+{\footnotesize\ttfamily \label{class_block_buffer_a0211cf60d95dcb85a831f7ffce0778a9} 
+static int Block\+Buffer\+::read\+Next\+Avail\+RBN (\begin{DoxyParamCaption}\item[{std\+::ifstream \&}]{in}{, }\item[{int}]{rbn}{, }\item[{int}]{block\+Size}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Reads the RBN of the next avail block (for traversing avail list). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em in} & Input file stream (binary mode). \\
+\hline
+{\em rbn} & The current avail block RBN. \\
+\hline
+{\em block\+Size} & The fixed block size. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+RBN of next avail block or -\/1 on error. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_block_buffer_a0211cf60d95dcb85a831f7ffce0778a9_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_block_buffer_a8905e337aab440a80e2fe33aa7646de5}\index{BlockBuffer@{BlockBuffer}!writeAvailBlock@{writeAvailBlock}}
+\index{writeAvailBlock@{writeAvailBlock}!BlockBuffer@{BlockBuffer}}
+\doxysubsubsection{\texorpdfstring{writeAvailBlock()}{writeAvailBlock()}}
+{\footnotesize\ttfamily \label{class_block_buffer_a8905e337aab440a80e2fe33aa7646de5} 
+static void Block\+Buffer\+::write\+Avail\+Block (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{out}{, }\item[{const \mbox{\hyperlink{struct_avail_block}{Avail\+Block}} \&}]{avail}{, }\item[{int}]{rbn}{, }\item[{int}]{block\+Size}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Writes an avail block to the output stream at the specified RBN. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em out} & Output file stream (binary mode). \\
+\hline
+{\em avail\+Block} & The avail block to write. \\
+\hline
+{\em rbn} & The RBN to write at. \\
+\hline
+{\em block\+Size} & The fixed size of each block in bytes. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if write is successful. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=293pt]{class_block_buffer_a8905e337aab440a80e2fe33aa7646de5_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_block_buffer_a2362ffca9da187df21c6ae0e4fe253a7}\index{BlockBuffer@{BlockBuffer}!writeBlock@{writeBlock}}
+\index{writeBlock@{writeBlock}!BlockBuffer@{BlockBuffer}}
+\doxysubsubsection{\texorpdfstring{writeBlock()}{writeBlock()}}
+{\footnotesize\ttfamily \label{class_block_buffer_a2362ffca9da187df21c6ae0e4fe253a7} 
+bool Block\+Buffer\+::write\+Block (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{out}{, }\item[{const \mbox{\hyperlink{struct_block}{Block}} \&}]{block}{, }\item[{int}]{rbn}{, }\item[{int}]{block\+Size}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Writes a block to the output stream at the specified RBN. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em out} & Output file stream (binary mode). \\
+\hline
+{\em block} & The block structure to write. \\
+\hline
+{\em rbn} & The relative block number (RBN) to write at. \\
+\hline
+{\em block\+Size} & The fixed size of each block in bytes. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if write is successful. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_block_buffer_8cpp_source_l00009}{9}} of file \mbox{\hyperlink{_block_buffer_8cpp_source}{Block\+Buffer.\+cpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=271pt]{class_block_buffer_a2362ffca9da187df21c6ae0e4fe253a7_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_block_buffer_8h}{Block\+Buffer.\+h}}\item 
+\mbox{\hyperlink{_block_buffer_8cpp}{Block\+Buffer.\+cpp}}\end{DoxyCompactItemize}

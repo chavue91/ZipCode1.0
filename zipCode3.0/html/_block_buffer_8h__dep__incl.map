@@ -1,0 +1,19 @@
+<map id="BlockBuffer.h" name="BlockBuffer.h">
+<area shape="rect" id="Node000001" title="Defines the BlockBuffer class for managing read/write operations on blocked sequence set blocks." alt="" coords="542,5,641,32"/>
+<area shape="rect" id="Node000002" href="$_block_buffer_8cpp.html" title="Implements BlockBuffer class functions for handling block&#45;level I/O." alt="" coords="5,80,119,107"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="526,30,132,83,120,85,119,79,131,77,526,25"/>
+<area shape="rect" id="Node000003" href="$_build_index_8cpp.html" title="Builds a simple primary key index file from a blocked sequence set." alt="" coords="143,80,250,107"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="527,34,262,83,251,85,250,79,262,77,526,29"/>
+<area shape="rect" id="Node000004" href="$_convert_to_blocked_8cpp.html" title="Converts a length&#45;indicated file into a blocked sequence set format." alt="" coords="275,80,428,107"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="536,39,394,82,393,77,534,34"/>
+<area shape="rect" id="Node000005" href="$_delete_record_8cpp.html" title="Handles deletion of ZIP code records from a blocked sequence set." alt="" coords="452,80,578,107"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="569,45,530,82,527,78,565,41"/>
+<area shape="rect" id="Node000006" href="$_dump_blocked_8cpp.html" title="Utility to dump blocked sequence set content in physical or logical order." alt="" coords="603,80,732,107"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="617,41,656,78,652,82,614,45"/>
+<area shape="rect" id="Node000007" href="$_dump_utility_8cpp.html" title="Implements dump functions for the blocked sequence set structure." alt="" coords="756,80,870,107"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="645,35,775,77,773,82,644,40"/>
+<area shape="rect" id="Node000008" href="$_insert_record_8cpp.html" title="Handles insertion of new ZIP code records into a blocked sequence set." alt="" coords="893,80,1015,107"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="657,30,893,77,892,83,656,36"/>
+<area shape="rect" id="Node000009" href="$_search_index_8cpp.html" title="Searches for ZIP codes in a blocked sequence set using a primary key index file." alt="" coords="1038,80,1158,107"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="657,26,1028,77,1038,79,1037,84,1027,83,656,31"/>
+</map>

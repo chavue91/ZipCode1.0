@@ -1,0 +1,118 @@
+\doxysection{Record\+Buffer Class Reference}
+\hypertarget{class_record_buffer}{}\label{class_record_buffer}\index{RecordBuffer@{RecordBuffer}}
+
+
+\doxylink{class_record_buffer}{Record\+Buffer} class extracts fields from a comma-\/separated record.  
+
+
+
+
+{\ttfamily \#include $<$Record\+Buffer.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_record_buffer_a84236695dc48101a2f40a9ad0fa5d578}{Record\+Buffer}} (const std\+::string \&record)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_record_buffer}{Record\+Buffer} with a record string. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_record_buffer_a00061d9dd158a0413ab57b8cbfa428e9}{get\+Key}} () const
+\begin{DoxyCompactList}\small\item\em Returns the value of the key field (assumed to be first). \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{class_record_buffer_accd94b2d4611a983206b098401a675b0}{get\+Fields}} () const
+\begin{DoxyCompactList}\small\item\em Returns all fields unpacked from the record. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{class_record_buffer_a748b04af608656f490869acbb6f111fa}{fields}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{class_record_buffer}{Record\+Buffer} class extracts fields from a comma-\/separated record. 
+
+Definition at line \mbox{\hyperlink{_record_buffer_8h_source_l00011}{11}} of file \mbox{\hyperlink{_record_buffer_8h_source}{Record\+Buffer.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_record_buffer_a84236695dc48101a2f40a9ad0fa5d578}\index{RecordBuffer@{RecordBuffer}!RecordBuffer@{RecordBuffer}}
+\index{RecordBuffer@{RecordBuffer}!RecordBuffer@{RecordBuffer}}
+\doxysubsubsection{\texorpdfstring{RecordBuffer()}{RecordBuffer()}}
+{\footnotesize\ttfamily \label{class_record_buffer_a84236695dc48101a2f40a9ad0fa5d578} 
+Record\+Buffer\+::\+Record\+Buffer (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{record}{}\end{DoxyParamCaption})}
+
+
+
+Constructs a \doxylink{class_record_buffer}{Record\+Buffer} with a record string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em record} & Comma-\/separated field values. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_record_buffer_8cpp_source_l00007}{7}} of file \mbox{\hyperlink{_record_buffer_8cpp_source}{Record\+Buffer.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_record_buffer_accd94b2d4611a983206b098401a675b0}\index{RecordBuffer@{RecordBuffer}!getFields@{getFields}}
+\index{getFields@{getFields}!RecordBuffer@{RecordBuffer}}
+\doxysubsubsection{\texorpdfstring{getFields()}{getFields()}}
+{\footnotesize\ttfamily \label{class_record_buffer_accd94b2d4611a983206b098401a675b0} 
+std\+::vector$<$ std\+::string $>$ Record\+Buffer\+::get\+Fields (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Returns all fields unpacked from the record. 
+
+\begin{DoxyReturn}{Returns}
+Vector of string fields. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_record_buffer_8cpp_source_l00019}{19}} of file \mbox{\hyperlink{_record_buffer_8cpp_source}{Record\+Buffer.\+cpp}}.
+
+\Hypertarget{class_record_buffer_a00061d9dd158a0413ab57b8cbfa428e9}\index{RecordBuffer@{RecordBuffer}!getKey@{getKey}}
+\index{getKey@{getKey}!RecordBuffer@{RecordBuffer}}
+\doxysubsubsection{\texorpdfstring{getKey()}{getKey()}}
+{\footnotesize\ttfamily \label{class_record_buffer_a00061d9dd158a0413ab57b8cbfa428e9} 
+std\+::string Record\+Buffer\+::get\+Key (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Returns the value of the key field (assumed to be first). 
+
+\begin{DoxyReturn}{Returns}
+Key field as a string. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_record_buffer_8cpp_source_l00015}{15}} of file \mbox{\hyperlink{_record_buffer_8cpp_source}{Record\+Buffer.\+cpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_record_buffer_a00061d9dd158a0413ab57b8cbfa428e9_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_record_buffer_a748b04af608656f490869acbb6f111fa}\index{RecordBuffer@{RecordBuffer}!fields@{fields}}
+\index{fields@{fields}!RecordBuffer@{RecordBuffer}}
+\doxysubsubsection{\texorpdfstring{fields}{fields}}
+{\footnotesize\ttfamily \label{class_record_buffer_a748b04af608656f490869acbb6f111fa} 
+std\+::vector$<$std\+::string$>$ Record\+Buffer\+::fields\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_record_buffer_8h_source_l00026}{26}} of file \mbox{\hyperlink{_record_buffer_8h_source}{Record\+Buffer.\+h}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_record_buffer_8h}{Record\+Buffer.\+h}}\item 
+\mbox{\hyperlink{_record_buffer_8cpp}{Record\+Buffer.\+cpp}}\end{DoxyCompactItemize}

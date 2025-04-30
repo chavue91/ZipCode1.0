@@ -1,0 +1,27 @@
+var struct_header =
+[
+    [ "Header", "struct_header.html#ab20eba80063f6fa6a74c474f09bca886", null ],
+    [ "Header", "struct_header.html#a53cdc8594285bc9d21a32ab2279c3804", null ],
+    [ "readFromFile", "struct_header.html#a2541c1a0f4ce4fe26f41369ba9479ee8", null ],
+    [ "writeToFile", "struct_header.html#ae4659654e7c5017c17ff589f5ea5bd7c", null ],
+    [ "availListHeadRBN", "struct_header.html#a2cb4ea884f318d6cac28b512eeee7078", null ],
+    [ "blockCount", "struct_header.html#abb03b2abaeee57d21a10db254b56acb0", null ],
+    [ "blockSize", "struct_header.html#a6794018d2fa1ba92881a44a0ee011f77", null ],
+    [ "fields", "struct_header.html#ab94117f895aab68fce0c4c84d41686d2", null ],
+    [ "fieldsPerRecord", "struct_header.html#ad4d5c196f8cd44363dfcca533873ae26", null ],
+    [ "fileStructureType", "struct_header.html#ad989c0118d3bc203635a54a4613037e4", null ],
+    [ "headerSize", "struct_header.html#a57b5a84a3de7c738e3f451884a151f7f", null ],
+    [ "indexFileName", "struct_header.html#a03c0ca65bd0fe37e36c5addebf550636", null ],
+    [ "indexSchema", "struct_header.html#a8cb783d0ddf48ab0d25e6f550f4ceb74", null ],
+    [ "minBlockCapacity", "struct_header.html#a853f037f5a2a384398f4c8f8045ecda0", null ],
+    [ "primaryKey", "struct_header.html#a37173eb1af4f2243bb919969cb4abedd", null ],
+    [ "primaryKeyFileName", "struct_header.html#ac3660b9b17ab905c12df0e95e59f8037", null ],
+    [ "primaryKeyOrdinal", "struct_header.html#a1422f76d827acdc9327deef273d000d9", null ],
+    [ "recordCount", "struct_header.html#af22c13458cbf3c73a4f16ba18f808aad", null ],
+    [ "recordSizeFieldLength", "struct_header.html#a0567e3b0fb3b796b090932ba56df0584", null ],
+    [ "sequenceListHeadRBN", "struct_header.html#acaa769a2a6035628049a90a3e7a4ca1a", null ],
+    [ "sizeFormatType", "struct_header.html#a1ad3d90de6eb96fb6d3a82a1f570501a", null ],
+    [ "sizeInBytes", "struct_header.html#a023113fea452b6270a955baea03a46c8", null ],
+    [ "stale", "struct_header.html#ad5923d332c4a4611201de6d237d2b694", null ],
+    [ "version", "struct_header.html#a465adaa6f78c42f66568341b53bc0ae8", null ]
+];

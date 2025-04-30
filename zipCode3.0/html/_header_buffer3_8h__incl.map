@@ -1,0 +1,13 @@
+<map id="HeaderBuffer3.h" name="HeaderBuffer3.h">
+<area shape="rect" id="Node000001" title="Provides a class for reading and writing header records for blocked sequence set files." alt="" coords="130,5,246,32"/>
+<area shape="rect" id="Node000002" href="$_header_and_block_structures_8h.html" title="Defines structures for the header and block layouts used in the Blocked Sequence Set." alt="" coords="17,80,207,107"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="177,34,138,71,134,67,173,31"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="231,80,297,107"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="203,31,242,67,238,71,199,34"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,155,59,181"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="100,109,59,146,55,142,96,105"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="83,155,141,181"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="115,107,115,139,109,139,109,107"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="164,155,225,181"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="128,105,171,142,167,146,125,109"/>
+</map>

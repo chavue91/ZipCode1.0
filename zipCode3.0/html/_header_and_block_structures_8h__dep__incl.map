@@ -1,0 +1,32 @@
+<map id="HeaderAndBlockStructures.h" name="HeaderAndBlockStructures.h">
+<area shape="rect" id="Node000001" title="Defines structures for the header and block layouts used in the Blocked Sequence Set." alt="" coords="543,5,733,32"/>
+<area shape="rect" id="Node000002" href="$_block_buffer_8h.html" title="Defines the BlockBuffer class for managing read/write operations on blocked sequence set blocks." alt="" coords="523,80,622,107"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="619,45,586,81,582,78,615,42"/>
+<area shape="rect" id="Node000011" href="$_header_buffer3_8h.html" title="Provides a class for reading and writing header records for blocked sequence set files." alt="" coords="647,80,762,107"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="662,42,695,78,691,81,658,45"/>
+<area shape="rect" id="Node000003" href="$_block_buffer_8cpp.html" title="Implements BlockBuffer class functions for handling block&#45;level I/O." alt="" coords="5,155,119,181"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="508,105,130,157,120,159,119,154,130,152,508,100"/>
+<area shape="rect" id="Node000004" href="$_build_index_8cpp.html" title="Builds a simple primary key index file from a blocked sequence set." alt="" coords="431,155,538,181"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="547,119,502,156,498,152,544,115"/>
+<area shape="rect" id="Node000005" href="$_convert_to_blocked_8cpp.html" title="Converts a length&#45;indicated file into a blocked sequence set format." alt="" coords="563,155,716,181"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="596,116,630,152,626,156,593,120"/>
+<area shape="rect" id="Node000006" href="$_delete_record_8cpp.html" title="Handles deletion of ZIP code records from a blocked sequence set." alt="" coords="740,155,866,181"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="628,109,764,151,762,157,627,114"/>
+<area shape="rect" id="Node000007" href="$_dump_blocked_8cpp.html" title="Utility to dump blocked sequence set content in physical or logical order." alt="" coords="891,155,1020,181"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="638,104,891,152,890,157,637,110"/>
+<area shape="rect" id="Node000008" href="$_dump_utility_8cpp.html" title="Implements dump functions for the blocked sequence set structure." alt="" coords="1044,155,1158,181"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="638,104,837,129,1032,152,1044,154,1043,159,1031,157,836,134,638,110"/>
+<area shape="rect" id="Node000009" href="$_insert_record_8cpp.html" title="Handles insertion of new ZIP code records into a blocked sequence set." alt="" coords="143,155,264,181"/>
+<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="508,110,265,157,264,152,507,105"/>
+<area shape="rect" id="Node000010" href="$_search_index_8cpp.html" title="Searches for ZIP codes in a blocked sequence set using a primary key index file." alt="" coords="288,155,407,181"/>
+<area shape="poly" id="edge9_Node000002_Node000010" title=" " alt="" coords="520,114,388,157,386,151,518,109"/>
+<area shape="poly" id="edge11_Node000011_Node000004" title=" " alt="" coords="653,114,524,157,522,151,651,109"/>
+<area shape="poly" id="edge12_Node000011_Node000005" title=" " alt="" coords="685,120,653,156,649,152,681,116"/>
+<area shape="poly" id="edge13_Node000011_Node000006" title=" " alt="" coords="736,114,788,152,785,156,732,118"/>
+<area shape="poly" id="edge14_Node000011_Node000007" title=" " alt="" coords="764,109,912,151,911,157,762,114"/>
+<area shape="poly" id="edge15_Node000011_Node000008" title=" " alt="" coords="778,105,1044,154,1043,159,777,111"/>
+<area shape="poly" id="edge17_Node000011_Node000009" title=" " alt="" coords="632,110,276,157,265,159,264,154,275,152,631,104"/>
+<area shape="poly" id="edge18_Node000011_Node000010" title=" " alt="" coords="632,112,408,157,407,152,631,107"/>
+<area shape="rect" id="Node000012" href="$_header_buffer3_8cpp.html" title="Implements methods for reading and writing blocked sequence set file headers." alt="" coords="1181,155,1311,181"/>
+<area shape="poly" id="edge16_Node000011_Node000012" title=" " alt="" coords="778,101,1170,152,1181,154,1181,159,1170,157,778,106"/>
+</map>

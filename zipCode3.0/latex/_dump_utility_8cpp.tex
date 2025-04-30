@@ -1,0 +1,180 @@
+\doxysection{Dump\+Utility.\+cpp File Reference}
+\hypertarget{_dump_utility_8cpp}{}\label{_dump_utility_8cpp}\index{DumpUtility.cpp@{DumpUtility.cpp}}
+
+
+Implements dump functions for the blocked sequence set structure.  
+
+
+{\ttfamily \#include "{}Dump\+Utility.\+h"{}}\newline
+{\ttfamily \#include "{}Header\+Buffer3.\+h"{}}\newline
+{\ttfamily \#include "{}Block\+Buffer.\+h"{}}\newline
+{\ttfamily \#include "{}Record\+Buffer.\+h"{}}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$iomanip$>$}\newline
+Include dependency graph for Dump\+Utility.\+cpp\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_dump_utility_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_dump_utility_8cpp_a3eef9592ab3773b6456e492c15332f59}{print\+Block}} (int rbn, const \mbox{\hyperlink{struct_block}{Block}} \&block)
+\begin{DoxyCompactList}\small\item\em Prints a block’s RBN, keys, and next RBN. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_dump_utility_8cpp_aa656905818d457c43fca3cc7ef37ab00}{print\+Avail}} (int rbn, const \mbox{\hyperlink{struct_avail_block}{Avail\+Block}} \&avail)
+\begin{DoxyCompactList}\small\item\em Prints an avail block\textquotesingle{}s RBN and its successor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_dump_utility_8cpp_af4c7003ac02ec488042ccb7e8b5a7e35}{dump\+By\+Physical\+Order}} (const string \&filename)
+\begin{DoxyCompactList}\small\item\em Dumps all blocks in physical order from the file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_dump_utility_8cpp_afebb1e9dcfb714e25a4996c2c7b9b484}{dump\+By\+Logical\+Order}} (const string \&filename)
+\begin{DoxyCompactList}\small\item\em Dumps all blocks in logical order using next\+RBN links. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implements dump functions for the blocked sequence set structure. 
+
+
+
+Definition in file \mbox{\hyperlink{_dump_utility_8cpp_source}{Dump\+Utility.\+cpp}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{_dump_utility_8cpp_afebb1e9dcfb714e25a4996c2c7b9b484}\index{DumpUtility.cpp@{DumpUtility.cpp}!dumpByLogicalOrder@{dumpByLogicalOrder}}
+\index{dumpByLogicalOrder@{dumpByLogicalOrder}!DumpUtility.cpp@{DumpUtility.cpp}}
+\doxysubsubsection{\texorpdfstring{dumpByLogicalOrder()}{dumpByLogicalOrder()}}
+{\footnotesize\ttfamily \label{_dump_utility_8cpp_afebb1e9dcfb714e25a4996c2c7b9b484} 
+void dump\+By\+Logical\+Order (\begin{DoxyParamCaption}\item[{const string \&}]{filename}{}\end{DoxyParamCaption})}
+
+
+
+Dumps all blocks in logical order using next\+RBN links. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & The blocked sequence set file. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_dump_utility_8cpp_source_l00082}{82}} of file \mbox{\hyperlink{_dump_utility_8cpp_source}{Dump\+Utility.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_dump_utility_8cpp_afebb1e9dcfb714e25a4996c2c7b9b484_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=260pt]{_dump_utility_8cpp_afebb1e9dcfb714e25a4996c2c7b9b484_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{_dump_utility_8cpp_af4c7003ac02ec488042ccb7e8b5a7e35}\index{DumpUtility.cpp@{DumpUtility.cpp}!dumpByPhysicalOrder@{dumpByPhysicalOrder}}
+\index{dumpByPhysicalOrder@{dumpByPhysicalOrder}!DumpUtility.cpp@{DumpUtility.cpp}}
+\doxysubsubsection{\texorpdfstring{dumpByPhysicalOrder()}{dumpByPhysicalOrder()}}
+{\footnotesize\ttfamily \label{_dump_utility_8cpp_af4c7003ac02ec488042ccb7e8b5a7e35} 
+void dump\+By\+Physical\+Order (\begin{DoxyParamCaption}\item[{const string \&}]{filename}{}\end{DoxyParamCaption})}
+
+
+
+Dumps all blocks in physical order from the file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & The blocked sequence set file. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_dump_utility_8cpp_source_l00041}{41}} of file \mbox{\hyperlink{_dump_utility_8cpp_source}{Dump\+Utility.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_dump_utility_8cpp_af4c7003ac02ec488042ccb7e8b5a7e35_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=267pt]{_dump_utility_8cpp_af4c7003ac02ec488042ccb7e8b5a7e35_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{_dump_utility_8cpp_aa656905818d457c43fca3cc7ef37ab00}\index{DumpUtility.cpp@{DumpUtility.cpp}!printAvail@{printAvail}}
+\index{printAvail@{printAvail}!DumpUtility.cpp@{DumpUtility.cpp}}
+\doxysubsubsection{\texorpdfstring{printAvail()}{printAvail()}}
+{\footnotesize\ttfamily \label{_dump_utility_8cpp_aa656905818d457c43fca3cc7ef37ab00} 
+void print\+Avail (\begin{DoxyParamCaption}\item[{int}]{rbn}{, }\item[{const \mbox{\hyperlink{struct_avail_block}{Avail\+Block}} \&}]{avail}{}\end{DoxyParamCaption})}
+
+
+
+Prints an avail block\textquotesingle{}s RBN and its successor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rbn} & Relative \doxylink{struct_block}{Block} Number of the avail block. \\
+\hline
+{\em avail} & The \doxylink{struct_avail_block}{Avail\+Block} to print. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_dump_utility_8cpp_source_l00033}{33}} of file \mbox{\hyperlink{_dump_utility_8cpp_source}{Dump\+Utility.\+cpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_dump_utility_8cpp_aa656905818d457c43fca3cc7ef37ab00_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{_dump_utility_8cpp_a3eef9592ab3773b6456e492c15332f59}\index{DumpUtility.cpp@{DumpUtility.cpp}!printBlock@{printBlock}}
+\index{printBlock@{printBlock}!DumpUtility.cpp@{DumpUtility.cpp}}
+\doxysubsubsection{\texorpdfstring{printBlock()}{printBlock()}}
+{\footnotesize\ttfamily \label{_dump_utility_8cpp_a3eef9592ab3773b6456e492c15332f59} 
+void print\+Block (\begin{DoxyParamCaption}\item[{int}]{rbn}{, }\item[{const \mbox{\hyperlink{struct_block}{Block}} \&}]{block}{}\end{DoxyParamCaption})}
+
+
+
+Prints a block’s RBN, keys, and next RBN. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rbn} & Relative \doxylink{struct_block}{Block} Number. \\
+\hline
+{\em block} & The \doxylink{struct_block}{Block} structure to print. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_dump_utility_8cpp_source_l00019}{19}} of file \mbox{\hyperlink{_dump_utility_8cpp_source}{Dump\+Utility.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=285pt]{_dump_utility_8cpp_a3eef9592ab3773b6456e492c15332f59_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_dump_utility_8cpp_a3eef9592ab3773b6456e492c15332f59_icgraph}
+\end{center}
+\end{figure}

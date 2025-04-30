@@ -1,0 +1,72 @@
+\doxysection{Dump\+Utility.\+h File Reference}
+\hypertarget{_dump_utility_8h}{}\label{_dump_utility_8h}\index{DumpUtility.h@{DumpUtility.h}}
+
+
+Provides functions to dump the blocked sequence set file structure.  
+
+
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+Include dependency graph for Dump\+Utility.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=188pt]{_dump_utility_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=240pt]{_dump_utility_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_dump_utility_8h_a83fcbc089cd1e0cad6c90e9828b9a649}{dump\+By\+Physical\+Order}} (const std\+::string \&filename)
+\begin{DoxyCompactList}\small\item\em Dumps blocks in physical order (RBN 0 to N) to stdout. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_dump_utility_8h_a8f60b653ffdcd7b7217e0af777236009}{dump\+By\+Logical\+Order}} (const std\+::string \&filename)
+\begin{DoxyCompactList}\small\item\em Dumps blocks in logical order (follows linked list of active blocks). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Provides functions to dump the blocked sequence set file structure. 
+
+
+
+Definition in file \mbox{\hyperlink{_dump_utility_8h_source}{Dump\+Utility.\+h}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{_dump_utility_8h_a8f60b653ffdcd7b7217e0af777236009}\index{DumpUtility.h@{DumpUtility.h}!dumpByLogicalOrder@{dumpByLogicalOrder}}
+\index{dumpByLogicalOrder@{dumpByLogicalOrder}!DumpUtility.h@{DumpUtility.h}}
+\doxysubsubsection{\texorpdfstring{dumpByLogicalOrder()}{dumpByLogicalOrder()}}
+{\footnotesize\ttfamily \label{_dump_utility_8h_a8f60b653ffdcd7b7217e0af777236009} 
+void dump\+By\+Logical\+Order (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename}{}\end{DoxyParamCaption})}
+
+
+
+Dumps blocks in logical order (follows linked list of active blocks). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & Name of the blocked sequence set file to dump. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_dump_utility_8h_a83fcbc089cd1e0cad6c90e9828b9a649}\index{DumpUtility.h@{DumpUtility.h}!dumpByPhysicalOrder@{dumpByPhysicalOrder}}
+\index{dumpByPhysicalOrder@{dumpByPhysicalOrder}!DumpUtility.h@{DumpUtility.h}}
+\doxysubsubsection{\texorpdfstring{dumpByPhysicalOrder()}{dumpByPhysicalOrder()}}
+{\footnotesize\ttfamily \label{_dump_utility_8h_a83fcbc089cd1e0cad6c90e9828b9a649} 
+void dump\+By\+Physical\+Order (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename}{}\end{DoxyParamCaption})}
+
+
+
+Dumps blocks in physical order (RBN 0 to N) to stdout. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & Name of the blocked sequence set file to dump. \\
+\hline
+\end{DoxyParams}

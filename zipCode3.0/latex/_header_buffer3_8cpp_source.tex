@@ -1,0 +1,94 @@
+\doxysection{Header\+Buffer3.\+cpp}
+\hypertarget{_header_buffer3_8cpp_source}{}\label{_header_buffer3_8cpp_source}\mbox{\hyperlink{_header_buffer3_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_header_buffer3_8h}{HeaderBuffer3.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00007}00007\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00014}\mbox{\hyperlink{class_header_buffer3_ae99bda9df506d9aeabe3d2fcc23a5a02}{00014}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_header_buffer3_ae99bda9df506d9aeabe3d2fcc23a5a02}{HeaderBuffer3::read}}(istream\&\ in)\ \{}
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00015}00015\ \ \ \ \ \textcolor{keywordflow}{if}\ (!in)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00017}00017\ \ \ \ \ \textcolor{comment}{//\ Read\ fixed\ metadata\ fields\ line-\/by-\/line}}
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00018}00018\ \ \ \ \ getline(in,\ \mbox{\hyperlink{class_header_buffer3_a297405f7199487b9b8c27885e7babd5e}{header}}.fileStructureType);}
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00019}00019\ \ \ \ \ getline(in,\ \mbox{\hyperlink{class_header_buffer3_a297405f7199487b9b8c27885e7babd5e}{header}}.version);}
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00020}00020\ \ \ \ \ in\ >>\ \mbox{\hyperlink{class_header_buffer3_a297405f7199487b9b8c27885e7babd5e}{header}}.headerSize;}
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00021}00021\ \ \ \ \ in\ >>\ \mbox{\hyperlink{class_header_buffer3_a297405f7199487b9b8c27885e7babd5e}{header}}.recordSizeFieldLength;}
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00022}00022\ \ \ \ \ in.ignore();\ \textcolor{comment}{//\ skip\ newline}}
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00023}00023\ \ \ \ \ getline(in,\ \mbox{\hyperlink{class_header_buffer3_a297405f7199487b9b8c27885e7babd5e}{header}}.sizeFormatType);}
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00024}00024\ \ \ \ \ in\ >>\ \mbox{\hyperlink{class_header_buffer3_a297405f7199487b9b8c27885e7babd5e}{header}}.blockSize;}
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00025}00025\ \ \ \ \ in\ >>\ \mbox{\hyperlink{class_header_buffer3_a297405f7199487b9b8c27885e7babd5e}{header}}.minBlockCapacity;}
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00026}00026\ \ \ \ \ in.ignore();}
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00027}00027\ \ \ \ \ getline(in,\ \mbox{\hyperlink{class_header_buffer3_a297405f7199487b9b8c27885e7babd5e}{header}}.indexFileName);}
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00028}00028\ \ \ \ \ getline(in,\ \mbox{\hyperlink{class_header_buffer3_a297405f7199487b9b8c27885e7babd5e}{header}}.indexSchema);}
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00029}00029\ \ \ \ \ in\ >>\ \mbox{\hyperlink{class_header_buffer3_a297405f7199487b9b8c27885e7babd5e}{header}}.recordCount;}
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00030}00030\ \ \ \ \ in\ >>\ \mbox{\hyperlink{class_header_buffer3_a297405f7199487b9b8c27885e7babd5e}{header}}.blockCount;}
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00031}00031\ \ \ \ \ in\ >>\ \mbox{\hyperlink{class_header_buffer3_a297405f7199487b9b8c27885e7babd5e}{header}}.fieldsPerRecord;}
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00032}00032\ \ \ \ \ in.ignore();}
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00034}00034\ \ \ \ \ \textcolor{comment}{//\ Read\ field\ definitions}}
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00035}00035\ \ \ \ \ \mbox{\hyperlink{class_header_buffer3_a297405f7199487b9b8c27885e7babd5e}{header}}.fields.clear();}
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00036}00036\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \mbox{\hyperlink{class_header_buffer3_a297405f7199487b9b8c27885e7babd5e}{header}}.fieldsPerRecord;\ ++i)\ \{}
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00037}00037\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_field}{Field}}\ f\ =\ \mbox{\hyperlink{class_header_buffer3_a084171e9e06700ac67f2c69ddb600df9}{readField}}(in);}
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00038}00038\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_header_buffer3_a297405f7199487b9b8c27885e7babd5e}{header}}.fields.push\_back(f);}
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00039}00039\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00041}00041\ \ \ \ \ \textcolor{comment}{//\ Read\ final\ metadata\ for\ primary\ key\ and\ list\ heads}}
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00042}00042\ \ \ \ \ in\ >>\ \mbox{\hyperlink{class_header_buffer3_a297405f7199487b9b8c27885e7babd5e}{header}}.primaryKeyOrdinal;}
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00043}00043\ \ \ \ \ in\ >>\ \mbox{\hyperlink{class_header_buffer3_a297405f7199487b9b8c27885e7babd5e}{header}}.availListHeadRBN;}
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00044}00044\ \ \ \ \ in\ >>\ \mbox{\hyperlink{class_header_buffer3_a297405f7199487b9b8c27885e7babd5e}{header}}.sequenceListHeadRBN;}
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00045}00045\ \ \ \ \ in\ >>\ \mbox{\hyperlink{class_header_buffer3_a297405f7199487b9b8c27885e7babd5e}{header}}.stale;}
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00046}00046\ \ \ \ \ in.ignore();}
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00048}00048\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00049}00049\ \}}
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00055}\mbox{\hyperlink{class_header_buffer3_ab249189db386173d691cbdf87a4f03e2}{00055}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_header_buffer3_ab249189db386173d691cbdf87a4f03e2}{HeaderBuffer3::write}}(ostream\&\ out)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00056}00056\ \ \ \ \ \textcolor{keywordflow}{if}\ (!out)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00058}00058\ \ \ \ \ \textcolor{comment}{//\ Write\ basic\ metadata\ fields}}
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00059}00059\ \ \ \ \ out\ <<\ \mbox{\hyperlink{class_header_buffer3_a297405f7199487b9b8c27885e7babd5e}{header}}.fileStructureType\ <<\ \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00060}00060\ \ \ \ \ out\ <<\ \mbox{\hyperlink{class_header_buffer3_a297405f7199487b9b8c27885e7babd5e}{header}}.version\ <<\ \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00061}00061\ \ \ \ \ out\ <<\ \mbox{\hyperlink{class_header_buffer3_a297405f7199487b9b8c27885e7babd5e}{header}}.headerSize\ <<\ \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00062}00062\ \ \ \ \ out\ <<\ \mbox{\hyperlink{class_header_buffer3_a297405f7199487b9b8c27885e7babd5e}{header}}.recordSizeFieldLength\ <<\ \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00063}00063\ \ \ \ \ out\ <<\ \mbox{\hyperlink{class_header_buffer3_a297405f7199487b9b8c27885e7babd5e}{header}}.sizeFormatType\ <<\ \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00064}00064\ \ \ \ \ out\ <<\ \mbox{\hyperlink{class_header_buffer3_a297405f7199487b9b8c27885e7babd5e}{header}}.blockSize\ <<\ \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00065}00065\ \ \ \ \ out\ <<\ \mbox{\hyperlink{class_header_buffer3_a297405f7199487b9b8c27885e7babd5e}{header}}.minBlockCapacity\ <<\ \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00066}00066\ \ \ \ \ out\ <<\ \mbox{\hyperlink{class_header_buffer3_a297405f7199487b9b8c27885e7babd5e}{header}}.indexFileName\ <<\ \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00067}00067\ \ \ \ \ out\ <<\ \mbox{\hyperlink{class_header_buffer3_a297405f7199487b9b8c27885e7babd5e}{header}}.indexSchema\ <<\ \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00068}00068\ \ \ \ \ out\ <<\ \mbox{\hyperlink{class_header_buffer3_a297405f7199487b9b8c27885e7babd5e}{header}}.recordCount\ <<\ \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00069}00069\ \ \ \ \ out\ <<\ \mbox{\hyperlink{class_header_buffer3_a297405f7199487b9b8c27885e7babd5e}{header}}.blockCount\ <<\ \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00070}00070\ \ \ \ \ out\ <<\ \mbox{\hyperlink{class_header_buffer3_a297405f7199487b9b8c27885e7babd5e}{header}}.fieldsPerRecord\ <<\ \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00072}00072\ \ \ \ \ \textcolor{comment}{//\ Write\ field\ definitions}}
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00073}00073\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ field\ :\ \mbox{\hyperlink{class_header_buffer3_a297405f7199487b9b8c27885e7babd5e}{header}}.fields)\ \{}
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00074}00074\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_header_buffer3_aea2e546245ad8c9ef5b754c463fe1472}{writeField}}(out,\ field);}
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00075}00075\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00077}00077\ \ \ \ \ \textcolor{comment}{//\ Write\ list\ head\ metadata}}
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00078}00078\ \ \ \ \ out\ <<\ \mbox{\hyperlink{class_header_buffer3_a297405f7199487b9b8c27885e7babd5e}{header}}.primaryKeyOrdinal\ <<\ \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00079}00079\ \ \ \ \ out\ <<\ \mbox{\hyperlink{class_header_buffer3_a297405f7199487b9b8c27885e7babd5e}{header}}.availListHeadRBN\ <<\ \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00080}00080\ \ \ \ \ out\ <<\ \mbox{\hyperlink{class_header_buffer3_a297405f7199487b9b8c27885e7babd5e}{header}}.sequenceListHeadRBN\ <<\ \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00081}00081\ \ \ \ \ out\ <<\ \mbox{\hyperlink{class_header_buffer3_a297405f7199487b9b8c27885e7babd5e}{header}}.stale\ <<\ \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00082}00082\ \}}
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00089}\mbox{\hyperlink{class_header_buffer3_a084171e9e06700ac67f2c69ddb600df9}{00089}}\ \mbox{\hyperlink{struct_field}{Field}}\ \mbox{\hyperlink{class_header_buffer3_a084171e9e06700ac67f2c69ddb600df9}{HeaderBuffer3::readField}}(istream\&\ in)\ \{}
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00090}00090\ \ \ \ \ \mbox{\hyperlink{struct_field}{Field}}\ field;}
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00091}00091\ \ \ \ \ getline(in,\ field.\mbox{\hyperlink{struct_field_ab285d25456aca13adb626a89208d3dc2}{name}});}
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00092}00092\ \ \ \ \ getline(in,\ field.\mbox{\hyperlink{struct_field_a64da0458381eb5ef333274b4d5fa416e}{type}});}
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00093}00093\ \ \ \ \ getline(in,\ field.\mbox{\hyperlink{struct_field_ad4477b9d4883cef9f3ce3cb1a73edc55}{format}});}
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00094}00094\ \ \ \ \ in\ >>\ field.\mbox{\hyperlink{struct_field_af433473f1f52e5f7113fc91c3263701d}{isPrimaryKey}};}
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00095}00095\ \ \ \ \ in.ignore();}
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00096}00096\ \ \ \ \ \textcolor{keywordflow}{return}\ field;}
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00097}00097\ \}}
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00104}\mbox{\hyperlink{class_header_buffer3_aea2e546245ad8c9ef5b754c463fe1472}{00104}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_header_buffer3_aea2e546245ad8c9ef5b754c463fe1472}{HeaderBuffer3::writeField}}(ostream\&\ out,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_field}{Field}}\&\ field)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00105}00105\ \ \ \ \ out\ <<\ field.\mbox{\hyperlink{struct_field_ab285d25456aca13adb626a89208d3dc2}{name}}\ <<\ \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00106}00106\ \ \ \ \ out\ <<\ field.\mbox{\hyperlink{struct_field_a64da0458381eb5ef333274b4d5fa416e}{type}}\ <<\ \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00107}00107\ \ \ \ \ out\ <<\ field.\mbox{\hyperlink{struct_field_ad4477b9d4883cef9f3ce3cb1a73edc55}{format}}\ <<\ \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00108}00108\ \ \ \ \ out\ <<\ field.\mbox{\hyperlink{struct_field_af433473f1f52e5f7113fc91c3263701d}{isPrimaryKey}}\ <<\ \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{\Hypertarget{_header_buffer3_8cpp_source_l00109}00109\ \}}
+
+\end{DoxyCode}

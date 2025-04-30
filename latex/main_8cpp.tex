@@ -1,0 +1,106 @@
+\doxysection{main.\+cpp File Reference}
+\hypertarget{main_8cpp}{}\label{main_8cpp}\index{main.cpp@{main.cpp}}
+
+
+Main application to process Zip Code data from CSV or length-\/indicated file.  
+
+
+{\ttfamily \#include "{}CSVBuffer.\+h"{}}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$cstring$>$}\newline
+Include dependency graph for main.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{main_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int argc, char \texorpdfstring{$\ast$}{*}argv\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Main function of the program. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Main application to process Zip Code data from CSV or length-\/indicated file. 
+
+Uses \doxylink{class_c_s_v_buffer}{CSVBuffer} to generate a state-\/wise table of extreme Zip Codes or convert CSV to length-\/indicated format.
+
+Uses \doxylink{class_c_s_v_buffer}{CSVBuffer} to generate a state-\/wise table of extreme Zip Codes, convert CSV files to length-\/indicated format, or search records by zip code using in-\/memory primary key indexing via command-\/line flags. 
+
+Definition in file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}\index{main.cpp@{main.cpp}!main@{main}}
+\index{main@{main}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \label{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97} 
+int main (\begin{DoxyParamCaption}\item[{int}]{argc}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{argv}{\mbox{[}$\,$\mbox{]}}\end{DoxyParamCaption})}
+
+
+
+Main function of the program. 
+
+Handles CSV conversion, summary generation, and zip code lookups via -\/z\#\#\#\#\# flags. If zip code flags are provided, the program loads the file, builds an index, and prints matching records. If no flags are given, it enters interactive mode. 
+\begin{DoxyParams}{Parameters}
+{\em argc} & Argument count from command line. \\
+\hline
+{\em argv} & Array of command line arguments. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Returns 0 on success, 1 on failure. 
+\end{DoxyReturn}
+\texorpdfstring{$<$}{<} Stores zip codes provided via -\/z\#\#\#\#\# command-\/line flags.
+
+\texorpdfstring{$<$}{<} Filename provided to load zip code data from.
+
+Parse command-\/line arguments.
+
+Extract zip code flags and the data file to be processed.
+
+\texorpdfstring{$<$}{<} Extracts and stores zip code number.
+
+\texorpdfstring{$<$}{<} Assumes first non-\/flag argument is the filename.
+
+If zip lookup flags were provided, perform index search.
+
+\texorpdfstring{$<$}{<} Initializes buffer and loads records.
+
+\texorpdfstring{$<$}{<} Searches for each zip code.
+
+If no flags, show interactive options for CSV conversion or summary.
+
+\texorpdfstring{$<$}{<} User-\/selected operation.
+
+Option 1 -\/ Convert CSV to length-\/indicated format.
+
+\texorpdfstring{$<$}{<} Filenames for conversion.
+
+\texorpdfstring{$<$}{<} Perform conversion.
+
+Option 2 -\/ Generate summary of extremes per state.
+
+\texorpdfstring{$<$}{<} Filename for summary generation.
+
+\texorpdfstring{$<$}{<} Loads zip code records.
+
+\texorpdfstring{$<$}{<} Generates summary report.
+
+\texorpdfstring{$<$}{<} Return 0 on success.
+
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00023}{23}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97_cgraph}
+\end{center}
+\end{figure}

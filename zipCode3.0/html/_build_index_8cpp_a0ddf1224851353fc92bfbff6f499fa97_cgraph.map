@@ -1,0 +1,11 @@
+<map id="main" name="main">
+<area shape="rect" id="Node000001" title="Entry point to build an index file from a blocked sequence set." alt="" coords="5,56,55,83"/>
+<area shape="rect" id="Node000002" href="$_build_index_8cpp.html#adbadb55f3590dcf5c967f8fb80947983" title="Extracts the primary key (ZIP code) from a record string." alt="" coords="138,5,222,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="54,58,102,41,122,35,123,40,104,47,56,63"/>
+<area shape="rect" id="Node000003" href="$class_header_buffer3.html#ae99bda9df506d9aeabe3d2fcc23a5a02" title="Reads a header record from the input stream." alt="" coords="111,56,248,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="55,67,96,67,96,72,55,72"/>
+<area shape="rect" id="Node000005" href="$class_block_buffer.html#a1d0b033c6101e9faabf211d0d2dc7d76" title="Reads a block from the input stream at the specified RBN." alt="" coords="103,107,257,133"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="56,75,104,92,123,99,121,104,102,97,54,80"/>
+<area shape="rect" id="Node000004" href="$class_header_buffer3.html#a084171e9e06700ac67f2c69ddb600df9" title="Helper to read a single field definition from stream." alt="" coords="305,56,470,83"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="249,67,289,67,289,72,249,72"/>
+</map>
